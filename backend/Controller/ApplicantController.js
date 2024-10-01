@@ -50,9 +50,9 @@ const ApplicantCreate = async (req, res) => {
       email,
       password,
       bankAccount,
-      image: image.filename,
-      image2: image2.filename,
-      image3: image3.filename,
+      image: image.path,
+      image2: image2.path,
+      image3: image3.path,
     });
 
     //const update = await Applicant.findOneAndDelete({ _id: applicants._id });
