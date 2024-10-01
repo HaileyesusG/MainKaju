@@ -43,7 +43,10 @@ function App() {
   //user
   const featch = async (id) => {
     const response = await fetch(
-      `${API_BASE_URL}/api/user/GetOneUserById/${id}`
+      `${API_BASE_URL}/api/user/GetOneUserById/${id}`,
+      {
+        method: "GET",
+      }
     );
     const json = await response.json();
     if (!response.ok) {
