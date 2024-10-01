@@ -20,7 +20,7 @@ const AdminCreate = async (req, res) => {
     return res.status(400).json({ message: "insert image" });
   }
 
-  const image2 = image1.filename;
+  const image2 = image1.path;
 
   try {
     const admins = await Admin.SignUp(
