@@ -46,7 +46,7 @@ const serv = http.createServer(app);
 const io = new Server(serv, {
   cors: {
     origin: "https://mainkajufrontend.onrender.com",
-    methods: ["GET", "POST"],
+    methods: ["GET", "POST", "PATCH", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
   },
 });
