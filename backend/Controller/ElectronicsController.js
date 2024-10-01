@@ -131,11 +131,11 @@ const ElectronicsCreate = async (req, res) => {
             title,
             Llimit,
             Ulimit,
-            image: image1.filename,
-            image2: image2 ? image2.filename : "",
-            image3: image3 ? image3.filename : "",
-            image4: image4 ? image4.filename : "",
-            image5: image5 ? image5.filename : "",
+            image: image1.path,
+            image2: image2 ? image2.path : "",
+            image3: image3 ? image3.path : "",
+            image4: image4 ? image4.path : "",
+            image5: image5 ? image5.path : "",
           });
           Try = Try - 1;
           await User.findByIdAndUpdate({ _id: userId }, { try: Try });
@@ -166,11 +166,11 @@ const ElectronicsCreate = async (req, res) => {
           title,
           Llimit,
           Ulimit,
-          image: image1.filename,
-          image2: image2 ? image2.filename : "",
-          image3: image3 ? image3.filename : "",
-          image4: image4 ? image4.filename : "",
-          image5: image5 ? image5.filename : "",
+          image: image1.path,
+          image2: image2 ? image2.path : "",
+          image3: image3 ? image3.path : "",
+          image4: image4 ? image4.path : "",
+          image5: image5 ? image5.path : "",
         });
         Deposite = Deposite - 30;
         await User.findByIdAndUpdate({ _id: userId }, { deposite: Deposite });
