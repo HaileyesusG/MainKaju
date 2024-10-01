@@ -24,7 +24,7 @@ import { useDispatch, useSelector } from "react-redux";
 import New from "./Components/New";
 import { io } from "socket.io-client";
 import Products from "./Components/Products";
-// const socket = io("http://localhost:5001");
+// const socket = io("https://mainkaju.onrender.com");
 function App() {
   const todo2 = useSelector((state) => state.tech.tech);
   const [user, setUser] = useState();

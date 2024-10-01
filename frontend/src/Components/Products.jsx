@@ -33,7 +33,7 @@ import { updateTech, setTech } from "../features/tech/techSlice";
 import { updateCart, addCartt } from "../features/cart/cartSlice";
 import { useDispatch } from "react-redux";
 import { ImLocation } from "react-icons/im";
-const socket = io("http://localhost:5001");
+const socket = io("https://mainkaju.onrender.com");
 const Products = ({ user3 }) => {
   const dispatch2 = useDispatch();
   const todo = useSelector((state) => state.tech.tech);
@@ -118,7 +118,6 @@ const Products = ({ user3 }) => {
       `${API_BASE_URL}/api/GetAllItems/GetAllItems`,
       {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ location: location }),
       }
     );

@@ -13,7 +13,7 @@ import hiloe5 from "../assets/kj4.jpg";
 import SuccessMessage from "./Thankyou";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 import { io } from "socket.io-client";
-const socket = io("http://localhost:5001");
+const socket = io("https://mainkaju.onrender.com");
 const SignUp = () => {
   const { signup, isLoading, error } = useSignUp();
   const [email, setEmail] = useState("");

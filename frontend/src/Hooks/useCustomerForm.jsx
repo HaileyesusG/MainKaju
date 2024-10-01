@@ -3,7 +3,7 @@ import { io } from "socket.io-client";
 import { useUserContextC } from "../Hooks/useUserContextC";
 import { Navigate, useNavigate } from "react-router-dom";
 export const useCustomerForm = () => {
-  let socket = io("http://localhost:5001");
+  let socket = io("https://mainkaju.onrender.com");
   const red = useNavigate();
   let { customer, dispatch } = useUserContextC();
   const [error, setError] = useState(null);

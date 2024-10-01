@@ -7,7 +7,7 @@ const bcryptjs = require("bcryptjs");
 const nodemailer = require("nodemailer");
 let otpStore = {}; // Temporary store for OTPs
 const io = require("socket.io-client");
-const socket = io("https://mainkaju.onrender.com");
+
 //Sign Up
 const ApplicantCreate = async (req, res) => {
   const {
@@ -56,7 +56,6 @@ const ApplicantCreate = async (req, res) => {
     });
 
     //const update = await Applicant.findOneAndDelete({ _id: applicants._id });
-    socket.once("Rejected", async (msg) => {});
     // Clean up the OTP store
     delete otpStore[email];
     res.status(200).json(applicants);
