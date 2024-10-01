@@ -119,6 +119,7 @@ const Products = ({ user3 }) => {
       {
         method: "POST",
         body: JSON.stringify({ location: location }),
+        headers: { "Content-Type": "application/json" },
       }
     );
     if (response.ok) {
