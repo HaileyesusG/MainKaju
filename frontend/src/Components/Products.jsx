@@ -619,6 +619,12 @@ const Products = ({ user3 }) => {
     setdisplay8("visible");
     setdisplay12("visible");
   };
+  const handleRedirect=()=>{
+    red("/signupa")
+  }
+   const handleRedirectLog=()=>{
+    red("/signina")
+  }
 
   return (
     <div className={""} product={Product}>
@@ -632,6 +638,12 @@ const Products = ({ user3 }) => {
             <h3 className="ml-4">ነው</h3>
           </div>
           <div className="w-40 mt-4  text-white text-[15px] ">{location}</div>
+        </div>
+        <div className="text-[5px]" onClick={handleRedirect}>
+          signup
+        </div>
+        <div className="text-[5px]" onClick={handleRedirectLog}>
+          signIn
         </div>
         <div className="ml-5 mb-11 mt-10 flex">
           <IoSearchSharp className="text-2xl  mt-3 text-white" />
