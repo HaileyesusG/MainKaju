@@ -45,7 +45,7 @@ DbConnection();
 const serv = http.createServer(app);
 const io = new Server(serv, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: "https://mainkajufrontend.onrender.com",
     methods: ["GET", "POST"],
     credentials: true,
   },
