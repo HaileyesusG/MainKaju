@@ -3,7 +3,7 @@ const Admin = require("../Model/Admin");
 const User = require("../Model/User");
 const validator = require("validator");
 const otpGenerator = require("otp-generator");
-const bcrypt = require("bcryptjs");
+const bcryptjs = require("bcryptjs");
 const nodemailer = require("nodemailer");
 let otpStore = {}; // Temporary store for OTPs
 const io = require("socket.io-client");
@@ -28,7 +28,7 @@ const ApplicantCreate = async (req, res) => {
       return res.status(400).send({ message: "OTP not generated or expired" });
     }
 
-    const isOtpValid = await bcrypt.compare(otp, storedOtpData.otp);
+    const isOtpValid = await bcryptjs.compare(otp, storedOtpData.otp);
     const isOtpExpired = Date.now() > storedOtpData.otpExpiry;
 
     if (isOtpExpired) {
@@ -99,7 +99,7 @@ const GenerateOtp = async (req, res) => {
     });
     console.log("the opt is", otp);
     console.log("the email", email);
-    const hashedOtp = await bcrypt.hash(otp, 10);
+    const hashedOtp = await bcryptjs.hash(otp, 10);
     // Store OTP and its expiration time in memory
     otpStore[email] = { otp: hashedOtp, otpExpiry: Date.now() + 300000 }; // 5 minutes expiry
 
