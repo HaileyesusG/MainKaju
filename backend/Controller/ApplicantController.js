@@ -7,7 +7,7 @@ const bcryptjs = require("bcryptjs");
 const nodemailer = require("nodemailer");
 let otpStore = {}; // Temporary store for OTPs
 const io = require("socket.io-client");
-const socket = io("http://localhost:5001");
+const socket = io("https://mainkaju.onrender.com");
 //Sign Up
 const ApplicantCreate = async (req, res) => {
   const {
