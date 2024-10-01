@@ -7,25 +7,15 @@ const {
 } = require("../Controller/AdminController");
 
 const multer = require("multer");
-// const AuthenticationAdmin = require("../MiddleWare/AuthenticationAdmin");
-const Storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "../../KajuProject/frontend/public/images");
-  },
-
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + "_" + file.originalname);
-  },
-});
-const upload = multer({
-  storage: Storage,
-}).single("testImage");
+const { storage } = require("../MiddleWare/cloudinary");
+const upload = multer({ storage });
+const upload2 = upload.single("testImage");
 
 const express = require("express");
 const router = express.Router();
 router.route("/GetAdmin").get(GetAdmin);
 //router.route("/GetOneTech").get(AuthenticationTech, GetOneTech);
-router.route("/AdminCreate").post(upload, AdminCreate);
+router.route("/AdminCreate").post(upload2, AdminCreate);
 router.route("/LoginAdmin").post(LoginAdmin);
 router.route("/RechargeBalance").post(RechargeBalance);
 router.route("/GetOneAdminById/:id").get(GetOneAdminById);

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const ratingSchema = new mongoose.Schema({
   userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-  rating: { type: Number, required: true },
+  rating: { type: Number, default: 0 },
   comment: { type: String },
 });
 
@@ -45,7 +45,7 @@ const carSchema = new mongoose.Schema(
     fuel: {
       type: String,
       required: [true, "Please enter transmission"],
-      enum: ["benzil", "diesel", "electric"],
+      enum: ["benzene", "diesel", "electric"],
     },
     location: {
       type: String,
@@ -56,8 +56,16 @@ const carSchema = new mongoose.Schema(
       required: [true, "Please enter licence"],
     },
     price: {
-      type: String,
+      type: Number,
       required: [true, "Please enter price"],
+    },
+    Llimit: {
+      type: Number,
+      required: [true, "Please enter Llimit"],
+    },
+    Ulimit: {
+      type: Number,
+      required: [true, "Please enter Ulimit"],
     },
     year: {
       type: String,

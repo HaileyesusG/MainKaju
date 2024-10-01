@@ -112,18 +112,13 @@ const HouseCreate = async (req, res) => {
         bedRoom,
         bathRoom,
         description,
-        status,
         category,
+        Llimit,
+        Ulimit,
       } = req.body;
 
-      if (status == "No") {
-        if (bankAccount == "") {
-          throw Error(
-            "You Can't Receive a payment online Unless you have a Chapa Payment Account "
-          );
-        }
-      }
       const [image1, image2, image3, image4, image5] = req.files["testImages"];
+
       if (Status == "New") {
         try {
           const Houses = await House.create({
@@ -138,6 +133,8 @@ const HouseCreate = async (req, res) => {
             bathRoom,
             description,
             category,
+            Llimit,
+            Ulimit,
             image: image1.filename,
             image2: image2 ? image2.filename : "",
             image3: image3 ? image3.filename : "",
@@ -155,6 +152,7 @@ const HouseCreate = async (req, res) => {
           });
         } catch (err) {
           res.status(400).json({ message: err.message });
+          console.log("message:", err.message);
         }
       } else {
         if (Deposite < 40) {
@@ -172,6 +170,8 @@ const HouseCreate = async (req, res) => {
           bathRoom,
           description,
           category,
+          Llimit,
+          Ulimit,
           image: image1.filename,
           image2: image2 ? image2.filename : "",
           image3: image3 ? image3.filename : "",
@@ -185,9 +185,10 @@ const HouseCreate = async (req, res) => {
           Houses,
         });
       }
-      console.log(city); // Outputs "Addis Ababa" for Kolfe Keranio, Addis Ababa
+      console.log("the city ", city); // Outputs "Addis Ababa" for Kolfe Keranio, Addis Ababa
     } catch (err) {
       res.status(400).json({ message: err.message });
+      console.log("message", err.message);
     }
   });
 };

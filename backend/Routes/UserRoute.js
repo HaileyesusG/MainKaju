@@ -4,24 +4,19 @@ const {
   GetOneUserById,
   DeleteUser,
   LoginUser,
+  UpdateOneUser,
+  GetUserExcept,
+  GetOneUserByEmail,
 } = require("../Controller/UserController");
-
-const multer = require("multer");
-const Storage = multer.diskStorage({
-  destination: "uploads",
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + "_" + file.originalname);
-  },
-});
-const upload = multer({
-  storage: Storage,
-}).single("testImage");
 
 const express = require("express");
 const router = express.Router();
 router.route("/GetUser").get(GetUser);
+router.route("/GetOneUserByEmail").post(GetOneUserByEmail);
 router.route("/UserCreate/:id").post(UserCreate);
 router.route("/LoginUser").post(LoginUser);
 router.route("/GetOneUserById/:id").get(GetOneUserById);
+router.route("/GetUserExcept/:id").get(GetUserExcept);
+router.route("/:id").patch(UpdateOneUser);
 router.route("/:id").delete(DeleteUser);
 module.exports = router;

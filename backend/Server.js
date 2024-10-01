@@ -15,6 +15,9 @@ const path5 = require("./Routes/CartRoute");
 const path6 = require("./Routes/PaymentRoute");
 const path7 = require("./Routes/AdminRoute");
 const path8 = require("./Routes/ChatRoute");
+const path9 = require("./Routes/ElectronicsRoute");
+const path10 = require("./Routes/NotifyRoute");
+const path11 = require("./Routes/OtherRoute");
 const ApplicantRoute = require("./Routes/ApplicantRoute");
 app.use(bodyParser.json());
 app.use(express.json());
@@ -35,6 +38,9 @@ app.use("/api/Payment", path6);
 app.use("/api/Applicants", ApplicantRoute);
 app.use("/api/Admin", path7);
 app.use("/api/Chat", path8);
+app.use("/api/Electronics", path9);
+app.use("/api/Notify", path10);
+app.use("/api/other", path11);
 DbConnection();
 const serv = http.createServer(app);
 const io = new Server(serv, {
@@ -80,6 +86,13 @@ io.on("connection", (socket) => {
   });
   socket.on("MyObject", (msg) => {
     io.emit("MyObject", msg);
+  });
+  socket.on("MyNotify", (msg) => {
+    io.emit("MyNotify", msg);
+  });
+  socket.on("insertItems", (msg) => {
+    console.log("item is inseted");
+    io.emit("insertItems", msg);
   });
 });
 

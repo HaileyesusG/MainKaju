@@ -8,27 +8,29 @@ export const techReducer = createSlice({
   reducers: {
     addTech: (state, action) => {
       const {
-        _id,
         firstname,
         lastname,
         gender,
         phonenumber,
-        deposit,
+        deposite,
         email1,
         image,
         location,
+        _id,
+        token,
       } = action.payload;
       const tech = {
         id: nanoid(),
-        _id: _id,
         firstname: firstname,
         lastname: lastname,
         gender: gender,
         phonenumber: phonenumber,
-        deposit: deposit,
+        deposite: deposite,
         email1: email1,
         image: image,
         location: location,
+        _id: _id,
+        tk: token,
       };
       state.tech.push(tech);
     },
@@ -42,11 +44,12 @@ export const techReducer = createSlice({
         lastname: todo.lastname,
         gender: todo.gender,
         phonenumber: todo.phonenumber,
-        deposit: todo.deposit,
-        email1: todo.email,
+        deposite: todo.deposite,
+        email1: todo.email1,
         image: todo.image,
         location: todo.location,
         _id: todo._id,
+        tk: todo.token,
       }));
       state.tech = techs;
     },
@@ -61,6 +64,7 @@ export const techReducer = createSlice({
         email,
         image,
         location,
+        token,
       } = action.payload;
       const existingTodo = state.tech.find((todo) => todo.id === id);
       if (existingTodo) {
@@ -68,10 +72,11 @@ export const techReducer = createSlice({
           (existingTodo.lastname = lastname),
           (existingTodo.gender = gender),
           (existingTodo.phonenumber = phonenumber),
-          (existingTodo.deposit = deposit),
-          (existingTodo.email = email),
+          (existingTodo.deposite = deposit),
+          (existingTodo.email1 = email),
           (existingTodo.image = image),
-          (existingTodo.location = location);
+          (existingTodo.location = location),
+          (existingTodo.token = token);
       }
     },
   },

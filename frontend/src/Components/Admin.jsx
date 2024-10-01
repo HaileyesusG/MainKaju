@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 import { FaCheckCircle } from "react-icons/fa";
 import { FaTools } from "react-icons/fa";
+import { IoIosClose } from "react-icons/io";
 import { FaMoon, FaPerson } from "react-icons/fa6";
 import { AiFillPhone } from "react-icons/ai";
 import { GoXCircleFill } from "react-icons/go";
@@ -38,9 +39,8 @@ const Admin = ({ user3 }) => {
   //setAchat(user3);
 
   //let { admin, dispatch } = useUserContextA();
-
   const [notify, setNotify] = useState(0);
-  const [notify2, setNotify2] = useState(0);
+  const [makeVisible, setMakeVisible] = useState(true);
   const [disable, setDisable] = useState(true);
   const [disabled, setDisabled] = useState(true);
   const [array3, setArray3] = useState([]);
@@ -52,7 +52,7 @@ const Admin = ({ user3 }) => {
   let admin = todo;
   user3 = todo;
   admin = admin[0];
-
+  console.log("setMakeVisible ", makeVisible);
   const token = admin ? "Bearer " + admin.token : "";
   const Firstname = admin ? admin.firstname : "";
   const Lastname = admin ? admin.lastname : "";
@@ -78,8 +78,10 @@ const Admin = ({ user3 }) => {
   const [lastname, setLastname] = useState("");
   const [mobileMoney, setPhonenumber] = useState("");
   const [email, setEmail] = useState("");
-  const [amount, setAmount] = useState("");
-  const [amount2, setAmount2] = useState([]);
+  const [custEmail, setCustEmail] = useState("");
+  const [amount2, setAmount2] = useState("");
+  const [userList, setUserList] = useState("");
+  const [Deposit, setDeposit] = useState("");
   const [password, setPassword] = useState("");
   const [gender, setGender] = useState("");
   const [image, setImage] = useState("");
@@ -88,6 +90,7 @@ const Admin = ({ user3 }) => {
   let [CustomerList, setCustomerList] = useState([]);
 
   const [searchText, setSearchText] = useState("");
+  const [enterEmail, setEnterEmail] = useState(false);
   const [disp2, setdisplay2] = useState("hidden");
   const [disp3, setdisplay3] = useState("visible");
   const [disp4, setdisplay4] = useState("hidden");
@@ -103,7 +106,11 @@ const Admin = ({ user3 }) => {
   const [disp14, setdisplay14] = useState("hidden");
   const [suggestions, setSuggestions] = useState([]);
   const [Json, setJson] = useState([]);
-
+  const closeModal = () => {
+    setMakeVisible(false);
+    setUserList([]);
+    setAmount2("");
+  };
   const red = useNavigate();
 
   const handleP = () => {
@@ -114,7 +121,6 @@ const Admin = ({ user3 }) => {
     setdisplay5("hidden");
   };
 
-  let array = [];
   const Applicantfeatcher = async () => {
     const response = await fetch(
       `${API_BASE_URL}/api/Applicants/GetAllApplicant`,
@@ -123,6 +129,18 @@ const Admin = ({ user3 }) => {
         headers: { "Content-Type": "application/json" },
       }
     );
+    const json = await response.json();
+    setArray3(json);
+    setNotify(array3.length);
+    console.log("yes in tye", notify);
+  };
+  //updateDeposit
+  const updateDeposit = async () => {
+    const response = await fetch(`${API_BASE_URL}/api/payment/UpdateDeposit`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ Deposit, custEmail }),
+    });
     const json = await response.json();
     setArray3(json);
     setNotify(array3.length);
@@ -271,17 +289,27 @@ const Admin = ({ user3 }) => {
       setError2(data.message);
     }
   };
-  const RechargeBalance = async (amountt) => {
-    const response = await fetch(`${API_BASE_URL}/api/Admin/RechargeBalance`, {
+  const RechargeBalance = async (custEmail) => {
+    setUserList([]);
+    const response = await fetch(`${API_BASE_URL}/api/user/GetOneUserByEmail`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        amountt,
+        custEmail,
       }),
     });
-    const amount = await response.json();
-    setAmount2(amount);
-    console.log("the amount 2", amount2.amount);
+    if (response.ok) {
+      setMakeVisible(true);
+      const amount = await response.json();
+      console.log("the amount is ", amount);
+      if (amount.length > 0) {
+        setUserList(amount);
+        setDeposit(amount[0].deposite);
+        setAmount2(amount);
+      } else {
+        setAmount2("empty");
+      }
+    }
   };
 
   let featcher = async () => {
@@ -377,6 +405,10 @@ const Admin = ({ user3 }) => {
     }
   }).sort((a, b) => a.firstname.localeCompare(b.firstname));
 
+  const userClicked = () => {
+    setEnterEmail(!enterEmail), setMakeVisible(true);
+  };
+
   return (
     <div className={""}>
       <div className=" overflow-y-auto   m-3 absolute  w-[1010px] h-[470px] mt-[138px] ml-72">
@@ -384,14 +416,65 @@ const Admin = ({ user3 }) => {
         <div className={disp7}>
           <AdminChat user3={user4} />
         </div>
-        <div id="last" className={"hidden"}>
-          <input
-            placeholder="Enter Amount"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-          />
-          <button onClick={() => RechargeBalance(amount)}>Enter</button>
-        </div>
+        {amount2
+          ? userList.length > 0
+            ? makeVisible && (
+                <div className="ml-20 mt-10  w-[410px]">
+                  <div className="ml-96">
+                    <button className="mt-1 mr-3 text-3xl" onClick={closeModal}>
+                      <IoIosClose className="text-4xl]" />
+                    </button>
+                  </div>
+                  <h1 className="ml-10 text-4xl mb-3">User Information</h1>
+                  {userList.map((r, index) => (
+                    <div key={index}>
+                      <ul>
+                        <li>
+                          <strong>Full Name</strong>
+                          {" " + r.firstname + " "}
+                          {r.lastname}
+                        </li>
+
+                        <li>
+                          <strong>Email</strong>
+                          {" " + r.email}
+                        </li>
+                        <li>
+                          <strong>Deposit </strong>
+                          <input
+                            value={Deposit}
+                            className="w-12"
+                            onChange={(e) => setDeposit(e.target.value)}
+                          />
+                          Birr
+                        </li>
+                        <li>
+                          <strong>PhoneNumber</strong>
+                          {" " + r.mobileMoney}
+                        </li>
+                      </ul>
+                      <button
+                        onClick={updateDeposit}
+                        className="border-2 text-white h-11 bg-green-500 mt-3 w-36 font-semibold rounded-lg hover:bg-green-400"
+                      >
+                        Update Deposit
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )
+            : makeVisible && (
+                <div className="mt-20 ml-20">
+                  <div className="ml-32">
+                    <button className="mt-1 mr-3 text-3xl" onClick={closeModal}>
+                      <IoIosClose className="text-4xl]" />
+                    </button>
+                  </div>
+                  <p>No user found</p>
+                </div>
+              )
+          : ""}
+
         <div className={"absolute mt-6 ml-52 w-56 h-56 " + disp13}>
           <FaCheckCircle className="text-green-500 w-16 h-16 mb-4 ml-7" />
           <h1 className="text-3xl font-bold">Registred</h1>
@@ -434,7 +517,7 @@ const Admin = ({ user3 }) => {
                     <div className="ml-3 mt-1">
                       <div className="flex ">
                         <img
-                          src={"/images/" + r.image}
+                          src={r.image}
                           className="mr-2 w-14 h-14 rounded-full"
                         />
                         <div className="mt-2">{r.firstname}</div>
@@ -553,7 +636,7 @@ const Admin = ({ user3 }) => {
                   </div>
                   <div className="mt-14 ml-24">
                     <img
-                      src={"/images/" + profile}
+                      src={profile}
                       className="w-[150px] h-[150px] rounded-full "
                       onClick={handleChoiceChange3}
                       alt="Admin Image"
@@ -703,7 +786,7 @@ const Admin = ({ user3 }) => {
               {iView && (
                 <div className="rounded-2xl  mt-1 absolute ">
                   <img
-                    src={"/images/" + image}
+                    src={image}
                     className="w-[400px] h-[400px] rounded-2xl cursor-pointer"
                     onClick={() => setIView(false)}
                   />
@@ -711,7 +794,7 @@ const Admin = ({ user3 }) => {
               )}
               <div className="rounded-2xl  mt-1">
                 <img
-                  src={"/images/" + image}
+                  src={image}
                   className="w-[100px] h-[100px] rounded-2xl cursor-pointer hover:w-[120px] hover:h-[120px] hover:animate-pulse"
                   onClick={() => setIView(true)}
                 />
@@ -719,7 +802,7 @@ const Admin = ({ user3 }) => {
               {iView2 && (
                 <div className="rounded-2xl  mt-1 absolute w-[600px] ">
                   <img
-                    src={"/images/" + image2}
+                    src={image2}
                     className="w-[600px] h-[300px] rounded-2xl cursor-pointer ml-[-35px]"
                     onClick={() => setIView2(false)}
                   />
@@ -727,7 +810,7 @@ const Admin = ({ user3 }) => {
               )}
               <div className="rounded-2xl  mt-1">
                 <img
-                  src={"/images/" + image2}
+                  src={image2}
                   className="w-[100px] h-[100px] rounded-2xl cursor-pointer hover:w-[120px] hover:h-[120px] hover:animate-pulse "
                   onClick={() => setIView2(true)}
                 />
@@ -735,7 +818,7 @@ const Admin = ({ user3 }) => {
               {iView3 && (
                 <div className="rounded-2xl  mt-1 absolute w-[600px]">
                   <img
-                    src={"/images/" + image3}
+                    src={image3}
                     className="w-[600px] h-[300px] rounded-2xl cursor-pointer ml-[-15px]"
                     onClick={() => setIView3(false)}
                   />
@@ -743,7 +826,7 @@ const Admin = ({ user3 }) => {
               )}
               <div className="rounded-2xl  mt-1">
                 <img
-                  src={"/images/" + image3}
+                  src={image3}
                   className="w-[100px] h-[100px] rounded-2xl cursor-pointer hover:w-[120px] hover:h-[120px] hover:animate-pulse"
                   onClick={() => setIView3(true)}
                 />
@@ -834,7 +917,7 @@ const Admin = ({ user3 }) => {
 
         <div className="rounded-2xl ml-80 mt-1">
           <img
-            src={"/images/" + profile}
+            src={profile}
             className="w-[70px] h-[70px] rounded-2xl cursor-pointer"
             onClick={handleChoiceChange3}
             alt="Admin Profile"
@@ -856,10 +939,29 @@ const Admin = ({ user3 }) => {
           </div>
           <div className="flex absolute  w-64 h-36 ">
             <div className="user-container group  flex w-48  ">
-              <div className="flex">
-                <FaUser className="text-3xl" />
-                <h1 className="text-[20px] ml-2">User</h1>
+              <div>
+                <div className="flex cursor-pointer" onClick={userClicked}>
+                  <FaUser className="text-3xl" />
+                  <h1 className="text-[20px] ml-2">User</h1>
+                </div>
+                {enterEmail && (
+                  <div id="last" className="ml-5 mt-5">
+                    <input
+                      placeholder="Enter email"
+                      value={custEmail}
+                      onChange={(e) => setCustEmail(e.target.value)}
+                      className="p-3"
+                    />
+                    <button
+                      onClick={() => RechargeBalance(custEmail)}
+                      className="border-4 mt-3 w-20 border-green-400"
+                    >
+                      Enter
+                    </button>
+                  </div>
+                )}
               </div>
+
               <div className="hidden ml-20 user-options group-hover:visible absolute top-10 left-0 bg-white p-2 border border-gray-300 rounded-lg">
                 <div
                   className="option hover:bg-green-400 cursor-pointer rounded-lg"

@@ -1,6 +1,6 @@
 import { useState } from "react";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-import { setTech } from "../features/tech/techSlice";
+import { setTech, addTech } from "../features/tech/techSlice";
 import { useDispatch } from "react-redux";
 import { Navigate, useNavigate } from "react-router-dom";
 export const useSignIn = () => {
@@ -18,7 +18,6 @@ export const useSignIn = () => {
       method: "POST",
       body: JSON.stringify({ email, password }),
     });
-    console.log(response);
     const json = await response.json();
     if (!response.ok) {
       setIsLoading(false);
@@ -28,8 +27,9 @@ export const useSignIn = () => {
       setIsLoading(false);
       // const convert = [json];
       //dispatch({ type: "LOGIN", payload: json });
-      dispatch2(setTech([json]));
-      red("/Home");
+      console.log("json", json);
+      dispatch2(addTech(json));
+      red("/");
       //save the user on local storage
       localStorage.setItem("user", JSON.stringify(json));
     } else {

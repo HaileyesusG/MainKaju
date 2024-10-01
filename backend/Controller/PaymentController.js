@@ -1,6 +1,10 @@
 const axios = require("axios");
 const { Chapa } = require("chapa-nodejs");
 const User = require("../Model/User");
+const Cart = require("../Model/Cart");
+const Car = require("../Model/Car");
+const House = require("../Model/House");
+const Electronics = require("../Model/Electronics");
 const CHAPA_BASE_URL = process.env.CHAPA_BASE_URL;
 const CHAPA_TEST_SECRET_KEY = process.env.CHAPA_TEST_SECRET_KEY;
 const chapa = new Chapa({
@@ -23,55 +27,69 @@ const checkPlatformBalance = async (req, res) => {
 };
 //Payment
 const preAuthorizePayment = async (req, res) => {
-  const { id } = req.params;
-  const id1 = req.User._id;
-  const fname = req.User.firstname;
-  const lname = req.User.lastname;
-  const email = req.User.email;
+  const id = req.User._id;
   const paymentData = req.body;
-  const customer = await User.findById(id1);
-  const seller = await User.findById(id);
-  const tx_ref = await chapa.generateTransactionReference();
+  const customer = await User.findById(id);
   try {
-    const response = await chapa.initialize({
-      first_name: fname,
-      last_name: lname,
-      email: email,
-      currency: "ETB",
-      amount: paymentData.amount,
-      tx_ref: tx_ref,
-      callback_url: "https://google.com/",
-      return_url: paymentData.return_url,
-      customization: {
-        title: "Test Title",
-        description: "Test Description",
-      },
-    });
-    const Detail = response.data;
-    if (customer.deposite >= paymentData.amount) {
-      const deposite = customer.deposite - paymentData.amount;
-      const deposite2 = seller.deposite + paymentData.amount;
+    if (customer.deposite >= paymentData.money) {
+      const deposite = customer.deposite - paymentData.money;
       const balance = await User.findByIdAndUpdate(
-        { _id: id1 },
+        { _id: id },
         { deposite: deposite },
         { new: true }
       );
-      const balance2 = await User.findByIdAndUpdate(
-        { _id: id },
-        { deposite: deposite2 },
+
+      const requiredCart = await Cart.findOne({ itemId: paymentData.itemId });
+      const updateCart = await Cart.findByIdAndUpdate(
+        { _id: requiredCart._id },
+        { status: "paid", money: paymentData.money },
         { new: true }
       );
-      res.status(200).json({ Detail, tx_ref, balance, balance2 });
+      const Category = requiredCart.category;
+      let Carts;
+      if (Category == "car") {
+        Carts = await Car.findOne({ _id: paymentData.itemId });
+      }
+      if (Category == "house") {
+        Carts = await House.findOne({ _id: paymentData.itemId });
+      }
+      if (Category == "electronics") {
+        Carts = await Electronics.findOne({ _id: paymentData.itemId });
+      }
+      res
+        .status(200)
+        .json({ balance: balance, updateCart: updateCart, Carts: Carts });
     } else {
-      return res.status(400).json({ message: "insufficient Balance" });
+      throw Error("insufficient Balance");
     }
   } catch (error) {
-    res
-      .status(500)
-      .json({ message: "Error pre-authorizing payment", error: error.message });
+    res.status(500).json({ message: error.message });
   }
 };
+//merchantPayment
+const merchantPayment = async (req, res) => {
+  const paymentData = req.body;
+  const requiredCart = await Cart.findOne({ itemId: paymentData.itemId });
+  const customer = await User.findById(paymentData.owner);
+  try {
+    const deposite = customer.deposite + requiredCart.money;
+    const balance = await User.findByIdAndUpdate(
+      { _id: paymentData.owner },
+      { deposite: deposite },
+      { new: true }
+    );
+    const updateCart = await Cart.findByIdAndUpdate(
+      { _id: requiredCart._id },
+      { status: "completed" },
+      { new: true }
+    );
 
+    res.status(200).json({ balance: balance, updateCart: updateCart });
+  } catch (error) {
+    console.log("the error", error);
+    res.status(500).json({ message: error.message });
+  }
+};
 //Recharge Account
 const rechargeBalance = async (req, res) => {
   const id = req.User._id;
@@ -79,6 +97,8 @@ const rechargeBalance = async (req, res) => {
   const lname = req.User.lastname;
   const email = req.User.email;
   const paymentData = req.body;
+  console.log("paymentData", email);
+  console.log("fname", fname);
   const customer = await User.findById(id);
   const tx_ref = await chapa.generateTransactionReference();
   try {
@@ -87,7 +107,7 @@ const rechargeBalance = async (req, res) => {
       last_name: lname,
       email: email,
       currency: "ETB",
-      amount: paymentData.amount,
+      amount: paymentData.money,
       tx_ref: tx_ref,
       callback_url: "https://google.com",
       return_url: paymentData.return_url,
@@ -97,7 +117,7 @@ const rechargeBalance = async (req, res) => {
       },
     });
     const Detail = response.data;
-    const deposite = customer.deposite + paymentData.amount;
+    const deposite = customer.deposite + parseInt(paymentData.money);
     const balance = await User.findByIdAndUpdate(
       { _id: id },
       { deposite: deposite },
@@ -108,6 +128,7 @@ const rechargeBalance = async (req, res) => {
     res
       .status(500)
       .json({ message: "Error pre-authorizing payment", error: error.message });
+    console.log("the error is", error);
   }
 };
 
@@ -207,6 +228,15 @@ const verifyPayment = async (req, res) => {
       .json({ message: "Error processing payout", error: error.message });
   }
 };
+//UpdateDeposit
+const UpdateDeposit = async (req, res) => {
+  const { Deposit, custEmail } = req.body;
+  const user = await User.findOne({ email: custEmail });
+  const Users = await User.findByIdAndUpdate(
+    { _id: user._id },
+    { deposite: Deposit }
+  );
+};
 
 module.exports = {
   checkPlatformBalance,
@@ -216,4 +246,6 @@ module.exports = {
   transferToSeller,
   verifyPayment,
   rechargeBalance,
+  merchantPayment,
+  UpdateDeposit,
 };

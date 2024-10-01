@@ -4,7 +4,7 @@ import { FaIdCard } from "react-icons/fa";
 import { IoMdPersonAdd } from "react-icons/io";
 import { FaUser } from "react-icons/fa";
 import { AiFillPhone } from "react-icons/ai";
-import { GrCertificate } from "react-icons/gr";
+import { useNavigate } from "react-router-dom";
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { PiGenderFemaleDuotone } from "react-icons/pi";
@@ -35,6 +35,7 @@ const SignUp = () => {
   const [View2, setView2] = useState(true);
   const [otp, setOtp] = useState("");
   const GenderOption = ["Male", "Female"];
+  const red = useNavigate();
   useEffect(() => {
     if (gender !== "" || gender !== "Gender") {
       setgenError("");
@@ -131,6 +132,9 @@ const SignUp = () => {
       socket.off("isLoading");
     };
   }, [socket, email]);
+  const redirectSignin = () => {
+    red("/login");
+  };
 
   ///
   return (
@@ -359,6 +363,9 @@ const SignUp = () => {
                   </div>
                 </div>
               </form>
+              <button className="ml-60 " onClick={redirectSignin}>
+                already have an account?
+              </button>
             </div>
           ) : (
             <div className="mt-56 ml-48">

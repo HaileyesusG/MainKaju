@@ -1,10 +1,14 @@
 const Car = require("../Model/Car");
 const House = require("../Model/House");
+const Electronics = require("../Model/Electronics");
+const Other = require("../Model/Other");
+const Cart = require("../Model/Cart");
 const axios = require("axios");
 //GetAllItems
 
 const GetAllItems = async (req, res) => {
-  const userLocation = req.User.location;
+  const { location } = req.body;
+  const userLocation = location;
 
   let notytimeout;
   let slat;
@@ -99,11 +103,42 @@ const GetAllItems = async (req, res) => {
 
   getCityFromCoordinates(latitude, longitude).then(async (city) => {
     console.log(city); // Outputs "Addis Ababa" for Kolfe Keranio, Addis Ababa
+    if (city == "North Wollo Zone") {
+      const Houses = await House.find({ location: "Addis Ababa" });
+      const Electronicss = await Electronics.find({ location: "Addis Ababa" });
+      const Cars = await Car.find({ location: "Addis Ababa" });
+      // Combine the arrays
+      const combinedArray = [...Houses, ...Cars, ...Electronicss];
+
+      // Sort the combined array from latest to earliest
+      combinedArray.sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+      );
+
+      // Send the sorted array as a JSON response
+      return res.status(200).json(combinedArray);
+    }
+    if (city == "Arerti") {
+      const Houses = await House.find({ location: "Addis Ababa" });
+      const Cars = await Car.find({ location: "Addis Ababa" });
+      const Electronicss = await Electronics.find({ location: "Addis Ababa" });
+      // Combine the arrays
+      const combinedArray = [...Houses, ...Cars, ...Electronicss];
+
+      // Sort the combined array from latest to earliest
+      combinedArray.sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+      );
+
+      // Send the sorted array as a JSON response
+      return res.status(200).json(combinedArray);
+    }
     const Houses = await House.find({ location: city });
     const Cars = await Car.find({ location: city });
-
+    const Electronicss = await Electronics.find({ location: city });
+    const Others = await Other.find({ location: city });
     // Combine the arrays
-    const combinedArray = [...Houses, ...Cars];
+    const combinedArray = [...Houses, ...Cars, ...Electronicss, ...Others];
 
     // Sort the combined array from latest to earliest
     combinedArray.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
@@ -112,6 +147,50 @@ const GetAllItems = async (req, res) => {
     res.status(200).json(combinedArray);
   });
 };
+const GetAllItemsUser = async (req, res) => {
+  const userId = req.User._id;
+  const advert = await Car.find({ userId: userId });
+  const advert2 = await House.find({ userId: userId });
+  const advert3 = await Electronics.find({ userId: userId });
+  const advert4 = await Other.find({ userId: userId });
+  // Combine the arrays
+  const combinedArray = [...advert, ...advert2, ...advert3, ...advert4];
+
+  // Sort the combined array from latest to earliest
+  combinedArray.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+  // Send the sorted array as a JSON response
+  res.status(200).json(combinedArray);
+};
+// handle delete
+const deleteItem = async (req, res) => {
+  const { category } = req.body;
+  const { id } = req.params;
+  let Carts;
+  if (category == "car") {
+    Carts = await Car.findOneAndDelete({ _id: id });
+    const myC = await Cart.findOne({ itemId: id });
+    if (myC) await Cart.findOneAndDelete({ _id: myC._id });
+  }
+  if (category == "house") {
+    Carts = await House.findOneAndDelete({ _id: id });
+    const myC = await Cart.findOne({ itemId: id });
+    if (myC) await Cart.findOneAndDelete({ _id: myC._id });
+  }
+  if (category == "electronics") {
+    Carts = await Electronics.findOneAndDelete({ _id: id });
+    const myC = await Cart.findOne({ itemId: id });
+    if (myC) await Cart.findOneAndDelete({ _id: myC._id });
+  }
+  if (category == "other") {
+    Carts = await Other.findOneAndDelete({ _id: id });
+    const myC = await Cart.findOne({ itemId: id });
+    if (myC) await Cart.findOneAndDelete({ _id: myC._id });
+  }
+  res.status(200).json(Carts);
+};
 module.exports = {
   GetAllItems,
+  GetAllItemsUser,
+  deleteItem,
 };

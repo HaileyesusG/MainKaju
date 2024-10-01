@@ -1,4 +1,5 @@
 const Chat = require("../Model/Chat");
+const { ObjectId } = require("mongodb");
 //Sign Up
 const ChatCreate = async (req, res) => {
   const { Sender_id, Receiver_id, Message, image } = req.body;
@@ -17,6 +18,8 @@ const ChatCreate = async (req, res) => {
 
 const GetChat = async (req, res) => {
   const { adminId, techId } = req.body;
+  console.log("adminId", adminId);
+  console.log("techId", techId);
   try {
     const messages = await Chat.find({
       $or: [

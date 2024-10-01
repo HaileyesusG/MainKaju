@@ -1,25 +1,25 @@
 const Cart = require("../Model/Cart");
 const Car = require("../Model/Car");
 const House = require("../Model/House");
-
+const Electronics = require("../Model/Electronics");
 //Add To Cart
 const CartCreate = async (req, res) => {
   const userId = req.User._id;
   const { id } = req.params;
-  const { type, price, image, category } = req.body;
-  const quantity = 1;
-
+  const { category } = req.body;
   const itemId = id;
+  const exist = await Cart.findOne({ itemId: id, userId: userId });
+  if (exist) {
+    return;
+  }
+
   const carts = await Cart.create({
     category,
     userId,
     itemId,
-    image,
-    type,
-    price,
-    quantity,
   });
-  res.status(200).json(carts);
+  const allCart = await Cart.find({ userId: userId });
+  res.status(200).json(allCart);
 };
 //Get Cart
 const GetAllCart = async (req, res) => {
@@ -32,14 +32,11 @@ const UpdateCart = async (req, res) => {
   const userId = req.User._id;
   const { id } = req.params;
   const itemId = id;
-  const Carts = await Cart.find({ userId: userId, itemId: itemId });
+  const Carts = await Cart.findOne({ userId: userId, itemId: itemId });
 
-  const MyCart = await Cart.findById(Carts[0]._id);
-  let quantity = MyCart.quantity;
-  quantity = quantity + 1;
+  const MyCart = await Cart.findById(Carts._id);
   const carts = await Cart.findByIdAndUpdate(
-    { _id: Carts[0]._id },
-    { quantity: quantity },
+    { _id: Carts._id, status: "paid" },
     { new: true }
   );
   res.status(200).json(carts);
@@ -48,20 +45,31 @@ const UpdateCart = async (req, res) => {
 const GetOneCart = async (req, res) => {
   const { id } = req.params;
   const itemId = id;
-  const Carts = await Cart.find({ itemId: itemId });
-  const Category = Carts.category;
+  const Cartss = await Cart.findOne({ itemId: itemId });
+  const Category = Cartss.category;
   if (Category == "car") {
-    const Carts = await Car.find({ itemId: itemId });
-    res.status(200).json(Carts);
+    const Carts = await Car.findOne({ _id: itemId });
+    res.status(200).json({ Carts: Carts, status: Cartss.status });
   }
   if (Category == "house") {
-    const Carts = await House.find({ itemId: itemId });
-    res.status(200).json(Carts);
+    const Carts = await House.findOne({ _id: itemId });
+    res.status(200).json({ Carts: Carts, status: Cartss.status });
   }
+  if (Category == "electronics") {
+    const Carts = await Electronics.findOne({ _id: itemId });
+    res.status(200).json({ Carts: Carts, status: Cartss.status });
+  }
+};
+//
+const deleteCart = async (req, res) => {
+  const { id } = req.params;
+  const exist = await Cart.findOneAndDelete({ itemId: id });
+  res.status(200).json(exist);
 };
 module.exports = {
   CartCreate,
   GetOneCart,
   GetAllCart,
   UpdateCart,
+  deleteCart,
 };

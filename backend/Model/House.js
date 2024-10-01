@@ -38,8 +38,16 @@ const houseSchema = new mongoose.Schema(
       enum: ["sale", "rent"],
     },
     price: {
-      type: String,
+      type: Number,
       required: [true, "Please enter price"],
+    },
+    Llimit: {
+      type: Number,
+      required: [true, "Please enter Llimit"],
+    },
+    Ulimit: {
+      type: Number,
+      required: [true, "Please enter Ulimit"],
     },
     location: {
       type: String,

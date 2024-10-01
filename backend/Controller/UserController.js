@@ -1,4 +1,5 @@
 const User = require("../Model/User");
+const Admin = require("../Model/Admin");
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 const Applicant = require("../Model/Applicants");
@@ -94,6 +95,7 @@ const LoginUser = async (req, res) => {
     const email1 = techs.email;
     const gender = techs.gender;
     const location = techs.location;
+    const deposite = techs.deposite;
     //token
     const token = createToken(_id);
     res.status(200).json({
@@ -104,7 +106,8 @@ const LoginUser = async (req, res) => {
       email1,
       phonenumber,
       _id,
-      token,
+      token: token,
+      deposite,
       location,
     });
   } catch (err) {
@@ -118,11 +121,39 @@ const GetUser = async (req, res) => {
   const cv = await User.find({});
   res.status(200).json(cv);
 };
+//get all user except
+const GetUserExcept = async (req, res) => {
+  const { id } = req.params;
+  const cv = await User.find({ _id: { $ne: id } });
+  const ad = await Admin.find({});
+  const combinedArray = [...cv, ...ad];
+  res.status(200).json(combinedArray);
+};
 // Get one(if Super Admin is Available for the future)
 const GetOneUserById = async (req, res) => {
   const { id } = req.params;
-  const cv = await User.findById(id);
+  const cv = await User.find({ _id: id });
+  console.log("");
   res.status(200).json(cv);
+};
+const GetOneUserByEmail = async (req, res) => {
+  const { custEmail } = req.body;
+  const cv = await User.find({ email: custEmail });
+  res.status(200).json(cv);
+};
+//update one
+
+const UpdateOneUser = async (req, res) => {
+  const { location } = req.body;
+
+  const { id } = req.params;
+  const updated = await User.findByIdAndUpdate(
+    { _id: id },
+    { location: location },
+    { new: true }
+  );
+  const updated_2 = await User.findById(id);
+  res.status(200).json(updated_2);
 };
 
 //Delete
@@ -140,4 +171,7 @@ module.exports = {
   GetOneUserById,
   DeleteUser,
   LoginUser,
+  UpdateOneUser,
+  GetUserExcept,
+  GetOneUserByEmail,
 };

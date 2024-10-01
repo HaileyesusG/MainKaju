@@ -32,7 +32,7 @@ export const chatReducer = createSlice({
     },
     updateChat: (state, action) => {
       const { Message, image } = action.payload;
-      const existingTodo = state.tech.find((todo) => todo.id === id);
+      const existingTodo = state.chat.find((todo) => todo.id === id);
       if (existingTodo) {
         (existingTodo.Message = Message), (existingTodo.image = image);
       }

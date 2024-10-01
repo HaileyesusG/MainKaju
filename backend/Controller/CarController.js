@@ -90,7 +90,7 @@ const CarCreate = async (req, res) => {
       }
       return null;
     } catch (error) {
-      console.error(error);
+      console.log(error);
       return null;
     }
   }
@@ -117,15 +117,10 @@ const CarCreate = async (req, res) => {
         model,
         description,
         category,
-        status,
+        Llimit,
+        Ulimit,
       } = req.body;
-      if (status == "No") {
-        if (bankAccount == "") {
-          throw Error(
-            "You Can't Receive a payment online Unless you have a Chapa Payment Account "
-          );
-        }
-      }
+
       const [image1, image2, image3, image4, image5] = req.files["testImages"];
       if (Status == "New") {
         try {
@@ -144,6 +139,8 @@ const CarCreate = async (req, res) => {
             model,
             description,
             category,
+            Llimit,
+            Ulimit,
             image: image1.filename,
             image2: image2 ? image2.filename : "",
             image3: image3 ? image3.filename : "",
@@ -161,6 +158,7 @@ const CarCreate = async (req, res) => {
           });
         } catch (err) {
           res.status(400).json({ message: err.message });
+          console.log("the error is", err);
         }
       } else {
         if (Deposite < 30) {
@@ -181,6 +179,8 @@ const CarCreate = async (req, res) => {
           model,
           description,
           category,
+          Llimit,
+          Ulimit,
           image: image1.filename,
           image2: image2 ? image2.filename : "",
           image3: image3 ? image3.filename : "",
@@ -196,6 +196,7 @@ const CarCreate = async (req, res) => {
       }
     } catch (err) {
       res.status(400).json({ message: err.message });
+      console.log("the error is", err);
     }
   });
 };
