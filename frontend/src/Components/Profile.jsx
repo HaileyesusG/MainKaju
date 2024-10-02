@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { formatDistanceToNow } from "date-fns";
 import { RiAdvertisementLine } from "react-icons/ri";
 import { IoIosAddCircleOutline } from "react-icons/io";
@@ -13,6 +14,7 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 import { IoIosClose } from "react-icons/io";
 import { removeProduct, setProduct } from "../features/product/productSlice";
 const UserProfile = ({ user4 }) => {
+  const red = useNavigate();
   console.log("the profile is ", user4);
   const dispatch2 = useDispatch();
   let token = user4 ? "Bearer " + user4.tk : "";
@@ -113,6 +115,11 @@ const UserProfile = ({ user4 }) => {
   };
   const handleFuel = (e) => {
     setFuelT(e.target.value);
+  };
+  const handleSignOut = (e) => {
+    setFuelT(e.target.value);
+    localStorage.removeItem("user");
+    red("/");
   };
   const handleLicense = (e) => {
     setLicense(e.target.value);
@@ -795,7 +802,10 @@ const UserProfile = ({ user4 }) => {
         <div>
           <div className="justify-center items-center ml-52 mt-3 flex">
             <img src={user4.image} className="w-20 h-20 rounded-full" />
-            <div className="bg-red-500 hover:bg-red-400 ml-12 text-[10px font-bold text-white">
+            <div
+              className="bg-red-500 hover:bg-red-400 ml-12 text-[10px font-bold text-white"
+              onClick={handleSignOut}
+            >
               <button>SignOut</button>
             </div>
           </div>
