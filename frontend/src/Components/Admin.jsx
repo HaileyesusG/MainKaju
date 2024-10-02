@@ -378,31 +378,16 @@ const Admin = ({ user3 }) => {
 
   // Filter customers based on search criteria
   const filteredCustomers = Json.filter((customer) => {
-    if (title == "ServiceProviders") {
-      // Perform your desired condition checks here
-      const { firstname, mobileMoney, location, department, status } = customer;
-      const searchRegex = new RegExp(searchText, "i");
+    const { firstname, mobileMoney, location, status } = customer;
+    const searchRegex = new RegExp(searchText, "i");
 
-      return (
-        searchText === "" ||
-        firstname.match(searchRegex) ||
-        mobileMoney.match(searchRegex) ||
-        location.match(searchRegex) ||
-        status.match(searchRegex) ||
-        department.some((d) => d.match(searchRegex))
-      );
-    } else {
-      const { firstname, mobileMoney, location, status } = customer;
-      const searchRegex = new RegExp(searchText, "i");
-
-      return (
-        searchText === "" ||
-        firstname.match(searchRegex) ||
-        mobileMoney.match(searchRegex) ||
-        location.match(searchRegex) ||
-        status.match(searchRegex)
-      );
-    }
+    return (
+      searchText === "" ||
+      firstname.match(searchRegex) ||
+      mobileMoney.match(searchRegex) ||
+      location.match(searchRegex) ||
+      status.match(searchRegex)
+    );
   }).sort((a, b) => a.firstname.localeCompare(b.firstname));
 
   const userClicked = () => {
@@ -516,6 +501,7 @@ const Admin = ({ user3 }) => {
                   >
                     <div className="ml-3 mt-1">
                       <div className="flex ">
+                        {console.log("the image is ", r.image)}
                         <img
                           src={r.image}
                           className="mr-2 w-14 h-14 rounded-full"

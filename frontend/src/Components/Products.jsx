@@ -619,12 +619,12 @@ const Products = ({ user3 }) => {
     setdisplay8("visible");
     setdisplay12("visible");
   };
-  const handleRedirect=()=>{
-    red("/signupa")
-  }
-   const handleRedirectLog=()=>{
-    red("/signina")
-  }
+  const handleRedirect = () => {
+    red("/signupa");
+  };
+  const handleRedirectLog = () => {
+    red("/logina");
+  };
 
   return (
     <div className={""} product={Product}>
@@ -655,58 +655,7 @@ const Products = ({ user3 }) => {
             className="rounded-lg focus:outline-none px-2 w-36 h-11 ml-3"
           />
         </div>
-        {choice && (
-          <div className="ml-[500px] absolute w-44 h-48 bg-slate-200 mt-5">
-            <div className="ml-4 mt-4">
-              <h2>Select Property Type</h2>
-              <div className=" flex flex-col">
-                <label>
-                  <input
-                    type="radio"
-                    name="propertyType"
-                    value="house"
-                    onChange={handlePropertyTypeChange}
-                  />
-                  House
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    name="propertyType"
-                    value="car"
-                    onChange={handlePropertyTypeChange}
-                  />
-                  Car
-                </label>
-              </div>
 
-              {propertyType && (
-                <div>
-                  <label>
-                    <input
-                      type="radio"
-                      name="transactionType"
-                      value="forRent"
-                      onChange={handleTransactionTypeChange}
-                      disabled={!propertyType}
-                    />
-                    For Rent
-                  </label>
-                  <label>
-                    <input
-                      type="radio"
-                      name="transactionType"
-                      value="forSell"
-                      onChange={handleTransactionTypeChange}
-                      disabled={!propertyType}
-                    />
-                    For Sell
-                  </label>
-                </div>
-              )}
-            </div>
-          </div>
-        )}
         <div className="mt-10 ml-10  w-14 h-14  rounded-xl border-green-400 cursor-pointer">
           {/* "absolute text-[19px] ml-6 mt-3 text-red-600 flex" */}
           <div
@@ -801,6 +750,9 @@ const Products = ({ user3 }) => {
           ) : (
             ""
           )}
+          <div className="ml-20 text-4xl text-white w-12 h-12 rounded-full border-2 mt-[-5px]">
+            {user ? <div className="ml-[9px]"></div> : <button>SignIn</button>}
+          </div>
           <GiSandsOfTime className="text-white text-4xl mt-[-3px]" />
           <div className="ml-20 text-4xl text-white w-12 h-12 rounded-full border-2 mt-[-5px]">
             {user ? (
@@ -911,7 +863,7 @@ const Products = ({ user3 }) => {
           </div>
           <div>
             <div
-              className="ml-[78px]  mt-3 absolute"
+              className="ml-[78px]  mt-3 absolute cursor-pointer"
               onClick={handleSearchChangeO}
             >
               <BsCart4 className="text-[20px]  " />

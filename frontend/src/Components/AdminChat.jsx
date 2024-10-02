@@ -157,7 +157,7 @@ const AdminChat = ({ user3 }) => {
                 >
                   <div className="ml-4 mt-4">
                     <img
-                      src={"/images/" + r.image}
+                      src={r.image}
                       className="w-[60px] h-[60px] rounded-full"
                     />
                   </div>
@@ -170,7 +170,7 @@ const AdminChat = ({ user3 }) => {
           <div className=" w-[650px] overflow-y-scroll h-[550px] absolute ml-80">
             <div className="ml-5 mt-5 flex border-b-2 border-gray-200 h-20 bg-slate-100">
               <img
-                src={"/images/" + user3.image}
+                src={user3.image}
                 className="w-[60px] h-[60px] rounded-full ml-3 mt-2"
               />
               <div className="ml-3 mt-2 flex">
@@ -198,7 +198,7 @@ const AdminChat = ({ user3 }) => {
                     }
                   >
                     <img
-                      src={"/images/" + r.image}
+                      src={r.image}
                       className="w-[40px] h-[40px] rounded-full  "
                     />
                   </div>
