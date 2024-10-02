@@ -742,7 +742,7 @@ const Products = ({ user3 }) => {
 
         <div className="mt-14 ml-10 cursor-pointer flex">
           {cartNumber != 0 ? (
-            <div className="mt-1 absolute  ml-2 bg-yellow-400 w-5 h-5 rounded-full">
+            <div className="mt-1 absolute  ml-5 bg-yellow-400 w-5 h-5 rounded-full">
               <strong
                 className="ml-1 mt-[-3px]"
                 onClick={async () => await fetchCartDetails(myCarts)}
