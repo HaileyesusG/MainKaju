@@ -750,13 +750,13 @@ const Products = ({ user3 }) => {
           ) : (
             ""
           )}
-          <div className=" text-4xl text-white w-12 h-12 border-2 rounded-md  mt-[-5px]">
-            {user ? (
-              <div className="ml-[9px]"></div>
-            ) : (
+          {user ? (
+            <div className="ml-[9px]"></div>
+          ) : (
+            <div className=" text-4xl text-white w-14 h-9 border-2 rounded-md  mt-[-5px]">
               <button className="text-[15px]">SignIn</button>
-            )}
-          </div>
+            </div>
+          )}
           <GiSandsOfTime className="text-white text-4xl mt-[-3px]" />
           <div className="ml-20 text-4xl text-white w-12 h-12 rounded-full border-2 mt-[-5px]">
             {user ? (
