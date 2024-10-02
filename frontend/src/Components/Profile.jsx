@@ -13,7 +13,6 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 import { IoIosClose } from "react-icons/io";
 import { removeProduct, setProduct } from "../features/product/productSlice";
 const UserProfile = ({ user4 }) => {
-  const [makeVisible, setMakeVisible] = useState(false);
   console.log("the profile is ", user4);
   const dispatch2 = useDispatch();
   let token = user4 ? "Bearer " + user4.tk : "";
@@ -21,10 +20,8 @@ const UserProfile = ({ user4 }) => {
   if (token == "Bearer " + undefined) {
     token = user4 ? "Bearer " + user4.token : "";
   }
-  setMakeVisible(true);
   const [selectedProduct, setSelectedProduct] = useState(false);
   const [Next1, setNext1] = useState(false);
-
   const [Next2, setNext2] = useState(false);
   const [createAD, setCreateAD] = useState(false);
   const [items, setItems] = useState([]);
@@ -78,10 +75,6 @@ const UserProfile = ({ user4 }) => {
     setCreateAD(false);
     setNext1(false);
     setSelectedCategory(false);
-    setMakeVisible(false);
-  };
-  const closeModal2 = () => {
-    setMakeVisible(false);
   };
   const createAdvert = () => {
     setCreateAD(true);
@@ -798,15 +791,13 @@ const UserProfile = ({ user4 }) => {
         ) : (
           ""
         ))}
-      {user4 && makeVisible && (
+      {user4 && (
         <div>
-          <div className="ml-[450px]  ">
-            <button onClick={closeModal2} className="mt-2  text-3xl">
-              <IoIosClose className="text-4xl]" />
-            </button>
-          </div>
-          <div className="justify-center items-center ml-52 mt-3">
+          <div className="justify-center items-center ml-52 mt-3 flex">
             <img src={user4.image} className="w-20 h-20 rounded-full" />
+            <div className="bg-red-500 hover:bg-red-400 ml-10">
+              <button>SignOut</button>
+            </div>
           </div>
           <div className="text-[15px] ml-10">
             <h2 className="ml-[161px] mb-6">Update Profile</h2>
