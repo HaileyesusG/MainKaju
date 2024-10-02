@@ -795,7 +795,7 @@ const UserProfile = ({ user4 }) => {
         <div>
           <div className="justify-center items-center ml-52 mt-3 flex">
             <img src={user4.image} className="w-20 h-20 rounded-full" />
-            <div className="bg-red-500 hover:bg-red-400 ml-10">
+            <div className="bg-red-500 hover:bg-red-400 ml-12 text-[10px font-bold text-white">
               <button>SignOut</button>
             </div>
           </div>
