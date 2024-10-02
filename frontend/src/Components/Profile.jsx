@@ -119,7 +119,7 @@ const UserProfile = ({ user4 }) => {
   const handleSignOut = (e) => {
     setFuelT(e.target.value);
     localStorage.removeItem("user");
-    red("/");
+    red("/login");
   };
   const handleLicense = (e) => {
     setLicense(e.target.value);
