@@ -13,6 +13,7 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 import { IoIosClose } from "react-icons/io";
 import { removeProduct, setProduct } from "../features/product/productSlice";
 const UserProfile = ({ user4 }) => {
+  const [makeVisible, setMakeVisible] = useState(false);
   console.log("the profile is ", user4);
   const dispatch2 = useDispatch();
   let token = user4 ? "Bearer " + user4.tk : "";
@@ -23,7 +24,7 @@ const UserProfile = ({ user4 }) => {
   setMakeVisible(true);
   const [selectedProduct, setSelectedProduct] = useState(false);
   const [Next1, setNext1] = useState(false);
-  const [makeVisible, setMakeVisible] = useState(false);
+
   const [Next2, setNext2] = useState(false);
   const [createAD, setCreateAD] = useState(false);
   const [items, setItems] = useState([]);
