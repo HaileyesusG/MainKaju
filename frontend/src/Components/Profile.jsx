@@ -20,6 +20,7 @@ const UserProfile = ({ user4 }) => {
   if (token == "Bearer " + undefined) {
     token = user4 ? "Bearer " + user4.token : "";
   }
+  setMakeVisible(true);
   const [selectedProduct, setSelectedProduct] = useState(false);
   const [Next1, setNext1] = useState(false);
   const [Next2, setNext2] = useState(false);
@@ -75,6 +76,10 @@ const UserProfile = ({ user4 }) => {
     setCreateAD(false);
     setNext1(false);
     setSelectedCategory(false);
+    setMakeVisible(false);
+  };
+  const closeModal2 = () => {
+    setMakeVisible(false);
   };
   const createAdvert = () => {
     setCreateAD(true);
@@ -791,8 +796,13 @@ const UserProfile = ({ user4 }) => {
         ) : (
           ""
         ))}
-      {user4 && (
+      {user4 && makeVisible && (
         <div>
+          <div className="ml-[450px]  ">
+            <button onClick={closeModal2} className="mt-2  text-3xl">
+              <IoIosClose className="text-4xl]" />
+            </button>
+          </div>
           <div className="justify-center items-center ml-52 mt-3">
             <img src={user4.image} className="w-20 h-20 rounded-full" />
           </div>
