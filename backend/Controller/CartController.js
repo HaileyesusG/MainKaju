@@ -1,6 +1,7 @@
 const Cart = require("../Model/Cart");
 const Car = require("../Model/Car");
 const House = require("../Model/House");
+const Other = require("../Model/Other");
 const Electronics = require("../Model/Electronics");
 //Add To Cart
 const CartCreate = async (req, res) => {
@@ -59,6 +60,10 @@ const GetOneCart = async (req, res) => {
     const Carts = await Electronics.findOne({ _id: itemId });
     res.status(200).json({ Carts: Carts, status: Cartss.status });
   }
+  if (Category == "other") {
+    const Carts = await Other.findOne({ _id: itemId });
+    res.status(200).json({ Carts: Carts, status: Cartss.status });
+  }
 };
 //
 const deleteCart = async (req, res) => {
@@ -81,6 +86,9 @@ const filterCart = async (req, res) => {
     }
     if (Category == "electronics") {
       Carts = await Electronics.findOne({ _id: id.itemId });
+    }
+    if (Category == "other") {
+      Carts = await Other.findOne({ _id: itemId });
     }
     myCart.push(Carts);
   }
