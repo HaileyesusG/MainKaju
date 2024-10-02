@@ -23,6 +23,7 @@ const UserProfile = ({ user4 }) => {
   setMakeVisible(true);
   const [selectedProduct, setSelectedProduct] = useState(false);
   const [Next1, setNext1] = useState(false);
+  const [makeVisible, setMakeVisible] = useState(false);
   const [Next2, setNext2] = useState(false);
   const [createAD, setCreateAD] = useState(false);
   const [items, setItems] = useState([]);
