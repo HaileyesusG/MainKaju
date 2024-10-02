@@ -1190,25 +1190,25 @@ const Products = ({ user3 }) => {
                       <div>
                         <div className="flex">
                           <img
-                            src={items.Carts.image}
+                            src={items.image}
                             alt="Product image"
                             className="w-36 h-[150px] mt-5"
                           />
-                          {items.Carts.category == "car" ? (
+                          {items.category == "car" ? (
                             <div className="ml-1 mt-5 flex  w-[365px]">
                               <div className=" ">
                                 <p className="flex ml-6">
                                   <FaCar className=" text-[15px] mt-1   font-bold text-blue-900 " />
-                                  {" " + items.Carts.type}
+                                  {" " + items.type}
                                 </p>
                                 <p className="ml-6">
-                                  {items.Carts.brand + " "}
-                                  {items.Carts.model}
+                                  {items.brand + " "}
+                                  {items.model}
                                 </p>
                                 <div className="">
                                   <Counter
-                                    productId={items.Carts._id}
-                                    price={items.Carts.price}
+                                    productId={items._id}
+                                    price={items.price}
                                     onQuantityChange={handleQuantityChange}
                                   />
                                 </div>
@@ -1219,10 +1219,10 @@ const Products = ({ user3 }) => {
                                   <button
                                     onClick={() =>
                                       HandleBuy(
-                                        items.Carts.userId,
-                                        items.Carts.Llimit,
-                                        items.Carts.Ulimit,
-                                        items.Carts._id
+                                        items.userId,
+                                        items.Llimit,
+                                        items.Ulimit,
+                                        items._id
                                       )
                                     }
                                   >
@@ -1233,18 +1233,18 @@ const Products = ({ user3 }) => {
                                 )}
                               </div>
                             </div>
-                          ) : items.Carts.category == "house" ? (
+                          ) : items.category == "house" ? (
                             <div className="ml-1 flex mt-5  w-[365px]">
                               <div className="">
                                 <p className="flex ml-6">
                                   <FaHouseDamage className=" text-[15px] mt-1   font-bold text-blue-900 " />
-                                  {" " + items.Carts.type}
+                                  {" " + items.type}
                                 </p>
 
                                 <div className="">
                                   <Counter
-                                    productId={items.Carts._id}
-                                    price={items.Carts.price}
+                                    productId={items._id}
+                                    price={items.price}
                                     onQuantityChange={handleQuantityChange}
                                   />
                                 </div>
@@ -1253,10 +1253,10 @@ const Products = ({ user3 }) => {
                                 <button
                                   onClick={() =>
                                     HandleBuy(
-                                      items.Carts.userId,
-                                      items.Carts.Llimit,
-                                      items.Carts.Ulimit,
-                                      items.Carts._id
+                                      items.userId,
+                                      items.Llimit,
+                                      items.Ulimit,
+                                      items._id
                                     )
                                   }
                                 >
@@ -1264,18 +1264,18 @@ const Products = ({ user3 }) => {
                                 </button>
                               </div>
                             </div>
-                          ) : items.Carts.category == "electronics" ? (
+                          ) : items.category == "electronics" ? (
                             <div className="ml-1 flex mt-5  w-[365px]">
                               <div className="">
                                 <p className="flex ml-6">
                                   <FaComputer className=" text-[15px] mt-1   font-bold text-blue-900 " />
-                                  {" " + items.Carts.brand}
+                                  {" " + items.brand}
                                 </p>
 
                                 <div className="">
                                   <Counter
-                                    productId={items.Carts._id}
-                                    price={items.Carts.price}
+                                    productId={items._id}
+                                    price={items.price}
                                     onQuantityChange={handleQuantityChange}
                                   />
                                 </div>
@@ -1284,10 +1284,41 @@ const Products = ({ user3 }) => {
                                 <button
                                   onClick={() =>
                                     HandleBuy(
-                                      items.Carts.userId,
-                                      items.Carts.Llimit,
-                                      items.Carts.Ulimit,
-                                      items.Carts._id
+                                      items.userId,
+                                      items.Llimit,
+                                      items.Ulimit,
+                                      items._id
+                                    )
+                                  }
+                                >
+                                  Buy
+                                </button>
+                              </div>
+                            </div>
+                          ) : items.category == "other" ? (
+                            <div className="ml-1 flex mt-5  w-[365px]">
+                              <div className="">
+                                <p className="flex ml-6">
+                                  <GiMaterialsScience className=" text-[15px] mt-1   font-bold text-blue-900 " />
+                                  {" " + items.title}
+                                </p>
+
+                                <div className="">
+                                  <Counter
+                                    productId={items._id}
+                                    price={items.price}
+                                    onQuantityChange={handleQuantityChange}
+                                  />
+                                </div>
+                              </div>
+                              <div className="mt-8 bg-blue-500 text-white px-4 py-2 w-16 h-12 ml-24   rounded-md">
+                                <button
+                                  onClick={() =>
+                                    HandleBuy(
+                                      items.userId,
+                                      items.Llimit,
+                                      items.Ulimit,
+                                      items._id
                                     )
                                   }
                                 >
