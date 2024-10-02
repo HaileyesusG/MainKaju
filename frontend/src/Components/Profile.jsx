@@ -14,7 +14,6 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 import { IoIosClose } from "react-icons/io";
 import { removeProduct, setProduct } from "../features/product/productSlice";
 const UserProfile = ({ user4 }) => {
-  const red = useNavigate();
   console.log("the profile is ", user4);
   const dispatch2 = useDispatch();
   let token = user4 ? "Bearer " + user4.tk : "";
@@ -117,9 +116,10 @@ const UserProfile = ({ user4 }) => {
     setFuelT(e.target.value);
   };
   const handleSignOut = (e) => {
+    const red = useNavigate();
     setFuelT(e.target.value);
     localStorage.removeItem("user");
-    red("/login");
+    red("/LogIn");
   };
   const handleLicense = (e) => {
     setLicense(e.target.value);
@@ -193,6 +193,7 @@ const UserProfile = ({ user4 }) => {
     Llimit: Llimit,
     Ulimit: Ulimit,
   };
+
   return (
     <div className="profile-container border-2 h-[430px] w-[500px] bg-slate-100">
       {selectedProduct &&
