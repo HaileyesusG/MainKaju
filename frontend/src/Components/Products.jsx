@@ -459,8 +459,8 @@ const Products = ({ user3 }) => {
     if (response.ok) {
       const cart = await response.json();
       console.log("the cart is ", cart);
-      setCartDetail(myCart);
-      setCartLoading(myCart);
+      setCartDetail(cart);
+      setCartLoading(cart);
     } else {
       console.log("i cant");
     }
