@@ -88,7 +88,7 @@ const filterCart = async (req, res) => {
       Carts = await Electronics.findOne({ _id: id.itemId });
     }
     if (Category == "other") {
-      Carts = await Other.findOne({ _id: itemId });
+      Carts = await Other.findOne({ _id: id.itemId });
     }
     myCart.push(Carts);
   }
