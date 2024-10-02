@@ -66,10 +66,31 @@ const deleteCart = async (req, res) => {
   const exist = await Cart.findOneAndDelete({ itemId: id });
   res.status(200).json(exist);
 };
+const filterCart = async (req, res) => {
+  const myCart = [];
+  const receivedCart = req.body;
+  for (const id of receivedCart) {
+    let Cartss = await Cart.findOne({ itemId: id.itemId });
+    const Category = Cartss.category;
+    let Carts;
+    if (Category == "car") {
+      Carts = await Car.findOne({ _id: id.itemId });
+    }
+    if (Category == "house") {
+      Carts = await House.findOne({ _id: id.itemId });
+    }
+    if (Category == "electronics") {
+      Carts = await Electronics.findOne({ _id: id.itemId });
+    }
+    myCart.push(Carts);
+  }
+  res.status(200).json(myCart);
+};
 module.exports = {
   CartCreate,
   GetOneCart,
   GetAllCart,
   UpdateCart,
   deleteCart,
+  filterCart,
 };

@@ -451,24 +451,20 @@ const Products = ({ user3 }) => {
     console.log("the view", carts);
     setCartVisible(true);
     const myCart = [];
-    for (const Cart of carts) {
-      const response = await fetch(
-        `${API_BASE_URL}/api/cart/GetOneCart/${Cart.itemId}`,
-        {
-          method: "GET",
-          headers: { "Content-Type": "application/json" },
-        }
-      );
-      if (response.ok) {
-        const cart = await response.json();
-        console.log("the cart is ", cart);
-        myCart.push(cart);
-      } else {
-        console.log("i cant");
-      }
+    const response = await fetch(`${API_BASE_URL}/api/cart/filterCart`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(carts),
+    });
+    if (response.ok) {
+      const cart = await response.json();
+      console.log("the cart is ", cart);
+      setCartDetail(myCart);
+      setCartLoading(myCart);
+    } else {
+      console.log("i cant");
     }
-    setCartDetail(myCart);
-    setCartLoading(myCart);
+
     console.log("the cart", myCart);
     const myUser = [];
     for (const user of carts) {
