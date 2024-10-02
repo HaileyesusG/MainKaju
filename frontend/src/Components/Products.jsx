@@ -320,6 +320,7 @@ const Products = ({ user3 }) => {
   const [ratedUsers, setRatedUsers] = useState([]);
   const [seller, setSeller] = useState("");
   const [Carts, setCartDetail] = useState([]);
+  const [cartLoading, setCartLoading] = useState("");
   const [Users, setUsers] = useState([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [cartNumber, setCartNumber] = useState(0);
@@ -467,6 +468,7 @@ const Products = ({ user3 }) => {
       }
     }
     setCartDetail(myCart);
+    setCartLoading(myCart);
     console.log("the cart", myCart);
     const myUser = [];
     for (const user of carts) {
@@ -1185,38 +1187,73 @@ const Products = ({ user3 }) => {
                 </button>
               </div>
               <strong className="mb-5">Your Active Engagements</strong>
-              {myCarts.length > 0 ? (
-                Carts.map((items, index) => (
-                  <div key={index} className="w-[600px] flex">
-                    <div>
-                      <div className="flex">
-                        <img
-                          src={items.Carts.image}
-                          alt="Product image"
-                          className="w-36 h-[150px] mt-5"
-                        />
-                        {items.Carts.category == "car" ? (
-                          <div className="ml-1 mt-5 flex  w-[365px]">
-                            <div className=" ">
-                              <p className="flex ml-6">
-                                <FaCar className=" text-[15px] mt-1   font-bold text-blue-900 " />
-                                {" " + items.Carts.type}
-                              </p>
-                              <p className="ml-6">
-                                {items.Carts.brand + " "}
-                                {items.Carts.model}
-                              </p>
-                              <div className="">
-                                <Counter
-                                  productId={items.Carts._id}
-                                  price={items.Carts.price}
-                                  onQuantityChange={handleQuantityChange}
-                                />
+              {cartLoading ? (
+                myCarts.length > 0 ? (
+                  Carts.map((items, index) => (
+                    <div key={index} className="w-[600px] flex">
+                      <div>
+                        <div className="flex">
+                          <img
+                            src={items.Carts.image}
+                            alt="Product image"
+                            className="w-36 h-[150px] mt-5"
+                          />
+                          {items.Carts.category == "car" ? (
+                            <div className="ml-1 mt-5 flex  w-[365px]">
+                              <div className=" ">
+                                <p className="flex ml-6">
+                                  <FaCar className=" text-[15px] mt-1   font-bold text-blue-900 " />
+                                  {" " + items.Carts.type}
+                                </p>
+                                <p className="ml-6">
+                                  {items.Carts.brand + " "}
+                                  {items.Carts.model}
+                                </p>
+                                <div className="">
+                                  <Counter
+                                    productId={items.Carts._id}
+                                    price={items.Carts.price}
+                                    onQuantityChange={handleQuantityChange}
+                                  />
+                                </div>
+                              </div>
+
+                              <div className="mt-8 bg-blue-500 text-white px-4 py-2 w-16 h-12 ml-24   rounded-md">
+                                {items.status == "unpaid" ? (
+                                  <button
+                                    onClick={() =>
+                                      HandleBuy(
+                                        items.Carts.userId,
+                                        items.Carts.Llimit,
+                                        items.Carts.Ulimit,
+                                        items.Carts._id
+                                      )
+                                    }
+                                  >
+                                    Buy
+                                  </button>
+                                ) : (
+                                  <p>In Progress</p>
+                                )}
                               </div>
                             </div>
+                          ) : items.Carts.category == "house" ? (
+                            <div className="ml-1 flex mt-5  w-[365px]">
+                              <div className="">
+                                <p className="flex ml-6">
+                                  <FaHouseDamage className=" text-[15px] mt-1   font-bold text-blue-900 " />
+                                  {" " + items.Carts.type}
+                                </p>
 
-                            <div className="mt-8 bg-blue-500 text-white px-4 py-2 w-16 h-12 ml-24   rounded-md">
-                              {items.status == "unpaid" ? (
+                                <div className="">
+                                  <Counter
+                                    productId={items.Carts._id}
+                                    price={items.Carts.price}
+                                    onQuantityChange={handleQuantityChange}
+                                  />
+                                </div>
+                              </div>
+                              <div className="mt-8 bg-blue-500 text-white px-4 py-2 w-16 h-12 ml-24   rounded-md">
                                 <button
                                   onClick={() =>
                                     HandleBuy(
@@ -1229,82 +1266,51 @@ const Products = ({ user3 }) => {
                                 >
                                   Buy
                                 </button>
-                              ) : (
-                                <p>In Progress</p>
-                              )}
-                            </div>
-                          </div>
-                        ) : items.Carts.category == "house" ? (
-                          <div className="ml-1 flex mt-5  w-[365px]">
-                            <div className="">
-                              <p className="flex ml-6">
-                                <FaHouseDamage className=" text-[15px] mt-1   font-bold text-blue-900 " />
-                                {" " + items.Carts.type}
-                              </p>
-
-                              <div className="">
-                                <Counter
-                                  productId={items.Carts._id}
-                                  price={items.Carts.price}
-                                  onQuantityChange={handleQuantityChange}
-                                />
                               </div>
                             </div>
-                            <div className="mt-8 bg-blue-500 text-white px-4 py-2 w-16 h-12 ml-24   rounded-md">
-                              <button
-                                onClick={() =>
-                                  HandleBuy(
-                                    items.Carts.userId,
-                                    items.Carts.Llimit,
-                                    items.Carts.Ulimit,
-                                    items.Carts._id
-                                  )
-                                }
-                              >
-                                Buy
-                              </button>
-                            </div>
-                          </div>
-                        ) : items.Carts.category == "electronics" ? (
-                          <div className="ml-1 flex mt-5  w-[365px]">
-                            <div className="">
-                              <p className="flex ml-6">
-                                <FaComputer className=" text-[15px] mt-1   font-bold text-blue-900 " />
-                                {" " + items.Carts.brand}
-                              </p>
-
+                          ) : items.Carts.category == "electronics" ? (
+                            <div className="ml-1 flex mt-5  w-[365px]">
                               <div className="">
-                                <Counter
-                                  productId={items.Carts._id}
-                                  price={items.Carts.price}
-                                  onQuantityChange={handleQuantityChange}
-                                />
+                                <p className="flex ml-6">
+                                  <FaComputer className=" text-[15px] mt-1   font-bold text-blue-900 " />
+                                  {" " + items.Carts.brand}
+                                </p>
+
+                                <div className="">
+                                  <Counter
+                                    productId={items.Carts._id}
+                                    price={items.Carts.price}
+                                    onQuantityChange={handleQuantityChange}
+                                  />
+                                </div>
+                              </div>
+                              <div className="mt-8 bg-blue-500 text-white px-4 py-2 w-16 h-12 ml-24   rounded-md">
+                                <button
+                                  onClick={() =>
+                                    HandleBuy(
+                                      items.Carts.userId,
+                                      items.Carts.Llimit,
+                                      items.Carts.Ulimit,
+                                      items.Carts._id
+                                    )
+                                  }
+                                >
+                                  Buy
+                                </button>
                               </div>
                             </div>
-                            <div className="mt-8 bg-blue-500 text-white px-4 py-2 w-16 h-12 ml-24   rounded-md">
-                              <button
-                                onClick={() =>
-                                  HandleBuy(
-                                    items.Carts.userId,
-                                    items.Carts.Llimit,
-                                    items.Carts.Ulimit,
-                                    items.Carts._id
-                                  )
-                                }
-                              >
-                                Buy
-                              </button>
-                            </div>
-                          </div>
-                        ) : (
-                          ""
-                        )}
+                          ) : (
+                            ""
+                          )}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))
+                  ))
+                ) : (
+                  <p>No items to display</p>
+                )
               ) : (
-                <p>No items to display</p>
+                <p>Loading</p>
               )}
               <div className="mt-20">
                 <div className="flex justify-between">
