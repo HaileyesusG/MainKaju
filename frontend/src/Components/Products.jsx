@@ -187,7 +187,7 @@ const Products = ({ user3 }) => {
   useEffect(() => {
     Product();
     getAllCarts();
-  }, [location]);
+  }, [location, user]);
   const response2 = async () => {
     const response = await fetch(`${API_BASE_URL}/api/user/${_id}`, {
       method: "PATCH",
@@ -750,8 +750,12 @@ const Products = ({ user3 }) => {
           ) : (
             ""
           )}
-          <div className="ml-20 text-4xl text-white w-12 h-12 rounded-full border-2 mt-[-5px]">
-            {user ? <div className="ml-[9px]"></div> : <button>SignIn</button>}
+          <div className=" text-4xl text-white w-12 h-12 border-2 rounded-md  mt-[-5px]">
+            {user ? (
+              <div className="ml-[9px]"></div>
+            ) : (
+              <button className="text-[15px]">SignIn</button>
+            )}
           </div>
           <GiSandsOfTime className="text-white text-4xl mt-[-3px]" />
           <div className="ml-20 text-4xl text-white w-12 h-12 rounded-full border-2 mt-[-5px]">
