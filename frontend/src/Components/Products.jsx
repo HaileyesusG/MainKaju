@@ -622,6 +622,9 @@ const Products = ({ user3 }) => {
   const handleRedirect = () => {
     red("/signupa");
   };
+  const goToHome = () => {
+    red("/login");
+  };
   const handleRedirectLog = () => {
     red("/logina");
   };
@@ -753,12 +756,20 @@ const Products = ({ user3 }) => {
           {user ? (
             <div className="ml-[9px]"></div>
           ) : (
-            <div className=" text-4xl text-white w-14 h-9 border-2 rounded-md  mt-[-5px]">
-              <button className="text-[15px]">SignIn</button>
+            <div className=" text-4xl hover:text-black hover:bg-white text-white w-14 h-9 border-2 rounded-md  mt-[-5px]">
+              <div className="mt-[-16px]">
+                <button className="text-[15px] ml-1" onClick={goToHome}>
+                  SignIn
+                </button>
+              </div>
             </div>
           )}
-          <GiSandsOfTime className="text-white text-4xl mt-[-3px]" />
-          <div className="ml-20 text-4xl text-white w-12 h-12 rounded-full border-2 mt-[-5px]">
+          {user ? (
+            <GiSandsOfTime className="ml-6 text-white text-4xl mt-[-3px] mr-6" />
+          ) : (
+            ""
+          )}
+          <div className="ml-5 text-4xl text-white w-12 h-12 rounded-full border-2 mt-[-8px]">
             {user ? (
               <strong
                 className="ml-[9px]"
@@ -774,7 +785,7 @@ const Products = ({ user3 }) => {
 
         <div className="mt-6">
           {" "}
-          <div className={"ml-[80px] text-white " + disp3}>
+          <div className={"ml-[50px] text-white " + disp3}>
             <MdEditLocationAlt
               onClick={makeVisible}
               className=" text-[40px] text-white   hover:text-pink-600  font-bold cursor-pointer"
@@ -850,7 +861,7 @@ const Products = ({ user3 }) => {
           </div>
           <div>
             <div
-              className="ml-[78px]  mt-3 absolute"
+              className="ml-[78px]  mt-3 absolute cursor-pointer"
               onClick={handleSearchChangeE}
             >
               <FaComputer className="text-[20px]  " />
