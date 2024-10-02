@@ -115,8 +115,8 @@ const UserProfile = ({ user4 }) => {
   const handleFuel = (e) => {
     setFuelT(e.target.value);
   };
-  const handleSignOut = (e) => {
-    const red = useNavigate();
+  const red = useNavigate();
+  const handleSignOut = () => {
     localStorage.removeItem("user");
     red("/LogIn");
   };
