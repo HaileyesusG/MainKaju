@@ -571,6 +571,7 @@ const Products = ({ user3 }) => {
   useEffect(() => {
     socket.on("receive_message2", (msg) => {
       console.log("msg", msg);
+      console.log("msg id is", _id);
       if (msg.Receiver_id.toString() == _id.toString()) {
         setSenderId(msg.Sender_id);
         console.log("msg.Sender_id", msg.Sender_id);
@@ -599,6 +600,7 @@ const Products = ({ user3 }) => {
   useEffect(() => {
     socket.on("MyNotify", (msg) => {
       console.log("msg", msg);
+      console.log("the msg id is", _id);
       const { file, owner } = msg;
       if (owner.toString() === _id.toString()) {
         getNotify();
