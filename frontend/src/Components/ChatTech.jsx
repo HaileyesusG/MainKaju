@@ -47,7 +47,10 @@ const ChatTech = ({ user, owner, tPrice, itemId }) => {
   // let { chat, dispatchChat } = useUserContextChat();
 
   let chat = todo;
-  const token = user ? "Bearer " + user.tk : "";
+  let token = user ? "Bearer " + user.tk : "";
+  if (token == "Bearer " + undefined) {
+    token = user ? "Bearer " + user.token : "";
+  }
   const profile = user ? user.image : "";
   const Firstname = user ? user.firstname : "";
   const Lastname = user ? user.lastname : "";

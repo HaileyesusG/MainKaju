@@ -102,6 +102,13 @@ const OtherCreate = async (req, res) => {
   getCityFromCoordinates(latitude, longitude).then(async (city) => {
     try {
       location = city;
+      if (city == "North Wollo Zone") {
+        location = "Addis Ababa";
+      }
+      if (city == "Arerti") {
+        location = "Addis Ababa";
+      }
+
       console.log(city);
       let Try = req.User.try;
       let Deposite = req.User.deposite;
@@ -120,7 +127,7 @@ const OtherCreate = async (req, res) => {
             title,
             Llimit,
             Ulimit,
-            image: image1.path,
+            image: image1 ? image1.path : "",
             image2: image2 ? image2.path : "",
             image3: image3 ? image3.path : "",
             image4: image4 ? image4.path : "",
