@@ -203,6 +203,7 @@ const Products = ({ user3 }) => {
     if (response.ok) {
       const json = await response.json();
       setCartNumber(json.length);
+      console.log("the my length is ",json.length)
       // setCart(json);
       for (const pro of json) {
         dispatch2(

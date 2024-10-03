@@ -107,8 +107,9 @@ const GetAllItems = async (req, res) => {
       const Houses = await House.find({ location: "Addis Ababa" });
       const Electronicss = await Electronics.find({ location: "Addis Ababa" });
       const Cars = await Car.find({ location: "Addis Ababa" });
+      const Others = await Other.find({ location: "Addis Ababa" });
       // Combine the arrays
-      const combinedArray = [...Houses, ...Cars, ...Electronicss];
+      const combinedArray = [...Houses, ...Cars, ...Electronicss, ...Others];
 
       // Sort the combined array from latest to earliest
       combinedArray.sort(
@@ -122,8 +123,9 @@ const GetAllItems = async (req, res) => {
       const Houses = await House.find({ location: "Addis Ababa" });
       const Cars = await Car.find({ location: "Addis Ababa" });
       const Electronicss = await Electronics.find({ location: "Addis Ababa" });
+      const Others = await Other.find({ location: "Addis Ababa" });
       // Combine the arrays
-      const combinedArray = [...Houses, ...Cars, ...Electronicss];
+      const combinedArray = [...Houses, ...Cars, ...Electronicss, ...Others];
 
       // Sort the combined array from latest to earliest
       combinedArray.sort(
