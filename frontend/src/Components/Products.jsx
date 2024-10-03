@@ -61,6 +61,7 @@ const Products = ({ user3 }) => {
   console.log("the token ", token);
   if (token == "Bearer " + undefined) {
     token = user3 ? "Bearer " + user3.token : "";
+    user = user3;
   }
   const Lastname = user ? user.lastname : "";
   const Gender = user ? user.gender : "";
