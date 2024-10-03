@@ -203,7 +203,7 @@ const Products = ({ user3 }) => {
     if (response.ok) {
       const json = await response.json();
       setCartNumber(json.length);
-      console.log("the my length is ",json.length)
+      console.log("the my length is ", json.length);
       // setCart(json);
       for (const pro of json) {
         dispatch2(
@@ -1128,7 +1128,7 @@ const Products = ({ user3 }) => {
                     <div className="border-r-indigo-200 w-[900px] h-80 ml-[-120px] relative overflow-hidden overflow-y-auto">
                       <div className="">
                         <ChatTechAd
-                          user={user}
+                          user={user4}
                           className="w-full h-full object-cover"
                         />
                       </div>
@@ -1149,7 +1149,7 @@ const Products = ({ user3 }) => {
               </div>
               <div className="mt-[-90px]">
                 <ChatTech
-                  user={user}
+                  user={user4}
                   owner={ownerId}
                   itemId={itemId}
                   className=""
