@@ -526,7 +526,10 @@ const Products = ({ user3 }) => {
     console.log("price is", P);
   };
   const HandlePayment = async () => {
-    const paymentData = { money: money, return_url: "" };
+    const paymentData = {
+      money: money,
+      return_url: "https://mainkajufrontend.onrender.com",
+    };
     const response = await fetch(
       `${API_BASE_URL}/api/payment/rechargeBalance`,
       {
