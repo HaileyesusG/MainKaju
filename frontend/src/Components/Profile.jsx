@@ -9,6 +9,7 @@ import { BsFillTelephoneFill } from "react-icons/bs";
 import { FaTransgenderAlt } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import PictureUploader from "./muke";
+import { MdEmail } from "react-icons/md";
 import { useDispatch } from "react-redux";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 import { IoIosClose } from "react-icons/io";
@@ -803,7 +804,7 @@ const UserProfile = ({ user4 }) => {
           <div className="justify-center items-center ml-52 mt-3 flex">
             <img src={user4.image} className="w-20 h-20 rounded-full" />
             <div
-              className="bg-red-500 hover:bg-red-400 ml-12 text-[10px font-bold text-white"
+              className="bg-red-500 hover:bg-red-400 ml-12 text-[12px] border-2 font-bold text-white"
               onClick={handleSignOut}
             >
               <button>SignOut</button>
@@ -828,6 +829,10 @@ const UserProfile = ({ user4 }) => {
               <p className="mt-[-12px] ml-3">
                 PhoneNumber: {user4.phonenumber}
               </p>
+            </div>
+            <div className="flex">
+              <MdEmail />
+              <p className="mt-[-12px] ml-3">Email: {user4.email}</p>
             </div>
           </div>
         </div>
