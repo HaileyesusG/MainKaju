@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { io } from "socket.io-client";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { MdEmojiPeople } from "react-icons/md";
+import { formatDistanceToNow } from "date-fns";
 import { GiMaterialsScience } from "react-icons/gi";
 import { FaCircle } from "react-icons/fa";
 import { IoMdNotifications } from "react-icons/io";
@@ -704,16 +704,21 @@ const Products = ({ user3 }) => {
           {array3.map((d, index) => (
             <div
               className={
-                "w-80 cursor-pointer ml-3 h-16 hover:bg-yellow-400 mt-8 rounded-lg " +
+                "w-80 cursor-pointer ml-3  hover:bg-yellow-400 mt-8 rounded-lg " +
                 disp12
               }
               key={index}
             >
-              <div className="mt-3 absolute ">
+              <div className="mt-3  ">
                 <p>From{" " + d.buyerLocation}</p>
                 <p>{d.buyerName + " "} wants to buy</p>
                 <p>and has paid{" " + d.tPrice + " birr "} for it</p>
                 {d.category} <img src={d.image} alt="" className="w-20 h-20" />
+                <p className="">
+                  {formatDistanceToNow(new Date(d.createdAt), {
+                    addSuffix: true,
+                  })}
+                </p>
               </div>
             </div>
           ))}
