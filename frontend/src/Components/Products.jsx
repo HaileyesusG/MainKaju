@@ -65,13 +65,12 @@ const Products = ({ user3 }) => {
     token = user3 ? "Bearer " + user3.token : "";
   }
 
-  ccc
   const [Email, setEmail] = useState(user ? user.email : "");
   const [_id, setId] = useState(todo.length > 0 ? todo[0]._id : "");
   useEffect(() => {
     setEmail(user.email);
-      setId(user._id);
-      setLoading(false); // Data is loaded, set loading to false
+    setId(user._id);
+    setLoading(false); // Data is loaded, set loading to false
   }, [todo]);
 
   const Location = user ? user.location : "";
@@ -573,8 +572,7 @@ const Products = ({ user3 }) => {
     socket.on("receive_message2", (msg) => {
       console.log("msg", msg);
       console.log("msg id is", _id);
-      if (!loading && Firstname)
-      console.log("first Mane is", Firstname);
+      if (!loading && Firstname) console.log("first Mane is", Firstname);
       if (msg.Receiver_id.toString() == _id.toString()) {
         setSenderId(msg.Sender_id);
         console.log("msg.Sender_id", msg.Sender_id);
