@@ -14,7 +14,6 @@ import { FaComputer } from "react-icons/fa6";
 import { MdOutlineWork } from "react-icons/md";
 import { BsCart4 } from "react-icons/bs";
 import StarRatingH from "./New";
-import { useRef } from "react";
 import ChatTech from "./ChatTech";
 import ChatTechAd from "./ChatTechAd";
 import { ToastContainer, toast } from "react-toastify";
