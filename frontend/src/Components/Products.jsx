@@ -1229,22 +1229,18 @@ const Products = ({ user3 }) => {
                               </div>
 
                               <div className="mt-8 bg-blue-500 text-white px-4 py-2 w-16 h-12 ml-24   rounded-md">
-                                {items.status == "unpaid" ? (
-                                  <button
-                                    onClick={() =>
-                                      HandleBuy(
-                                        items.userId,
-                                        items.Llimit,
-                                        items.Ulimit,
-                                        items._id
-                                      )
-                                    }
-                                  >
-                                    Buy
-                                  </button>
-                                ) : (
-                                  <p>In Progress</p>
-                                )}
+                                <button
+                                  onClick={() =>
+                                    HandleBuy(
+                                      items.userId,
+                                      items.Llimit,
+                                      items.Ulimit,
+                                      items._id
+                                    )
+                                  }
+                                >
+                                  Buy
+                                </button>
                               </div>
                             </div>
                           ) : items.category == "house" ? (
