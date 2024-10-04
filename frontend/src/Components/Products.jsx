@@ -1240,7 +1240,7 @@ const Products = ({ user3 }) => {
                                 </div>
                               </div>
 
-                              <div className="mt-8 flex space-x-5 bg-blue-500 text-white px-4 py-2 w-16 h-12 ml-16   rounded-md">
+                              <div className="mt-8 flex space-x-3 bg-blue-500 text-white px-4 py-2 w-16 h-12 ml-10   rounded-md">
                                 <button
                                   onClick={() =>
                                     HandleBuy(
@@ -1274,7 +1274,7 @@ const Products = ({ user3 }) => {
                                   />
                                 </div>
                               </div>
-                              <div className="mt-8 flex space-x-5 bg-blue-500 text-white px-4 py-2 w-16 h-12 ml-16   rounded-md">
+                              <div className="mt-8 flex space-x-3 bg-blue-500 text-white px-4 py-2 w-16 h-12 ml-10   rounded-md">
                                 <button
                                   onClick={() =>
                                     HandleBuy(
@@ -1308,7 +1308,7 @@ const Products = ({ user3 }) => {
                                   />
                                 </div>
                               </div>
-                              <div className="mt-8 flex space-x-5 bg-blue-500 text-white px-4 py-2 w-16 h-12 ml-16   rounded-md">
+                              <div className="mt-8 flex space-x-3 bg-blue-500 text-white px-4 py-2 w-16 h-12 ml-10   rounded-md">
                                 <button
                                   onClick={() =>
                                     HandleBuy(
@@ -1342,7 +1342,7 @@ const Products = ({ user3 }) => {
                                   />
                                 </div>
                               </div>
-                              <div className="mt-8 flex space-x-5 bg-blue-500 text-white px-4 py-2 w-16 h-12 ml-16   rounded-md">
+                              <div className="mt-8 flex space-x-3 bg-blue-500 text-white px-4 py-2 w-16 h-12 ml-10   rounded-md">
                                 <button
                                   onClick={() =>
                                     HandleBuy(

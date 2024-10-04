@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import PictureUploader from "./muke";
 import { MdEmail } from "react-icons/md";
 import { useDispatch } from "react-redux";
+import { logOut } from "../features/tech/techSlice";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 import { IoIosClose } from "react-icons/io";
 import { removeProduct, setProduct } from "../features/product/productSlice";
@@ -119,6 +120,7 @@ const UserProfile = ({ user4 }) => {
   const red = useNavigate();
   const handleSignOut = () => {
     localStorage.removeItem("user");
+    dispatch2(logOut([]));
     red("/LogIn");
   };
   const handleLicense = (e) => {

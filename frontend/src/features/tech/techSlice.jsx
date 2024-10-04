@@ -79,7 +79,11 @@ export const techReducer = createSlice({
           (existingTodo.token = token);
       }
     },
+    logOut: (state, action) => {
+      state.tech = action.payload;
+    },
   },
 });
-export const { addTech, removeTech, setTech, updateTech } = techReducer.actions;
+export const { addTech, removeTech, setTech, updateTech, logOut } =
+  techReducer.actions;
 export default techReducer.reducer;
