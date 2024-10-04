@@ -68,7 +68,7 @@ const Products = ({ user3 }) => {
   const Gender = user ? user.gender : "";
   const Phonenumber = user ? user.phonenumber : "";
   const [Email, setEmail] = useState(user ? user.email : "");
-  const [_id, setId] = useState(user ? user._id : "");
+  const [_id, setId] = useState(todo.length > 0 ? todo[0]._id : "");
   // const [token, setToken] = useState(user ? user.token : "");
   useEffect(() => {
     setEmail(user ? user.email : "");
