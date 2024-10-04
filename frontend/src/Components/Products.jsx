@@ -843,7 +843,7 @@ const Products = ({ user3 }) => {
       </div>
       {handleProfile && (
         <div className="absolute bg-slate-50 text-4xl ml-[700px]  h-[430px] mt-[-14px] w-[500px]">
-          <UserProfile user4={user} />
+          <UserProfile user4={user.tk == undefined ? user3 : user} />
         </div>
       )}
       <div
