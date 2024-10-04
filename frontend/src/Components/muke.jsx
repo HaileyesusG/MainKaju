@@ -104,21 +104,6 @@ const PictureUploader = ({ user4, data, data2, data3, data4 }) => {
           alert("Images uploaded successfully");
           const json = await response.json();
           console.log("the house", json);
-          // const{firstname,lastname,gender,phonenumber,deposit,email,image,location,_id}=json
-          // dispatch2(
-          //     updateTech({
-          //       id: Id,
-          //       firstname: Firstname,
-          //       lastname: Lastname,
-          //       gender: Gender,
-          //       phonenumber: Phonenumber,
-          //       deposit: Deposite,
-          //       email: Email,
-          //       image: profile,
-          //       location: location,
-          //       _id: _id,
-          //     })
-          //   );
         } else {
           alert("Failed to upload images");
         }
@@ -135,21 +120,6 @@ const PictureUploader = ({ user4, data, data2, data3, data4 }) => {
           alert("Images uploaded successfully");
           const json = await response.json();
           console.log("the house", json);
-          // const{firstname,lastname,gender,phonenumber,deposit,email,image,location,_id}=json
-          // dispatch2(
-          //     updateTech({
-          //       id: Id,
-          //       firstname: Firstname,
-          //       lastname: Lastname,
-          //       gender: Gender,
-          //       phonenumber: Phonenumber,
-          //       deposit: Deposite,
-          //       email: Email,
-          //       image: profile,
-          //       location: location,
-          //       _id: _id,
-          //     })
-          //   );
         } else {
           alert("Failed to upload images");
         }
@@ -169,21 +139,6 @@ const PictureUploader = ({ user4, data, data2, data3, data4 }) => {
           alert("Images uploaded successfully");
           const json = await response.json();
           console.log("the house", json);
-          // const{firstname,lastname,gender,phonenumber,deposit,email,image,location,_id}=json
-          // dispatch2(
-          //     updateTech({
-          //       id: Id,
-          //       firstname: Firstname,
-          //       lastname: Lastname,
-          //       gender: Gender,
-          //       phonenumber: Phonenumber,
-          //       deposit: Deposite,
-          //       email: Email,
-          //       image: profile,
-          //       location: location,
-          //       _id: _id,
-          //     })
-          //   );
         } else {
           alert("Failed to upload images");
         }
@@ -203,8 +158,8 @@ const PictureUploader = ({ user4, data, data2, data3, data4 }) => {
         }
       }
     } catch (error) {
-      console.error("Error uploading images", error);
-      alert("Error uploading images");
+      console.log("Error uploading images", error);
+      alert("Error uploading images ", error);
     }
   };
   console.log("buna", imageFiles);

@@ -8,9 +8,22 @@ const CartCreate = async (req, res) => {
   const userId = req.User._id;
   const { id } = req.params;
   const { category } = req.body;
+  let Carts;
+  if (category == "car") {
+    Carts = await Car.findOne({ _id: itemId });
+  }
+  if (category == "house") {
+    Carts = await House.findOne({ _id: itemId });
+  }
+  if (category == "electronics") {
+    Carts = await Electronics.findOne({ _id: itemId });
+  }
+  if (category == "other") {
+    Carts = await Other.findOne({ _id: itemId });
+  }
   const itemId = id;
   const exist = await Cart.findOne({ itemId: id, userId: userId });
-  if (exist) {
+  if (exist || Carts.userId == userId) {
     return;
   }
 
