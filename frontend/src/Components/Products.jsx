@@ -69,7 +69,7 @@ const Products = ({ user3 }) => {
   let Gender = user ? user.gender : "";
   let Phonenumber = user ? user.phonenumber : "";
   const [Email, setEmail] = useState(user ? user.email : "");
-  let _id = user3 ? user3._id : "";
+  let _id = user ? user._id : "";
   console.log("the user3 id is ", _id);
   // useEffect(() => {
   //   setId(user ? user._id : "");
@@ -567,7 +567,7 @@ const Products = ({ user3 }) => {
     }
     setViewDeposit(true);
   };
-
+  console.log("the other id value is ", _id);
   useEffect(() => {
     socket.on("receive_message2", (msg) => {
       console.log("msg", msg);
