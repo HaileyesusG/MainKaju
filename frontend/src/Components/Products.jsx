@@ -62,21 +62,20 @@ const Products = ({ user3 }) => {
   if (token == "Bearer " + undefined) {
     token = user3 ? "Bearer " + user3.token : "";
   }
-  if (user3 !== "") {
-    user = user3;
-  }
+  
   const Lastname = user ? user.lastname : "";
   const Gender = user ? user.gender : "";
   const Phonenumber = user ? user.phonenumber : "";
   const [Email, setEmail] = useState(user ? user.email : "");
+  const [_id, setId] = useState(user ? user._id : "");
   // const [token, setToken] = useState(user ? user.token : "");
   useEffect(() => {
     setEmail(user ? user.email : "");
+    setId(user ? user._id : "");
     // setToken(user ? user.token : "");
   }, [user]);
 
   const Location = user ? user.location : "";
-  const _id = user ? user._id : "";
   const profile = user ? user.image : "";
   const Firstname = user ? user.firstname : "";
   const Deposite = user ? user.deposite : "";
