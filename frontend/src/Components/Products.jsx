@@ -65,11 +65,11 @@ const Products = ({ user3 }) => {
   if (token == "Bearer " + undefined) {
     token = user3 ? "Bearer " + user3.token : "";
   }
-  const Lastname = user ? user.lastname : "";
-  const Gender = user ? user.gender : "";
-  const Phonenumber = user ? user.phonenumber : "";
+  let Lastname = user ? user.lastname : "";
+  let Gender = user ? user.gender : "";
+  let Phonenumber = user ? user.phonenumber : "";
   const [Email, setEmail] = useState(user ? user.email : "");
-  const _id = user3 ? user3._id : "";
+  let _id = user3 ? user3._id : "";
   console.log("the user3 id is ", _id);
   // useEffect(() => {
   //   setId(user ? user._id : "");
