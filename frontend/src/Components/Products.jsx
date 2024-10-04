@@ -635,7 +635,19 @@ const Products = ({ user3 }) => {
   const handleRedirectLog = () => {
     red("/logina");
   };
-
+  const HandleDelete = async (itemId) => {
+    const response = await fetch(
+      `${API_BASE_URL}/api/cart/deleteCart/${itemId}`,
+      {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+    if (response.ok) {
+      const json = await response.json();
+      dispatch2(removeCart(itemId));
+    }
+  };
   return (
     <div className={""} product={Product}>
       <div className=" flex  fixed bg-blue-900  top-0 left-0 w-full  z-10">
@@ -1228,7 +1240,7 @@ const Products = ({ user3 }) => {
                                 </div>
                               </div>
 
-                              <div className="mt-8 bg-blue-500 text-white px-4 py-2 w-16 h-12 ml-24   rounded-md">
+                              <div className="mt-8 flex space-x-5 bg-blue-500 text-white px-4 py-2 w-16 h-12 ml-16   rounded-md">
                                 <button
                                   onClick={() =>
                                     HandleBuy(
@@ -1240,6 +1252,9 @@ const Products = ({ user3 }) => {
                                   }
                                 >
                                   Buy
+                                </button>
+                                <button onClick={() => HandleDelete(items._id)}>
+                                  Remove
                                 </button>
                               </div>
                             </div>
@@ -1259,7 +1274,7 @@ const Products = ({ user3 }) => {
                                   />
                                 </div>
                               </div>
-                              <div className="mt-8 bg-blue-500 text-white px-4 py-2 w-16 h-12 ml-24   rounded-md">
+                              <div className="mt-8 flex space-x-5 bg-blue-500 text-white px-4 py-2 w-16 h-12 ml-16   rounded-md">
                                 <button
                                   onClick={() =>
                                     HandleBuy(
@@ -1271,6 +1286,9 @@ const Products = ({ user3 }) => {
                                   }
                                 >
                                   Buy
+                                </button>
+                                <button onClick={() => HandleDelete(items._id)}>
+                                  Remove
                                 </button>
                               </div>
                             </div>
@@ -1290,7 +1308,7 @@ const Products = ({ user3 }) => {
                                   />
                                 </div>
                               </div>
-                              <div className="mt-8 bg-blue-500 text-white px-4 py-2 w-16 h-12 ml-24   rounded-md">
+                              <div className="mt-8 flex space-x-5 bg-blue-500 text-white px-4 py-2 w-16 h-12 ml-16   rounded-md">
                                 <button
                                   onClick={() =>
                                     HandleBuy(
@@ -1302,6 +1320,9 @@ const Products = ({ user3 }) => {
                                   }
                                 >
                                   Buy
+                                </button>
+                                <button onClick={() => HandleDelete(items._id)}>
+                                  Remove
                                 </button>
                               </div>
                             </div>
@@ -1321,7 +1342,7 @@ const Products = ({ user3 }) => {
                                   />
                                 </div>
                               </div>
-                              <div className="mt-8 bg-blue-500 text-white px-4 py-2 w-16 h-12 ml-24   rounded-md">
+                              <div className="mt-8 flex space-x-5 bg-blue-500 text-white px-4 py-2 w-16 h-12 ml-16   rounded-md">
                                 <button
                                   onClick={() =>
                                     HandleBuy(
@@ -1333,6 +1354,9 @@ const Products = ({ user3 }) => {
                                   }
                                 >
                                   Buy
+                                </button>
+                                <button onClick={() => HandleDelete(items._id)}>
+                                  Remove
                                 </button>
                               </div>
                             </div>
