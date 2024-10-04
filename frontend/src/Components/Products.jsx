@@ -181,7 +181,7 @@ const Products = ({ user3 }) => {
         email: Email,
         image: profile,
         location: location,
-        _id: _id,
+        _id: _idRef.current,
       })
     );
   }, [location]);
@@ -191,7 +191,7 @@ const Products = ({ user3 }) => {
     getAllCarts();
   }, [location, user]);
   const response2 = async () => {
-    const response = await fetch(`${API_BASE_URL}/api/user/${_id}`, {
+    const response = await fetch(`${API_BASE_URL}/api/user/${_idRef.current}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ location: location }),
@@ -232,7 +232,7 @@ const Products = ({ user3 }) => {
     setdisplay2("hidden");
     setdisplay3("visible");
     setLocationName(event);
-    const response2 = fetch(`${API_BASE_URL}/api/user/${_id}`, {
+    const response2 = fetch(`${API_BASE_URL}/api/user/${_idRef.current}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ event }),
@@ -556,7 +556,7 @@ const Products = ({ user3 }) => {
           email: Email,
           image: profile,
           location: location,
-          _id: _id,
+          _id: _idRef.current,
         })
       );
       checkouturl && window.location.replace(checkouturl);
@@ -587,7 +587,7 @@ const Products = ({ user3 }) => {
   }, [socket, _idRef]);
   const getNotify = async () => {
     const response = await fetch(
-      `${API_BASE_URL}/api/Notify/getNotify/${_id}`,
+      `${API_BASE_URL}/api/Notify/getNotify/${_idRef.current}`,
       {
         method: "GET",
         headers: { "Content-Type": "application/json", authorization: token },
