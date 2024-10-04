@@ -37,6 +37,7 @@ const socket = io("https://mainkaju.onrender.com");
 const Products = ({ user3 }) => {
   const dispatch2 = useDispatch();
   const todo = useSelector((state) => state.tech.tech);
+  console.log("the toddo is ", todo);
   const myCarts = useSelector((state) => state.cart.cart);
   //dispatch2(setTech(todo));
   const toastify = () => {
