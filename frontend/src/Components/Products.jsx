@@ -1240,7 +1240,7 @@ const Products = ({ user3 }) => {
                                 </div>
                               </div>
 
-                              <div className="mt-8 flex space-x-3 bg-blue-500 text-white px-4 py-2 w-16 h-12 ml-10   rounded-md">
+                              <div className="mt-8 flex space-x-5  text-white px-4 py-2 w-16 h-12 ml-10   rounded-md">
                                 <button
                                   onClick={() =>
                                     HandleBuy(
@@ -1250,10 +1250,14 @@ const Products = ({ user3 }) => {
                                       items._id
                                     )
                                   }
+                                  className="bg-blue-500 hover:bg-blue-400"
                                 >
                                   Buy
                                 </button>
-                                <button onClick={() => HandleDelete(items._id)}>
+                                <button
+                                  onClick={() => HandleDelete(items._id)}
+                                  className="bg-red-500 hover:bg-red-400"
+                                >
                                   Remove
                                 </button>
                               </div>
@@ -1274,7 +1278,7 @@ const Products = ({ user3 }) => {
                                   />
                                 </div>
                               </div>
-                              <div className="mt-8 flex space-x-3 bg-blue-500 text-white px-4 py-2 w-16 h-12 ml-10   rounded-md">
+                              <div className="mt-8 flex space-x-5  text-white px-4 py-2 w-16 h-12 ml-10   rounded-md">
                                 <button
                                   onClick={() =>
                                     HandleBuy(
@@ -1284,10 +1288,14 @@ const Products = ({ user3 }) => {
                                       items._id
                                     )
                                   }
+                                  className="bg-blue-500 hover:bg-blue-400"
                                 >
                                   Buy
                                 </button>
-                                <button onClick={() => HandleDelete(items._id)}>
+                                <button
+                                  onClick={() => HandleDelete(items._id)}
+                                  className="bg-red-500 hover:bg-red-400"
+                                >
                                   Remove
                                 </button>
                               </div>
@@ -1308,7 +1316,7 @@ const Products = ({ user3 }) => {
                                   />
                                 </div>
                               </div>
-                              <div className="mt-8 flex space-x-3 bg-blue-500 text-white px-4 py-2 w-16 h-12 ml-10   rounded-md">
+                              <div className="mt-8 flex space-x-5  text-white px-4 py-2 w-16 h-12 ml-10   rounded-md">
                                 <button
                                   onClick={() =>
                                     HandleBuy(
@@ -1318,10 +1326,14 @@ const Products = ({ user3 }) => {
                                       items._id
                                     )
                                   }
+                                  className="bg-blue-500 hover:bg-blue-400"
                                 >
                                   Buy
                                 </button>
-                                <button onClick={() => HandleDelete(items._id)}>
+                                <button
+                                  onClick={() => HandleDelete(items._id)}
+                                  className="bg-red-500 hover:bg-red-400"
+                                >
                                   Remove
                                 </button>
                               </div>
@@ -1342,7 +1354,7 @@ const Products = ({ user3 }) => {
                                   />
                                 </div>
                               </div>
-                              <div className="mt-8 flex space-x-3 bg-blue-500 text-white px-4 py-2 w-16 h-12 ml-10   rounded-md">
+                              <div className="mt-8 flex space-x-5  text-white px-4 py-2 w-16 h-12 ml-10   rounded-md">
                                 <button
                                   onClick={() =>
                                     HandleBuy(
@@ -1352,10 +1364,14 @@ const Products = ({ user3 }) => {
                                       items._id
                                     )
                                   }
+                                  className="bg-blue-500 hover:bg-blue-400"
                                 >
                                   Buy
                                 </button>
-                                <button onClick={() => HandleDelete(items._id)}>
+                                <button
+                                  onClick={() => HandleDelete(items._id)}
+                                  className="bg-red-500 hover:bg-red-400"
+                                >
                                   Remove
                                 </button>
                               </div>
