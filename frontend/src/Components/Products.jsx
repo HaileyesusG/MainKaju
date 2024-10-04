@@ -73,7 +73,7 @@ const Products = ({ user3 }) => {
   useEffect(() => {
     setEmail(user ? user.email : "");
     setId(todo.length > 0 ? todo[0]._id : "");
-    console.log("the id is is  is ", todo[0]._id);
+    if (todo.length > 0) console.log("the id is is  is ", todo[0]._id);
     // setToken(user ? user.token : "");
   }, [todo]);
 
