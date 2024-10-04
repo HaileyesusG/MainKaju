@@ -53,7 +53,8 @@ const getNotify = async (req, res) => {
   const { id } = req.params;
   console.log("");
   const result2 = await Notify.find({ ownerId: id });
-  res.status(200).json(result2);
+  const result3 = result2.reverse();
+  res.status(200).json(result3);
 };
 
 module.exports = {
