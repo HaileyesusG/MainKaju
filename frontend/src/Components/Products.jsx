@@ -69,12 +69,10 @@ const Products = ({ user3 }) => {
   const Phonenumber = user ? user.phonenumber : "";
   const [Email, setEmail] = useState(user ? user.email : "");
   const [_id, setId] = useState(todo.length > 0 ? todo[0]._id : "");
-  // const [token, setToken] = useState(user ? user.token : "");
   useEffect(() => {
     setEmail(user ? user.email : "");
     setId(todo.length > 0 ? todo[0]._id : "");
-    if (todo.length > 0) console.log("the id is is  is ", todo[0]._id);
-    // setToken(user ? user.token : "");
+    if (todo.length > 0) setId(todo[0]._id);
   }, [todo]);
 
   const Location = user ? user.location : "";
