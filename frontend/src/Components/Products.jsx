@@ -64,7 +64,6 @@ const Products = ({ user3 }) => {
   }
   if (user3 !== "") {
     user = user3;
-    console.log("the user4 ", user4);
   }
   const Lastname = user ? user.lastname : "";
   const Gender = user ? user.gender : "";
