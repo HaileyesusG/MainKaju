@@ -61,6 +61,10 @@ const Products = ({ user3 }) => {
   let user = todo;
   user = user[0];
   let token = user ? "Bearer " + user.tk : "";
+  console.log("the token ", token);
+  if (token == "Bearer " + undefined) {
+    token = user3 ? "Bearer " + user3.token : "";
+  }
   const Lastname = user ? user.lastname : "";
   const Gender = user ? user.gender : "";
   const Phonenumber = user ? user.phonenumber : "";
@@ -1126,7 +1130,7 @@ const Products = ({ user3 }) => {
                     <div className="border-r-indigo-200 w-[900px] h-80 ml-[-120px] relative overflow-hidden overflow-y-auto">
                       <div className="">
                         <ChatTechAd
-                          user={user}
+                          user={user.tk == undefined ? user3 : user}
                           className="w-full h-full object-cover"
                         />
                       </div>
@@ -1147,7 +1151,7 @@ const Products = ({ user3 }) => {
               </div>
               <div className="mt-[-90px]">
                 <ChatTech
-                  user={user}
+                  user={user.tk == undefined ? user3 : user}
                   owner={ownerId}
                   itemId={itemId}
                   className=""
@@ -1167,7 +1171,7 @@ const Products = ({ user3 }) => {
               </div>
               <div className="mt-[-90px]">
                 <ChatTech
-                  user={user}
+                  user={user.tk == undefined ? user3 : user}
                   owner={senderId}
                   tPrice={totalPrice}
                   itemId={itemId}
