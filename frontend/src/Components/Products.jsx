@@ -14,6 +14,7 @@ import { FaComputer } from "react-icons/fa6";
 import { MdOutlineWork } from "react-icons/md";
 import { BsCart4 } from "react-icons/bs";
 import StarRatingH from "./New";
+import { useRef } from "react";
 import ChatTech from "./ChatTech";
 import ChatTechAd from "./ChatTechAd";
 import { ToastContainer, toast } from "react-toastify";
@@ -69,7 +70,9 @@ const Products = ({ user3 }) => {
   let Gender = user ? user.gender : "";
   let Phonenumber = user ? user.phonenumber : "";
   const [Email, setEmail] = useState(user ? user.email : "");
-  let _id = user ? user._id : "";
+  const _idRef = useRef("");
+  let _id = user3 ? user3._id : "";
+  _idRef.current = _id;
   console.log("the user3 id is ", _id);
   // useEffect(() => {
   //   setId(user ? user._id : "");
@@ -571,7 +574,7 @@ const Products = ({ user3 }) => {
   useEffect(() => {
     socket.on("receive_message2", (msg) => {
       console.log("msg", msg);
-      console.log("msg id is", _id);
+      console.log("msg id is", _idRef.current);
       console.log("first Mane is", Firstname);
       if (msg.Receiver_id.toString() == _id.toString()) {
         setSenderId(msg.Sender_id);
@@ -582,7 +585,7 @@ const Products = ({ user3 }) => {
     return () => {
       socket.off("receive_message2");
     };
-  }, [socket]);
+  }, [socket, _idRef]);
   const getNotify = async () => {
     const response = await fetch(
       `${API_BASE_URL}/api/Notify/getNotify/${_id}`,
@@ -610,7 +613,7 @@ const Products = ({ user3 }) => {
     return () => {
       socket.off("MyNotify");
     };
-  }, [socket]);
+  }, [socket, _idRef]);
   useEffect(() => {
     socket.on("insertItems", (msg) => {
       console.log("i am in the table");
