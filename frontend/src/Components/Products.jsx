@@ -72,7 +72,7 @@ const Products = ({ user3 }) => {
   // const [token, setToken] = useState(user ? user.token : "");
   useEffect(() => {
     setEmail(user ? user.email : "");
-    setId(todo ? todo[0]._id : "");
+    setId(todo.length > 0 ? todo[0]._id : "");
     // setToken(user ? user.token : "");
   }, [todo]);
 
