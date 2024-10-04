@@ -60,7 +60,9 @@ const Products = () => {
   let user = todo;
   user = user[0];
   let token = user ? "Bearer " + user.tk : "";
-
+  const Lastname = user ? user.lastname : "";
+  const Gender = user ? user.gender : "";
+  const Phonenumber = user ? user.phonenumber : "";
   const [Email, setEmail] = useState(user ? user.email : "");
   const [_id, setId] = useState(todo.length > 0 ? todo[0]._id : "");
   useEffect(() => {
