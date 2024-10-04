@@ -30,7 +30,7 @@ import { FaHouseDamage } from "react-icons/fa";
 import { MdEditLocationAlt } from "react-icons/md";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 import { updateTech, setTech } from "../features/tech/techSlice";
-import { updateCart, addCartt } from "../features/cart/cartSlice";
+import { updateCart, addCartt, removeCart } from "../features/cart/cartSlice";
 import { useDispatch } from "react-redux";
 import { ImLocation } from "react-icons/im";
 const socket = io("https://mainkaju.onrender.com");
