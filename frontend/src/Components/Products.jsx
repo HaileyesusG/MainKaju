@@ -34,7 +34,7 @@ import { updateCart, addCartt } from "../features/cart/cartSlice";
 import { useDispatch } from "react-redux";
 import { ImLocation } from "react-icons/im";
 const socket = io("https://mainkaju.onrender.com");
-const Products = ({ user3 }) => {
+const Products = () => {
   const dispatch2 = useDispatch();
   const todo = useSelector((state) => state.tech.tech);
   console.log("the toddo is ", todo);
@@ -60,18 +60,13 @@ const Products = ({ user3 }) => {
   let user = todo;
   user = user[0];
   let token = user ? "Bearer " + user.tk : "";
-  console.log("the token ", token);
-  if (token == "Bearer " + undefined) {
-    token = user3 ? "Bearer " + user3.token : "";
-  }
 
   const [Email, setEmail] = useState(user ? user.email : "");
   const [_id, setId] = useState(todo.length > 0 ? todo[0]._id : "");
   useEffect(() => {
-    setEmail(user.email);
-    setId(user._id);
+    setId(user ? user._id : "");
     setLoading(false); // Data is loaded, set loading to false
-  }, [todo]);
+  }, [user]);
 
   const Location = user ? user.location : "";
   const profile = user ? user.image : "";
@@ -80,10 +75,7 @@ const Products = ({ user3 }) => {
   const Id = user ? user.id : "";
   //critical
   let user4;
-  if (user3 !== "") {
-    user4 = user3;
-    console.log("the user4 ", user4);
-  }
+
   const [choice, setChoice] = useState(false);
   const [propertyType, setPropertyType] = useState("");
   const [searchText, setSearchText] = useState("");
@@ -836,7 +828,7 @@ const Products = ({ user3 }) => {
       </div>
       {handleProfile && (
         <div className="absolute bg-slate-50 text-4xl ml-[700px]  h-[430px] mt-[-14px] w-[500px]">
-          <UserProfile user4={user4} />
+          <UserProfile user4={user} />
         </div>
       )}
       <div
@@ -1131,7 +1123,7 @@ const Products = ({ user3 }) => {
                     <div className="border-r-indigo-200 w-[900px] h-80 ml-[-120px] relative overflow-hidden overflow-y-auto">
                       <div className="">
                         <ChatTechAd
-                          user={user4}
+                          user={user}
                           className="w-full h-full object-cover"
                         />
                       </div>
@@ -1152,7 +1144,7 @@ const Products = ({ user3 }) => {
               </div>
               <div className="mt-[-90px]">
                 <ChatTech
-                  user={user4}
+                  user={user}
                   owner={ownerId}
                   itemId={itemId}
                   className=""

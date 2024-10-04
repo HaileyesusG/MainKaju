@@ -26,7 +26,7 @@ import { io } from "socket.io-client";
 import Products from "./Components/Products";
 // const socket = io("https://mainkaju.onrender.com");
 function App() {
-  const todo2 = useSelector((state) => state.tech.tech);
+  //const todo2 = useSelector((state) => state.tech.tech);
   const [user, setUser] = useState();
   const dispatch2 = useDispatch();
   useEffect(() => {
@@ -75,7 +75,7 @@ function App() {
           <Route path="/SignUp" element={<SignUp />} />
           <Route path="/SignUpA" element={<SignUpA />} />
           <Route path="/Login" element={<Login />} />
-          <Route path="/" element={<Products user3={user || todo2[0]} />} />
+          <Route path="/" element={<Products />} />
           <Route path="/New" element={<New />} />
           <Route path="/PictureUploader" element={<PictureUploader />} />
         </Routes>
