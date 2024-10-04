@@ -26,6 +26,9 @@ const CartCreate = async (req, res) => {
   if (exist || Carts.userId == userId) {
     return;
   }
+  if (Carts.userId.toString() == userId.toString()) {
+    return;
+  }
 
   const carts = await Cart.create({
     category,
