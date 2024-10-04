@@ -830,8 +830,8 @@ const Products = ({ user3 }) => {
                   onClick={() => handleChoiceChange(suggestion.display_name)}
                   className=" "
                 >
-                  <div className="flex">
-                    <ImLocation className="text-2xl p-1 text-green-500 " />
+                  <div className="flex text-white">
+                    <ImLocation className="text-2xl p-1 text-white " />
                     {suggestion.display_name}
                   </div>
                 </li>
@@ -913,7 +913,7 @@ const Products = ({ user3 }) => {
                 <img
                   src={item.image}
                   alt="Product image"
-                  className="w-56 h-64 cursor-pointer"
+                  className="w-56 h-64 cursor-pointer hover:w-60 hover:h-72"
                 />
 
                 {item.category == "car" ? (
