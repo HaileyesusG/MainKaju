@@ -575,7 +575,7 @@ const Products = ({ user3 }) => {
       console.log("msg", msg);
       console.log("msg id is", _idRef.current);
       console.log("first Mane is", Firstname);
-      if (msg.Receiver_id.toString() == _id.toString()) {
+      if (msg.Receiver_id == _idRef.current) {
         setSenderId(msg.Sender_id);
         console.log("msg.Sender_id", msg.Sender_id);
         setChatNumber((prev) => prev + 1);
@@ -605,7 +605,7 @@ const Products = ({ user3 }) => {
       console.log("msg", msg);
       console.log("the msg id is", _id);
       const { file, owner } = msg;
-      if (owner.toString() === _id.toString()) {
+      if (owner === _idRef.current) {
         getNotify();
       }
     });
