@@ -69,11 +69,11 @@ const Products = ({ user3 }) => {
   const Gender = user ? user.gender : "";
   const Phonenumber = user ? user.phonenumber : "";
   const [Email, setEmail] = useState(user ? user.email : "");
-  const [_id, setId] = useState(todo.length > 0 ? todo[0]._id : "");
-  useEffect(() => {
-    setId(user ? user._id : "");
-    setLoading(false); // Data is loaded, set loading to false
-  }, [user]);
+  const _id = user3 ? user3._id : "";
+  // useEffect(() => {
+  //   setId(user ? user._id : "");
+  //   setLoading(false); // Data is loaded, set loading to false
+  // }, [user]);
 
   const Location = user ? user.location : "";
   const profile = user ? user.image : "";
