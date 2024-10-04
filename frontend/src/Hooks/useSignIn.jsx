@@ -28,7 +28,7 @@ export const useSignIn = () => {
       // const convert = [json];
       //dispatch({ type: "LOGIN", payload: json });
       console.log("json", json);
-      dispatch2(addTech(json));
+      dispatch2(setTech(json));
       red("/");
       //save the user on local storage
       localStorage.setItem("user", JSON.stringify(json));

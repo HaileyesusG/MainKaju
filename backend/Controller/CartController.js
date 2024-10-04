@@ -8,6 +8,7 @@ const CartCreate = async (req, res) => {
   const userId = req.User._id;
   const { id } = req.params;
   const { category } = req.body;
+  const itemId = id;
   let Carts;
   if (category == "car") {
     Carts = await Car.findOne({ _id: itemId });
@@ -21,7 +22,6 @@ const CartCreate = async (req, res) => {
   if (category == "other") {
     Carts = await Other.findOne({ _id: itemId });
   }
-  const itemId = id;
   const exist = await Cart.findOne({ itemId: id, userId: userId });
   if (exist || Carts.userId == userId) {
     return;
