@@ -62,7 +62,7 @@ const Products = ({ user3 }) => {
   if (token == "Bearer " + undefined) {
     token = user3 ? "Bearer " + user3.token : "";
   }
-  
+
   const Lastname = user ? user.lastname : "";
   const Gender = user ? user.gender : "";
   const Phonenumber = user ? user.phonenumber : "";
@@ -73,7 +73,7 @@ const Products = ({ user3 }) => {
     setEmail(user ? user.email : "");
     setId(user ? user._id : "");
     // setToken(user ? user.token : "");
-  }, [user]);
+  }, [user, user3]);
 
   const Location = user ? user.location : "";
   const profile = user ? user.image : "";
