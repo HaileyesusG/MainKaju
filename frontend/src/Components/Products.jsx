@@ -1037,6 +1037,7 @@ const Products = ({ user3 }) => {
                   </div>
                 </div>
                 <h2 className="ml-5 mt-2  ">
+                  <StarRating rating={selectedProduct.averageRating} />
                   <p className="text-[15px] ">Trades:{" " + 1 + " "}Trades</p>
                   <strong className="text-2xl flex  mt-2">
                     <p className="text-[15px] mt-2 mr-2">Br</p>
