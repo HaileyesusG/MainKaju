@@ -1036,20 +1036,29 @@ const Products = ({ user3 }) => {
                     </button>
                   </div>
                 </div>
-                <h2 className="ml-5 mt-2  ">
-                  <StarRating rating={selectedProduct.averageRating} />
-                  <p className="text-[15px] ">Trades:{" " + 1 + " "}Trades</p>
-                  <strong className="text-2xl flex  mt-2">
-                    <p className="text-[15px] mt-2 mr-2">Br</p>
+                <div className="flex">
+                  <div>
+                    <h2 className="ml-5 mt-2  ">
+                      <StarRating rating={selectedProduct.averageRating} />
+                      <p className="text-[15px] ">
+                        Trades:{" " + 1 + " "}Trades
+                      </p>
+                      <strong className="text-2xl flex  mt-2">
+                        <p className="text-[15px] mt-2 mr-2">Br</p>
 
-                    {selectedProduct.price}
-                  </strong>{" "}
-                </h2>
-                <div className="flex ml-5">
-                  <p className="text-slate-600 mr-3">Limit</p>
-                  {selectedProduct.Llimit + " - " + selectedProduct.Ulimit}
+                        {selectedProduct.price}
+                      </strong>{" "}
+                    </h2>
+                    <div className="flex ml-5">
+                      <p className="text-slate-600 mr-3">Limit</p>
+                      {selectedProduct.Llimit + " - " + selectedProduct.Ulimit}
+                    </div>
+                    <p className="text-slate-600 mr-3 mt-3 ml-5"></p>
+                  </div>
+                  <div className="ml-5 max-h-40 overflow-y-scroll">
+                    {selectedProduct.description}
+                  </div>
                 </div>
-                <p className="text-slate-600 mr-3 mt-3 ml-5"></p>
                 <div className="w-80 ml-12 ">
                   <button
                     onClick={async () =>
@@ -1062,7 +1071,7 @@ const Products = ({ user3 }) => {
                   >
                     Add To Buy
                   </button>
-                  <div className="mt-5 ml-5">{selectedProduct.description}</div>
+
                   <div className="">
                     <ToastContainer />
                   </div>
