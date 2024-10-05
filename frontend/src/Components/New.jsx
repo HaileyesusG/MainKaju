@@ -20,6 +20,7 @@ const StarRatingH = ({ user }) => {
     setHoverRating(starIndex + 1);
   };
   const postComment = () => {
+    console.log("the rating is ", rating);
     if (user == undefined) {
       toastify();
       console.log("toast");
