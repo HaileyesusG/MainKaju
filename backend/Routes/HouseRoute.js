@@ -18,5 +18,5 @@ router.route("/GetAllHouse").get(GetAllHouse);
 router.route("/GetOneHouse/:id").get(GetOneHouse);
 router.route("/HouseCreate").post(AuthenticationUser, upload2, HouseCreate);
 router.route("/fetchRating/:id").get(fetchRating);
-router.route("/rateHouse/:id").get(AuthenticationUser, rateHouse);
+router.route("/rateHouse/:id").post(AuthenticationUser, rateHouse);
 module.exports = router;

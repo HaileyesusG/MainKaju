@@ -38,27 +38,27 @@ const StarRatingH = ({ user, id, category }) => {
       const response = await fetch(
         `${API_BASE_URL}/api/House/rateHouse/${id}`,
         {
-          method: "GET",
+          method: "POST",
           body: JSON.stringify({ rating: rating, comment: comment }),
           headers: { "Content-Type": "application/json", authorization: token },
         }
       );
       if (response.ok) {
         const json = await response.json();
-        setJson(json);
+        // setJson(json);
         console.log("the json is", json);
       }
     }
 
     if (category == "car") {
       const response = await fetch(`${API_BASE_URL}/api/car/ratecar/${id}`, {
-        method: "GET",
+        method: "POST",
         body: JSON.stringify({ rating: rating, comment: comment }),
         headers: { "Content-Type": "application/json", authorization: token },
       });
       if (response.ok) {
         const json = await response.json();
-        setJson(json);
+        // setJson(json);
         console.log("the json is", json);
       }
     }
@@ -67,14 +67,14 @@ const StarRatingH = ({ user, id, category }) => {
       const response = await fetch(
         `${API_BASE_URL}/api/electronics/rateelectronics/${id}`,
         {
-          method: "GET",
+          method: "POST",
           body: JSON.stringify({ rating: rating, comment: comment }),
           headers: { "Content-Type": "application/json", authorization: token },
         }
       );
       if (response.ok) {
         const json = await response.json();
-        setJson(json);
+        // setJson(json);
         console.log("the json is", json);
       }
     }
@@ -83,14 +83,14 @@ const StarRatingH = ({ user, id, category }) => {
       const response = await fetch(
         `${API_BASE_URL}/api/other/rateother/${id}`,
         {
-          method: "GET",
+          method: "POST",
           body: JSON.stringify({ rating: rating, comment: comment }),
           headers: { "Content-Type": "application/json", authorization: token },
         }
       );
       if (response.ok) {
         const json = await response.json();
-        setJson(json);
+        // setJson(json);
         console.log("the json is", json);
       }
     }
