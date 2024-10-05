@@ -12,6 +12,7 @@ const StarRatingH = ({ user, id, category }) => {
   console.log("the token ", token);
   if (token == "Bearer " + undefined) {
     token = user ? "Bearer " + user.token : "";
+    console.log("the second token ", token);
   }
 
   const handleStarClick = (starIndex) => {
