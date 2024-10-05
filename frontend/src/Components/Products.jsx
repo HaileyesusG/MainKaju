@@ -507,6 +507,7 @@ const Products = ({ user3 }) => {
       }
     }
     setRatedUsers(users);
+    console.log("user is", users);
     //
     const response = await fetch(
       `${API_BASE_URL}/api/user/GetOneUserById/${userId}`
