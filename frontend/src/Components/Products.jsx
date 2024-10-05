@@ -503,7 +503,7 @@ const Products = ({ user3 }) => {
           image: user.image,
         });
 
-        console.log("user is", usersComment);
+        console.log("user is", users);
       }
     }
     setRatedUsers(users);
