@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-const StarRating = ({ user }) => {
+const StarRatingH = ({ user }) => {
   const totalStars = 5;
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
@@ -79,4 +79,4 @@ const StarRating = ({ user }) => {
   );
 };
 
-export default StarRating;
+export default StarRatingH;
