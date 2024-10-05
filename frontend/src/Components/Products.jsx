@@ -495,7 +495,8 @@ const Products = ({ user3 }) => {
         `${API_BASE_URL}/api/user/GetOneUserById/${userId.userId}`
       );
       if (response.ok) {
-        const user = await response.json();
+        let user = await response.json();
+        user = user[0];
         users.push({
           userName: user.firstname,
           comment: userId.comment,
