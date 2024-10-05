@@ -1099,7 +1099,11 @@ const Products = ({ user3 }) => {
                     ))}
                   </ul>
                   <div className="ml-5">
-                    <StarRatingH user={user== undefined ? user3 : user} />
+                    <StarRatingH
+                      user={user == undefined ? user3 : user}
+                      id={selectedProduct._id}
+                      category={selectedProduct.category}
+                    />
                   </div>
                 </div>
               </div>

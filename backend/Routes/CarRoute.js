@@ -17,6 +17,6 @@ const router = express.Router();
 router.route("/GetAllCar").get(GetAllCar);
 router.route("/GetOneCar/:id").get(GetOneCar);
 router.route("/fetchRating/:id").get(fetchRating);
-router.route("/rateCar/:id").get(rateCar);
+router.route("/rateCar/:id").get(AuthenticationUser, rateCar);
 router.route("/CarCreate").post(AuthenticationUser, upload2, CarCreate);
 module.exports = router;

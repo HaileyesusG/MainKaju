@@ -206,39 +206,39 @@ const GetOneElectronics = async (req, res) => {
   const user = await User.findById(userId);
   res.status(200).json({ result, user });
 };
-//rating
-// const rateElectronics = async (req, res) => {
-//   const { rating, comment } = req.body;
-//   const { id } = req.params;
-//   const userId = req.User._id; // Assuming user is authenticated
+rating;
+const rateElectronics = async (req, res) => {
+  const { rating, comment } = req.body;
+  const { id } = req.params;
+  const userId = req.User._id; // Assuming user is authenticated
 
-//   try {
-//     const product = await Electronics.findById(id);
+  try {
+    const product = await Electronics.findById(id);
 
-//     // Check if user has already rated
-//     const existingRating = product.ratings.find(
-//       (r) => r.userId.toString() === userId.toString()
-//     );
+    // Check if user has already rated
+    const existingRating = product.ratings.find(
+      (r) => r.userId.toString() === userId.toString()
+    );
 
-//     if (existingRating) {
-//       // Update rating
-//       existingRating.rating = rating;
-//       existingRating.comment = comment;
-//     } else {
-//       // Add new rating
-//       product.ratings.push({ userId, rating, comment });
-//     }
+    if (existingRating) {
+      // Update rating
+      existingRating.rating = rating;
+      existingRating.comment = comment;
+    } else {
+      // Add new rating
+      product.ratings.push({ userId, rating, comment });
+    }
 
-//     // Update average rating
-//     const totalRating = product.ratings.reduce((acc, r) => acc + r.rating, 0);
-//     product.averageRating = totalRating / product.ratings.length;
+    // Update average rating
+    const totalRating = product.ratings.reduce((acc, r) => acc + r.rating, 0);
+    product.averageRating = totalRating / product.ratings.length;
 
-//     await product.save();
-//     res.status(200).json(product);
-//   } catch (err) {
-//     res.status(500).json({ message: "Error adding rating", error: err });
-//   }
-// };
+    await product.save();
+    res.status(200).json(product);
+  } catch (err) {
+    res.status(500).json({ message: "Error adding rating", error: err });
+  }
+};
 //fetch rating
 // const fetchRating = async (req, res) => {
 //   const { id } = req.params;
@@ -254,4 +254,5 @@ module.exports = {
   GetOneElectronics,
   ElectronicsCreate,
   GetAllElectronics,
+  rateElectronics,
 };

@@ -1,10 +1,18 @@
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-const StarRatingH = ({ user }) => {
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+const StarRatingH = ({ user, id, category }) => {
   const totalStars = 5;
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
+  const [comment, setComment] = useState("");
+
+  let token = user ? "Bearer " + user.tk : "";
+  console.log("the token ", token);
+  if (token == "Bearer " + undefined) {
+    token = user ? "Bearer " + user.token : "";
+  }
 
   const handleStarClick = (starIndex) => {
     setRating(starIndex + 1);
@@ -19,12 +27,72 @@ const StarRatingH = ({ user }) => {
   const handleStarHover = (starIndex) => {
     setHoverRating(starIndex + 1);
   };
-  const postComment = () => {
+  const postComment = async () => {
     console.log("the rating is ", rating);
     if (user == undefined) {
       toastify();
       console.log("toast");
       return;
+    }
+    if (category == "house") {
+      const response = await fetch(
+        `${API_BASE_URL}/api/House/rateHouse/${id}`,
+        {
+          method: "GET",
+          body: JSON.stringify({ rating: rating, comment: comment }),
+          headers: { "Content-Type": "application/json", authorization: token },
+        }
+      );
+      if (response.ok) {
+        const json = await response.json();
+        setJson(json);
+        console.log("the json is", json);
+      }
+    }
+
+    if (category == "car") {
+      const response = await fetch(`${API_BASE_URL}/api/car/ratecar/${id}`, {
+        method: "GET",
+        body: JSON.stringify({ rating: rating, comment: comment }),
+        headers: { "Content-Type": "application/json", authorization: token },
+      });
+      if (response.ok) {
+        const json = await response.json();
+        setJson(json);
+        console.log("the json is", json);
+      }
+    }
+
+    if (category == "electronics") {
+      const response = await fetch(
+        `${API_BASE_URL}/api/electronics/rateelectronics/${id}`,
+        {
+          method: "GET",
+          body: JSON.stringify({ rating: rating, comment: comment }),
+          headers: { "Content-Type": "application/json", authorization: token },
+        }
+      );
+      if (response.ok) {
+        const json = await response.json();
+        setJson(json);
+        console.log("the json is", json);
+      }
+    }
+
+    if (category == "other") {
+      const response = await fetch(
+        `${API_BASE_URL}/api/other/rateother/${id}`,
+        {
+          method: "GET",
+          body: JSON.stringify({ rating: rating, comment: comment }),
+          headers: { "Content-Type": "application/json", authorization: token },
+        }
+      );
+      if (response.ok) {
+        const json = await response.json();
+        setJson(json);
+        console.log("the json is", json);
+      }
     }
   };
   const handleStarLeave = () => {
@@ -52,7 +120,7 @@ const StarRatingH = ({ user }) => {
       </span>
     );
   };
-  const [comment, setComment] = useState("");
+
   const handleCommentChange = (event) => {
     setComment(event.target.value);
   };

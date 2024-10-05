@@ -2,6 +2,7 @@ const {
   GetOneElectronics,
   ElectronicsCreate,
   GetAllElectronics,
+  rateElectronics,
 } = require("../Controller/ElectronicsController");
 
 const multer = require("multer");
@@ -14,6 +15,7 @@ const express = require("express");
 const router = express.Router();
 router.route("/GetAllElectronics").get(GetAllElectronics);
 router.route("/GetOneElectronics/:id").get(GetOneElectronics);
+router.route("/rateElectronics/:id").get(AuthenticationUser, rateElectronics);
 router
   .route("/ElectronicsCreate")
   .post(AuthenticationUser, upload2, ElectronicsCreate);
