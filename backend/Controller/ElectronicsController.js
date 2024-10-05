@@ -206,7 +206,7 @@ const GetOneElectronics = async (req, res) => {
   const user = await User.findById(userId);
   res.status(200).json({ result, user });
 };
-rating;
+
 const rateElectronics = async (req, res) => {
   const { rating, comment } = req.body;
   const { id } = req.params;
