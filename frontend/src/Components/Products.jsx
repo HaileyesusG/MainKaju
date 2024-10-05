@@ -503,11 +503,10 @@ const Products = ({ user3 }) => {
           image: user.image,
         });
 
-        console.log("user is", users);
+        console.log("my user is ", user);
       }
     }
     setRatedUsers(users);
-    console.log("user is", users);
     //
     const response = await fetch(
       `${API_BASE_URL}/api/user/GetOneUserById/${userId}`
