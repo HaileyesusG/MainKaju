@@ -225,7 +225,7 @@ const ChatTech = ({ user, owner, tPrice, itemId }) => {
     if (response.ok) {
       const payment = await response.json();
       console.log("the payment", payment);
-      await notify(payment.Carts);
+      await notify(payment.updateCart);
       dispatch2(
         updateTech({
           id: Id2,
