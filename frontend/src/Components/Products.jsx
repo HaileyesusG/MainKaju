@@ -352,7 +352,7 @@ const Products = ({ user3 }) => {
     setViewDeposit(false);
     setViewChat(false);
     setViewChat2(false);
-    setViewithDrawType(false)
+    setViewithDrawType(false);
     setdisplay8("hidden");
   };
   const addCart = async (id, category) => {
@@ -1169,10 +1169,13 @@ const Products = ({ user3 }) => {
                   {viewithDrawType && (
                     <div className="border-r-indigo-200 w-[900px] h-80 ml-[-120px] relative overflow-hidden overflow-y-auto">
                       <div className="ml-[1100px] text-white  mt-20  ">
-                <button onClick={closeModal} className="mt-2 text-white ">
-                  <IoIosClose className="text-4xl" />
-                </button>
-              </div>
+                        <button
+                          onClick={closeModal}
+                          className="mt-2 text-white "
+                        >
+                          <IoIosClose className="text-4xl" />
+                        </button>
+                      </div>
                       <div className="">
                         <ChatTechAd
                           user={user.tk == undefined ? user3 : user}
@@ -1209,7 +1212,7 @@ const Products = ({ user3 }) => {
         {viewChat2 && (
           <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
             <div className="bg-white w-full h-full  ml-[-200px] p-4 mt-40    overflow-y-scroll ">
-              <div className="ml-[1120px] text-white  mt-20  ">
+              <div className="ml-[1120px]   mt-20  ">
                 <button onClick={closeModal} className="mt-2 text-white ">
                   <IoIosClose className="text-4xl" />
                 </button>
