@@ -1213,7 +1213,7 @@ const Products = ({ user3 }) => {
           <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
             <div className="bg-white w-full h-full  ml-[-200px] p-4 mt-40    overflow-y-scroll ">
               <div className="ml-[1120px]   mt-20  ">
-                <button onClick={closeModal} className="mt-2 text-white ">
+                <button onClick={closeModal} className="mt-2  ">
                   <IoIosClose className="text-4xl" />
                 </button>
               </div>
