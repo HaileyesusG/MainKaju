@@ -1202,7 +1202,7 @@ const Products = ({ user3 }) => {
         )}
         {viewChat2 && (
           <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
-            <div className="bg-green-900 w-full h-full  ml-[-200px] p-4 mt-40    overflow-y-scroll ">
+            <div className="bg-white w-full h-full  ml-[-200px] p-4 mt-40    overflow-y-scroll ">
               <div className="ml-[1120px] text-white  mt-20  ">
                 <button onClick={closeModal} className="mt-2 text-white ">
                   <IoIosClose className="text-4xl" />

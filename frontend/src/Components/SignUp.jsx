@@ -140,12 +140,12 @@ const SignUp = () => {
   return (
     <div>
       {View2 && (
-        <div className=" mt-12   h-[790px] w-[700px] ml-[300px] absolute bg-opacity-50 backdrop-filter backdrop-blur-sm border-[1px] border-white">
+        <div className=" mt-12 bg-slate-100   h-[790px] w-[700px] ml-[320px] absolute bg-opacity-50 backdrop-filter backdrop-blur-sm border-[1px] border-black ">
           {!isOtpSent ? (
-            <div className="absolute ml-2">
+            <div className="absolute ml-7">
               <form onSubmit={generateOtp} className="to-blue-100">
-                <div className=" flex flex-col justify-center ml-[290px] mb-6 mt-5">
-                  <h3 className=" font-bold text-3xl text-white">Sign Up</h3>
+                <div className=" flex flex-col justify-center ml-[260px] mb-6 mt-5">
+                  <h3 className=" font-bold text-3xl ">Sign Up</h3>
                 </div>
 
                 <div className=" flex   justify-center items-center space-y-3   ">
@@ -157,10 +157,10 @@ const SignUp = () => {
                         type="text"
                         onChange={(e) => setFirstname(e.target.value)}
                         value={firstname}
-                        className="bg-transparent   h-[35px] w-[300px]  border-2 block focus:outline-none focus:border-white  rounded-2xl   px-4 placeholder-white text-white "
+                        className="bg-transparent border-black   h-[35px] w-[300px]  border-2 block  focus:  rounded-2xl   px-4   "
                         id="myInput"
                       />
-                      <FaUser className="text-white mt-2 absolute ml-[270px]" />
+                      <FaUser className=" mt-2 absolute ml-[270px]" />
                     </div>
                     <div className="flex">
                       <input
@@ -169,9 +169,9 @@ const SignUp = () => {
                         type="text"
                         onChange={(e) => setLastname(e.target.value)}
                         value={lastname}
-                        className="bg-transparent   h-[35px] w-[300px]  border-2 block focus:outline-none focus:border-white  rounded-2xl   px-4 placeholder-white text-white"
+                        className="bg-transparent   h-[35px] w-[300px]  border-2 border-black block  focus:  rounded-2xl   px-4  "
                       />
-                      <FaUser className="text-white mt-2 absolute ml-[270px]" />
+                      <FaUser className=" mt-2 absolute ml-[270px]" />
                     </div>
 
                     <div className="flex">
@@ -181,9 +181,9 @@ const SignUp = () => {
                         type="text"
                         onChange={(e) => setPhonenumber(e.target.value)}
                         value={mobileMoney}
-                        className="bg-transparent   h-[35px] w-[300px]  border-2 block focus:outline-none focus:border-white  rounded-2xl   px-4 placeholder-white text-white"
+                        className="bg-transparent border-black   h-[35px] w-[300px]  border-2 block  focus:  rounded-2xl   px-4  "
                       />
-                      <AiFillPhone className="text-white mt-2 absolute ml-[270px]" />
+                      <AiFillPhone className=" mt-2 absolute ml-[270px]" />
                     </div>
 
                     <div className="flex">
@@ -193,9 +193,9 @@ const SignUp = () => {
                         type="email"
                         onChange={(e) => setEmail(e.target.value)}
                         value={email}
-                        className="bg-transparent   h-[35px] w-[300px]  border-2 block focus:outline-none focus:border-white  rounded-2xl   px-4 placeholder-white text-white"
+                        className="bg-transparent border-black   h-[35px] w-[300px]  border-2 block  focus:  rounded-2xl   px-4  "
                       />
-                      <MdEmail className="text-white mt-2 absolute ml-[270px]" />
+                      <MdEmail className=" mt-2 absolute ml-[270px]" />
                     </div>
                     <div className="flex">
                       <input
@@ -204,9 +204,9 @@ const SignUp = () => {
                         type="password"
                         onChange={(e) => setPassword(e.target.value)}
                         value={password}
-                        className="bg-transparent  h-[35px] w-[300px]  border-2 block focus:outline-none focus:border-white  rounded-2xl   px-4 placeholder-white text-white"
+                        className="bg-transparent border-black  h-[35px] w-[300px]  border-2 block  focus:  rounded-2xl   px-4  "
                       />
-                      <RiLockPasswordFill className="text-white mt-2 absolute ml-[270px]" />
+                      <RiLockPasswordFill className=" mt-2 absolute ml-[270px]" />
                     </div>
                     <div>
                       <div className="flex">
@@ -214,7 +214,7 @@ const SignUp = () => {
                           required
                           value={gender}
                           onChange={(e) => setGender(e.target.value)}
-                          className="bg-transparent  h-[35px] w-[300px]  border-2 block focus:outline-none   rounded-2xl px-4 text-white"
+                          className="bg-transparent border-black  h-[35px] w-[300px]  border-2 block    rounded-2xl px-4 "
                         >
                           <option className="px-3">Gender</option>
                           {GenderOption.map((option) => (
@@ -223,12 +223,10 @@ const SignUp = () => {
                             </option>
                           ))}
                         </select>
-                        <PiGenderFemaleDuotone className="text-white mt-2 absolute ml-[270px]" />
+                        <PiGenderFemaleDuotone className=" mt-2 absolute ml-[270px]" />
                       </div>
                       <div className="bg-red-500 ml-10 w-52 mt-2 rounded-sm">
-                        {genError && (
-                          <div className="ml-2 text-white ">{genError}</div>
-                        )}
+                        {genError && <div className="ml-2  ">{genError}</div>}
                       </div>
                     </div>
                   </div>
@@ -248,7 +246,7 @@ const SignUp = () => {
                             className="cursor-pointer w-[92px] h-[92px] rounded-full "
                           />
                         ) : (
-                          <IoMdPersonAdd className="text-[60px] ml-3 mt-3 text-white cursor-pointer overflow-hidden hover:text-[75px]" />
+                          <IoMdPersonAdd className="text-[60px] ml-3 mt-3  cursor-pointer overflow-hidden hover:text-[75px]" />
                         )}
                       </label>
 
@@ -270,9 +268,7 @@ const SignUp = () => {
                       </div>
                     </div>
                     <div className="bg-red-500   mt-2 rounded-md">
-                      {imError && (
-                        <div className="ml-4 text-white ">{imError}</div>
-                      )}
+                      {imError && <div className="ml-4  ">{imError}</div>}
                     </div>
                   </div>
                   <div className="">
@@ -285,7 +281,7 @@ const SignUp = () => {
                             className="cursor-pointer w-[92px] h-[92px] rounded-full "
                           />
                         ) : (
-                          <FaIdCard className="text-[60px]  ml-4 mt-4 text-white cursor-pointer overflow-hidden hover:text-[75px]" />
+                          <FaIdCard className="text-[60px]  ml-4 mt-4  cursor-pointer overflow-hidden hover:text-[75px]" />
                         )}
                       </label>
                       <input
@@ -307,9 +303,7 @@ const SignUp = () => {
                       </div>
                     </div>
                     <div className="bg-red-500   mt-2 rounded-sm">
-                      {imError2 && (
-                        <div className="ml-4 text-white ">{imError2}</div>
-                      )}
+                      {imError2 && <div className="ml-4  ">{imError2}</div>}
                     </div>
                   </div>
                   <div>
@@ -322,7 +316,7 @@ const SignUp = () => {
                             className="cursor-pointer w-[92px] h-[92px] rounded-full "
                           />
                         ) : (
-                          <FaIdCard className="text-[60px] ml-4 mt-4 text-white cursor-pointer overflow-hidden hover:text-[75px]" />
+                          <FaIdCard className="text-[60px] ml-4 mt-4  cursor-pointer overflow-hidden hover:text-[75px]" />
                         )}
                       </label>
                       <input
@@ -344,22 +338,20 @@ const SignUp = () => {
                       </div>
                     </div>
                     <div className="bg-red-500   mt-2 rounded-md">
-                      {imError3 && (
-                        <div className="ml-4 text-white ">{imError3}</div>
-                      )}
+                      {imError3 && <div className="ml-4  ">{imError3}</div>}
                     </div>
                   </div>
                 </div>
                 <div className="  justify-center mt-8 ml-36">
                   <button
                     disabled={false}
-                    className="bg-gradient-to-b hover:text-white h-[48px] w-96 hover:w-[420px] border-2  from-white rounded-3xl font-bold hover:to-purple-800 transition delay-200"
+                    className="bg-gradient-to-b hover: h-[48px] w-96 hover:w-[420px] border-2 border-black  from-green-500 rounded-3xl font-bold hover:to-purple-800 transition delay-200"
                   >
                     Apply
                   </button>
                   <div className="bg-red-500 ml-28 w-56 mt-2 rounded-md">
-                    {error && <div className="ml-2 text-white ">{error}</div>}
-                    {error2 && <div className="ml-5 text-white ">{error2}</div>}
+                    {error && <div className="ml-2  ">{error}</div>}
+                    {error2 && <div className="ml-5  ">{error2}</div>}
                   </div>
                 </div>
               </form>
@@ -375,20 +367,20 @@ const SignUp = () => {
                 onChange={(e) => setOtp(e.target.value)}
                 placeholder="Enter OTP"
                 required
-                className="bg-transparent  h-[55px] w-[300px]  border-2 block focus:outline-none focus:border-white  px-28 placeholder-white text-white "
+                className="bg-transparent  h-[55px] w-[300px]  border-2 block  focus:  px-28   "
               />
               <div className="ml-12 mt-3">
                 <button
                   onClick={handleSumit}
-                  className="bg-green-400 hover:text-white h-[48px] w-48 border-2  from-white rounded-3xl font-bold hover:bg-yellow-400 transition delay-200"
+                  className="bg-green-400 hover: h-[48px] w-48 border-2  from-white rounded-3xl font-bold hover:bg-yellow-400 transition delay-200"
                 >
                   Verify OTP
                 </button>
               </div>
 
               <div className="bg-red-500 ml-10 w-56 mt-2 rounded-md">
-                {error && <div className="ml-5 text-white ">{error}</div>}
-                {error2 && <div className="ml-5 text-white ">{error2}</div>}
+                {error && <div className="ml-5  ">{error}</div>}
+                {error2 && <div className="ml-5  ">{error2}</div>}
               </div>
             </div>
           )}
@@ -399,7 +391,8 @@ const SignUp = () => {
           <SuccessMessage />
         </div>
       )}
-      <img className="object-fill w-screen h-full" src={hiloe5} alt="" />
+      {/* <img className="object-fill w-screen h-full" src={hiloe5} alt="" /> */}
+      {/* <div className="object-fill w-screen h-full bg-blue-950"> </div> */}
     </div>
   );
 };

@@ -25,11 +25,11 @@ const Login = () => {
 
   return (
     <div>
-      <div className=" mt-36   h-[400px] w-[700px] ml-[310px] absolute bg-opacity-50 backdrop-filter backdrop-blur-sm border-[1px] border-white">
+      <div className=" mt-36 bg-slate-100  h-[400px] w-[700px] ml-[310px] absolute bg-opacity-50 backdrop-filter backdrop-blur-sm border-[1px] border-black">
         <div className="absolute">
           <form onSubmit={handleSumit}>
             <div className=" flex flex-col justify-center ml-[290px] mb-6 mt-12">
-              <h3 className=" font-bold text-3xl text-white">Log In</h3>
+              <h3 className=" font-bold text-3xl ">Log In</h3>
             </div>
 
             <div className="flex flex-col space-y-5 ml-48 ">
@@ -39,9 +39,9 @@ const Login = () => {
                   placeholder="Email"
                   onChange={(e) => setEmail(e.target.value)}
                   value={email}
-                  className="bg-transparent   h-[35px] w-[300px]  border-b-2 block focus:outline-none focus:border-white  rounded-2xl   px-4 placeholder-white text-white "
+                  className="bg-transparent border-black   h-[35px] w-[300px]  border-b-2 block  focus:border-white  rounded-2xl   px-4   "
                 />
-                <MdEmail className="text-white mt-2 absolute ml-[270px]" />
+                <MdEmail className=" mt-2 absolute ml-[270px]" />
               </div>
               <div className="flex">
                 <input
@@ -49,13 +49,13 @@ const Login = () => {
                   onChange={(e) => setPassword(e.target.value)}
                   value={password}
                   placeholder="Password"
-                  className="bg-transparent   h-[35px] w-[300px]  border-b-2 block focus:outline-none focus:border-white  rounded-2xl   px-4 placeholder-white text-white "
+                  className="bg-transparent border-black  h-[35px] w-[300px]  border-b-2 block    rounded-2xl   px-4   "
                 />
-                <RiLockPasswordFill className="text-white mt-2 absolute ml-[270px]" />
+                <RiLockPasswordFill className=" mt-2 absolute ml-[270px]" />
               </div>
               <button
                 disabled={isLoading}
-                className="bg-gradient-to-b hover:text-black h-[35px] w-[300px] border-2  from-orange-300 rounded-3xl font-bold hover:to-purple-500 transition delay-200 text-white"
+                className="bg-gradient-to-b border-black hover:text-black h-[35px] w-[300px] border-2  from-orange-300 rounded-3xl font-bold hover:to-purple-500 transition delay-200 "
               >
                 Log In
               </button>
@@ -64,7 +64,7 @@ const Login = () => {
           </form>
         </div>
       </div>
-      <img className="object-fill w-screen h-screen" src={hiloe5} alt="" />
+      {/* <img className="object-fill w-screen h-screen" src={hiloe5} alt="" /> */}
     </div>
   );
 };
