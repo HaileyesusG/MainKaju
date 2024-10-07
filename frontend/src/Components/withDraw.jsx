@@ -7,6 +7,7 @@ const WithdrawalForm = ({ user }) => {
   if (token == "Bearer " + undefined) {
     token = user ? "Bearer " + user.token : "";
   }
+  console.log("the token is ", token);
   const [formData, setFormData] = useState({
     fullname: "",
     email: "",
