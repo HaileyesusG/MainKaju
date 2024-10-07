@@ -1193,7 +1193,7 @@ const Products = ({ user3 }) => {
                 <IoIosClose className="text-4xl" />
               </button>
             </div>
-
+            <div className="text-4xl">Abebe beso beloa</div>
             <div className="overflow-hidden overflow-y-auto">
               <ChatTechAd
                 user={user == undefined ? user3 : user}
