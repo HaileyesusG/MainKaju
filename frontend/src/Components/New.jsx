@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useSelector } from "react-redux";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const StarRatingH = ({ user, id, category }) => {
   const totalStars = 5;
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
   const [comment, setComment] = useState("");
-
+  const todo = useSelector((state) => state.tech.tech);
+  user = todo[0];
   let token = user ? "Bearer " + user.tk : "";
   console.log("the token ", token);
   if (token == "Bearer " + undefined) {

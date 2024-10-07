@@ -121,7 +121,7 @@ const UserProfile = ({ user4 }) => {
   const handleSignOut = () => {
     localStorage.removeItem("user");
     dispatch2(logOut([]));
-    red(`/Products?key=${Date.now()}`);
+    red("/");
   };
   const handleLicense = (e) => {
     setLicense(e.target.value);
