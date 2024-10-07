@@ -6,7 +6,7 @@ const socket = io("https://mainkaju.onrender.com");
 const WithdrawalForm = ({ user }) => {
   const storedUser = localStorage.getItem("user");
   user = storedUser;
-  let token = user ? "Bearer " + user.token : "";
+  let token = storedUser.token;
   console.log("the token is ", storedUser);
   const [formData, setFormData] = useState({
     fullname: "",
