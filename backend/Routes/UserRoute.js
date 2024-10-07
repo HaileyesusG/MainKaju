@@ -7,6 +7,7 @@ const {
   UpdateOneUser,
   GetUserExcept,
   GetOneUserByEmail,
+  GetCustomer,
 } = require("../Controller/UserController");
 
 const express = require("express");
