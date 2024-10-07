@@ -320,7 +320,7 @@ const Products = ({ user3 }) => {
           "phone",
           "computer",
           "tablet",
-          "PlayStation",
+          "pes"||'playstation'||'ps',
           "Refrigerators",
         ],
         car: ["Toyota", "Honda", "Ford", "BMW", "Audi", "Suzuki", "Jeep"],
