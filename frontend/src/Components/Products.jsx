@@ -1064,7 +1064,7 @@ const Products = ({ user3 }) => {
                     <p className="text-slate-600 mr-3 mt-3 ml-5"></p>
                   </div>
                   <div className="ml-64 max-h-40 overflow-y-scroll overflow-x-scroll">
-                    <div className="mt-5 mr-10">
+                    <div className="mt-5 ml-[-20px]">
                       {selectedProduct.description}
                     </div>
                   </div>
