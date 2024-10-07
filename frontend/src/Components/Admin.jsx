@@ -884,8 +884,7 @@ const Admin = ({ user3 }) => {
         </div>
         <div
           className={
-            "bg-gray-100 w-96 h-[450px] absolute mt-24 ml-[576px] rounded-lg overflow-y-scroll  border-2 " +
-            disp15
+            "bg-gray-100 w-96 h-[450px] absolute mt-24 ml-[576px] rounded-lg overflow-y-scroll  border-2 "
           }
         >
           {array4 &&
@@ -941,6 +940,15 @@ const Admin = ({ user3 }) => {
             onClick={handleP}
           >
             <BiSolidMessageDetail className="ml-3 mt-3" />
+          </div>
+          <div
+            className={
+              array4.length == 0
+                ? "hidden"
+                : "absolute text-[19px] ml-7 mt-2 text-red-600 flex"
+            }
+          >
+            <FaCircle />
           </div>
           <div
             className="absolute text-white ml-8  text-[14px] font-bold  "
