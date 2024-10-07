@@ -349,7 +349,8 @@ const Admin = ({ user3 }) => {
     const token = "Bearer " + user.token;
 
     response = await fetch(`${API_BASE_URL}/api/user/GetCustomer`, {
-      headers: { authorization: token },
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
     });
     setJson(await response.json());
     setdisplay5("hidden");
