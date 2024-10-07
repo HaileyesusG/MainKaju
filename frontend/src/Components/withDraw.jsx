@@ -4,10 +4,10 @@ import { io } from "socket.io-client";
 import { useSelector } from "react-redux";
 const socket = io("https://mainkaju.onrender.com");
 const WithdrawalForm = ({ user }) => {
-  const todo = useSelector((state) => state.tech.tech);
-  user = todo[0];
+  const storedUser = localStorage.getItem("user");
+  user = storedUser;
   let token = user ? "Bearer " + user.token : "";
-  console.log("the token is ", todo);
+  console.log("the token is ", storedUser);
   const [formData, setFormData] = useState({
     fullname: "",
     email: "",
