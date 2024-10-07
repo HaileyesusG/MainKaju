@@ -6,11 +6,6 @@ const withdrawSchema = new mongoose.Schema(
       required: [true, "Please enter category"],
     },
 
-    userId: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: [true, "Please enter userid"],
-      ref: "User",
-    },
     email: {
       type: String,
       required: [true, "Please enter userEmail"],

@@ -21,6 +21,6 @@ router.post("/capturePayment/:id", capturePayment);
 router.get("/payoutToSeller", payoutToSeller);
 router.post("/transferToSeller", transferToSeller);
 router.post("/verifyPayment", verifyPayment);
-router.post("/withdraw", AuthenticationUser, withdraw);
+router.post("/withdraw", withdraw);
 router.post("/rechargeBalance", AuthenticationUser, rechargeBalance);
 module.exports = router;
