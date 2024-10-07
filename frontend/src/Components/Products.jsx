@@ -706,6 +706,9 @@ const Products = ({ user3 }) => {
       dispatch2(removeCart(itemId));
     }
   };
+  const handleReport = () => {
+    setViewithDrawType2(true);
+  };
   return (
     <div className={""} product={Product}>
       <div className=" flex  fixed bg-blue-900  top-0 left-0 w-full  z-10">
@@ -972,11 +975,11 @@ const Products = ({ user3 }) => {
             <div className="absolute ml-[80px]  mt-12">All</div>
             <div className="w-12 h-12 rounded-full bg-green-400 ml-16"></div>
           </div>
-          <div
-            className="ml-36 animate-bounce cursor-pointer"
-            onClick={() => setViewithDrawType2(true)}
-          >
-            <div className="ml-[78px]  mt-3 absolute  flex">
+          <div className="ml-36 animate-bounce cursor-pointer">
+            <div
+              className="ml-[78px]  mt-3 absolute  flex"
+              onClick={handleReport}
+            >
               <MdWifiCalling3 className="text-[20px] text-white ml-16  " />
               <div className="absolute ml-14  mt-8">Report</div>
             </div>
@@ -1183,6 +1186,22 @@ const Products = ({ user3 }) => {
             </div>
           </div>
         )}
+        {viewithDrawType2 && (
+          <div className="border-r-indigo-200 w-[900px] h-96 ml-[990px] absolute ">
+            <div className="ml-[800px] mt-[-20px]">
+              <button onClick={closeModal} className="mt-2  ">
+                <IoIosClose className="text-4xl" />
+              </button>
+            </div>
+
+            <div className="overflow-hidden overflow-y-auto">
+              <ChatTechAd
+                user={user == undefined ? user3 : user}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        )}
         {viewDeposit && (
           <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
             <div className="bg-slate-600 p-4 mt-40  h-[500px] w-[950px]">
@@ -1256,24 +1275,6 @@ const Products = ({ user3 }) => {
                       <div className="">
                         <WithdrawalForm
                           user={user3}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    </div>
-                  )}
-                  {viewithDrawType2 && (
-                    <div className="border-r-indigo-200 w-[900px] h-80 ml-[-120px] relative overflow-hidden overflow-y-auto">
-                      <div className="ml-[1100px] text-white  mt-20  ">
-                        <button
-                          onClick={closeModal}
-                          className="mt-2 text-white "
-                        >
-                          <IoIosClose className="text-4xl" />
-                        </button>
-                      </div>
-                      <div className="">
-                        <ChatTechAd
-                          user={user == undefined ? user3 : user}
                           className="w-full h-full object-cover"
                         />
                       </div>
