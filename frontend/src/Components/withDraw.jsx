@@ -2,11 +2,7 @@ import React, { useState } from "react";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 import { io } from "socket.io-client";
 const socket = io("https://mainkaju.onrender.com");
-const WithdrawalForm = ({ user }) => {
-  let token = user ? "Bearer " + user.token : "";
-  if (token == "Bearer " + undefined) {
-    token = user ? "Bearer " + user.token : "";
-  }
+const WithdrawalForm = ({ token }) => {
   console.log("the token is ", token);
   const [formData, setFormData] = useState({
     fullname: "",
