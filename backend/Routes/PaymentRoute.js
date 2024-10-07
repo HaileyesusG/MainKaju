@@ -8,6 +8,7 @@ const {
   rechargeBalance,
   merchantPayment,
   UpdateDeposit,
+  withdraw,
 } = require("../Controller/PaymentController");
 const AuthenticationUser = require("../MiddleWare/AuthenticationUser");
 const express = require("express");
@@ -20,5 +21,6 @@ router.post("/capturePayment/:id", capturePayment);
 router.get("/payoutToSeller", payoutToSeller);
 router.post("/transferToSeller", transferToSeller);
 router.post("/verifyPayment", verifyPayment);
+router.post("/withdraw", AuthenticationUser, withdraw);
 router.post("/rechargeBalance", AuthenticationUser, rechargeBalance);
 module.exports = router;

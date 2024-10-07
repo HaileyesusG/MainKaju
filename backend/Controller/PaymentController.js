@@ -5,6 +5,7 @@ const Cart = require("../Model/Cart");
 const Car = require("../Model/Car");
 const House = require("../Model/House");
 const Electronics = require("../Model/Electronics");
+const Withdraw = require("../Model/Withdraw");
 const CHAPA_BASE_URL = process.env.CHAPA_BASE_URL;
 const CHAPA_TEST_SECRET_KEY = process.env.CHAPA_TEST_SECRET_KEY;
 const chapa = new Chapa({
@@ -237,6 +238,20 @@ const UpdateDeposit = async (req, res) => {
     { deposite: Deposit }
   );
 };
+//withdraw
+const withdraw = async (req, res) => {
+  const postData = req.body;
+  const id = req.User._id;
+  const data = await Withdraw.create({
+    fullname: postData.fullname,
+    userId: id,
+    email: postData.email,
+    bank: postData.bank,
+    amount: postData.amount,
+    accountNumber: postData.accountNumber,
+  });
+  res.status(200).json(data);
+};
 
 module.exports = {
   checkPlatformBalance,
@@ -248,4 +263,5 @@ module.exports = {
   rechargeBalance,
   merchantPayment,
   UpdateDeposit,
+  withdraw,
 };

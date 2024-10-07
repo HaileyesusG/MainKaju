@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+import { io } from "socket.io-client";
+const socket = io("https://mainkaju.onrender.com");
 const WithdrawalForm = () => {
   const [formData, setFormData] = useState({
     fullname: "",
@@ -17,7 +19,7 @@ const WithdrawalForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Prepare form data for API post
     const postData = {
@@ -29,7 +31,14 @@ const WithdrawalForm = () => {
     };
 
     // You can now post the `postData` to your API endpoint
-    console.log(postData);
+    const response = await fetch(`${API_BASE_URL}/api/payment/withdraw`, {
+      method: "POST",
+      body: JSON.stringify(postData),
+      headers: { "Content-Type": "application/json" },
+    });
+    if (response.ok) {
+      socket.emit("fetchWithdraw", "ok");
+    }
   };
 
   return (

@@ -41,9 +41,10 @@ const Admin = ({ user3 }) => {
   //let { admin, dispatch } = useUserContextA();
   const [notify, setNotify] = useState(0);
   const [makeVisible, setMakeVisible] = useState(true);
-  const [disable, setDisable] = useState(true);
+  const [disp15, setdisplay15] = useState("hidden");
   const [disabled, setDisabled] = useState(true);
   const [array3, setArray3] = useState([]);
+  const [array4, setArray4] = useState([]);
   const [iView, setIView] = useState(false);
   const [iView2, setIView2] = useState(false);
   const [iView3, setIView3] = useState(false);
@@ -134,6 +135,16 @@ const Admin = ({ user3 }) => {
     setNotify(array3.length);
     console.log("yes in tye", notify);
   };
+  //fetch withdraw
+  const withdrawfeatcher = async () => {
+    const response = await fetch(`${API_BASE_URL}/api/payment/GetAllWithdraw`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
+    const json = await response.json();
+    setArray4(json);
+    console.log("yes in tye", notify);
+  };
   //updateDeposit
   const updateDeposit = async () => {
     const response = await fetch(`${API_BASE_URL}/api/payment/UpdateDeposit`, {
@@ -155,8 +166,19 @@ const Admin = ({ user3 }) => {
       socket.off("MyObject");
     };
   }, [socket]);
+  //
+  useEffect(() => {
+    socket.on("fetchWithdraw", (msg) => {
+      withdrawfeatcher();
+      // array3.push(msg._id);
+    });
+    return () => {
+      socket.off("fetchWithdraw");
+    };
+  }, [socket]);
   useEffect(() => {
     Applicantfeatcher();
+    withdrawfeatcher();
     // array3.push(msg._id);
   }, []);
 
@@ -189,6 +211,12 @@ const Admin = ({ user3 }) => {
   };
   const handleChoiceChange8 = () => {
     setdisplay8("visible");
+    setdisplay12("visible");
+    setdisplay11("hidden");
+  };
+  //
+  const handleChoiceChange9 = () => {
+    setdisplay15("visible");
     setdisplay12("visible");
     setdisplay11("hidden");
   };
@@ -854,6 +882,24 @@ const Admin = ({ user3 }) => {
             </div>
           ))}
         </div>
+        <div
+          className={
+            "bg-gray-100 w-96 h-[450px] absolute mt-24 ml-[576px] rounded-lg overflow-y-scroll  border-2 " +
+            disp15
+          }
+        >
+          {array4 &&
+            array4.map((r, index) => (
+              <div key={index}>
+                <p>Full Name:{r.fullname}</p>
+                <p>Email:{r.email}</p>
+                <p>Bank:{r.bank}</p>
+                <p>Amount:{r.amount}</p>
+                <p>AccountNumber:{r.accountNumber}</p>
+              </div>
+            ))}
+          <button className="border-2 rounded-md bg-blue-500">Finished</button>
+        </div>
         <div className=" w-[300px]">
           <div className=" ">{/* {error && <p>Error: {error}</p>} */}</div>
           <div
@@ -895,6 +941,12 @@ const Admin = ({ user3 }) => {
             onClick={handleP}
           >
             <BiSolidMessageDetail className="ml-3 mt-3" />
+          </div>
+          <div
+            className="absolute text-white ml-8  text-[14px] font-bold  "
+            onClick={handleChoiceChange9}
+          >
+            {array4.length == 0 ? null : array4.length}
           </div>
           <div className=" w-14 h-14 border-[1px] rounded-xl border-green-400 cursor-pointer">
             <IoMdNotifications className="ml-3 mt-3" />
