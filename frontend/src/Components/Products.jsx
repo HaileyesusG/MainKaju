@@ -10,6 +10,7 @@ import UserProfile from "./Profile";
 import { TiMessages } from "react-icons/ti";
 import { GiSandsOfTime } from "react-icons/gi";
 import Counter from "./Counter";
+import WithdrawalForm from "./Components/withDraw";
 import { FaComputer } from "react-icons/fa6";
 import { MdOutlineWork } from "react-icons/md";
 import { BsCart4 } from "react-icons/bs";
@@ -1229,11 +1230,14 @@ const Products = ({ user3 }) => {
                           <IoIosClose className="text-4xl" />
                         </button>
                       </div>
-                      <div className="">
+                      <div className="hidden">
                         <ChatTechAd
                           user={user.tk == undefined ? user3 : user}
                           className="w-full h-full object-cover"
                         />
+                      </div>
+                      <div className="">
+                        <WithdrawalForm className="w-full h-full object-cover" />
                       </div>
                     </div>
                   )}
