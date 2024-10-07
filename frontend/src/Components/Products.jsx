@@ -71,8 +71,10 @@ const Products = ({ user3 }) => {
   let Phonenumber = user ? user.phonenumber : "";
   const [Email, setEmail] = useState(user ? user.email : "");
   const _idRef = useRef("");
+  const tokenRef = useRef("");
   let _id = user3 ? user3._id : "";
   _idRef.current = _id;
+  tokenRef.current = token;
   console.log("the user3 id is ", _id);
   // useEffect(() => {
   //   setId(user ? user._id : "");
@@ -1238,7 +1240,7 @@ const Products = ({ user3 }) => {
                       </div>
                       <div className="">
                         <WithdrawalForm
-                          user={token}
+                          user={tokenRef.current}
                           className="w-full h-full object-cover"
                         />
                       </div>
