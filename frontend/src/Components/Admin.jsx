@@ -152,10 +152,15 @@ const Admin = ({ user3 }) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ Deposit, custEmail }),
     });
-    const json = await response.json();
+    if(response.ok)
+    {
+      alert("You Have Successfully Updated")
+      const json = await response.json();
     setArray3(json);
     setNotify(array3.length);
     console.log("yes in tye", notify);
+    }
+    
   };
   useEffect(() => {
     socket.on("MyObject", (msg) => {
