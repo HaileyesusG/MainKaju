@@ -884,7 +884,8 @@ const Admin = ({ user3 }) => {
         </div>
         <div
           className={
-            "bg-gray-100 w-96 h-[450px] absolute mt-24 ml-[576px] rounded-lg overflow-y-scroll  border-2 "
+            "bg-gray-100 w-96 h-[450px] absolute mt-24 ml-[576px] rounded-lg overflow-y-scroll  border-2 " +
+            disp15
           }
         >
           {array4 &&
