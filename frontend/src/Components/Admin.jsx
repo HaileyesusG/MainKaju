@@ -941,23 +941,29 @@ const Admin = ({ user3 }) => {
           >
             <BiSolidMessageDetail className="ml-3 mt-3" />
           </div>
-          <div
-            className={
-              array4.length == 0
-                ? "hidden"
-                : "absolute text-[19px] ml-7 mt-2 text-red-600 flex"
-            }
-          >
-            <FaCircle />
-          </div>
-          <div
-            className="absolute text-white ml-8  text-[14px] font-bold  "
-            onClick={handleChoiceChange9}
-          >
-            {array4.length == 0 ? null : array4.length}
-          </div>
+
           <div className=" w-14 h-14 border-[1px] rounded-xl border-green-400 cursor-pointer">
-            <IoMdNotifications className="ml-3 mt-3" />
+            {/* "absolute text-[19px] ml-6 mt-3 text-red-600 flex" */}
+            <div
+              className={
+                array4.length == 0
+                  ? "hidden"
+                  : "absolute text-[19px] ml-7 mt-2 text-red-600 flex"
+              }
+            >
+              <FaCircle />
+            </div>
+            <div
+              className="absolute text-white ml-8  text-[14px] font-bold  "
+              onClick={handleChoiceChange9}
+            >
+              {array4.length == 0 ? null : array4.length}
+            </div>
+
+            <div>
+              {" "}
+              <IoMdNotifications className={"ml-3 mt-3 " + disp10} />
+            </div>
           </div>
         </div>
 
@@ -989,6 +995,10 @@ const Admin = ({ user3 }) => {
                 <div className="flex cursor-pointer" onClick={userClicked}>
                   <FaUser className="text-3xl" />
                   <h1 className="text-[20px] ml-2">User</h1>
+                </div>
+                <div className="flex cursor-pointer" onClick={userClicked}>
+                  <FaUser className="text-3xl" />
+                  <h1 className="text-[20px] ml-2">ViewUserList</h1>
                 </div>
                 {enterEmail && (
                   <div id="last" className="ml-5 mt-5">
