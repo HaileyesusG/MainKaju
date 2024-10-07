@@ -251,6 +251,11 @@ const withdraw = async (req, res) => {
   });
   res.status(200).json(data);
 };
+//
+const GetAllWithdraw = async (req, res) => {
+  const data = await Withdraw.find({});
+  res.status(200).json(data);
+};
 
 module.exports = {
   checkPlatformBalance,
@@ -263,4 +268,5 @@ module.exports = {
   merchantPayment,
   UpdateDeposit,
   withdraw,
+  GetAllWithdraw,
 };
