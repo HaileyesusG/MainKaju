@@ -1237,7 +1237,10 @@ const Products = ({ user3 }) => {
                         />
                       </div>
                       <div className="">
-                        <WithdrawalForm className="w-full h-full object-cover" />
+                        <WithdrawalForm
+                          user={user.tk == undefined ? user3 : user}
+                          className="w-full h-full object-cover"
+                        />
                       </div>
                     </div>
                   )}
