@@ -10,7 +10,7 @@ import UserProfile from "./Profile";
 import { TiMessages } from "react-icons/ti";
 import { GiSandsOfTime } from "react-icons/gi";
 import Counter from "./Counter";
-import WithdrawalForm from "./Components/withDraw";
+import WithdrawalForm from "./withDraw";
 import { FaComputer } from "react-icons/fa6";
 import { MdOutlineWork } from "react-icons/md";
 import { BsCart4 } from "react-icons/bs";
