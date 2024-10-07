@@ -669,7 +669,7 @@ const Products = ({ user3 }) => {
         <div className="text-[15px]" onClick={handleRedirectLog}>
           signIn
         </div>
-        <div className="ml-5 mb-11 mt-10 flex">
+        <div className="ml-2 mb-11 mt-10 flex">
           <IoSearchSharp className="text-2xl  mt-3 text-white" />
           <input
             type="text"
