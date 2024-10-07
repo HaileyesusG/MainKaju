@@ -1240,7 +1240,7 @@ const Products = ({ user3 }) => {
                       </div>
                       <div className="">
                         <WithdrawalForm
-                          token={tokenRef.current}
+                          user={user3}
                           className="w-full h-full object-cover"
                         />
                       </div>
