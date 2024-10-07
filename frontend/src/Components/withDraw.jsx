@@ -2,7 +2,11 @@ import React, { useState } from "react";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 import { io } from "socket.io-client";
 const socket = io("https://mainkaju.onrender.com");
-const WithdrawalForm = () => {
+const WithdrawalForm = ({ user }) => {
+  let token = user ? "Bearer " + user.token : "";
+  if (token == "Bearer " + undefined) {
+    token = user ? "Bearer " + user.token : "";
+  }
   const [formData, setFormData] = useState({
     fullname: "",
     email: "",
@@ -34,7 +38,7 @@ const WithdrawalForm = () => {
     const response = await fetch(`${API_BASE_URL}/api/payment/withdraw`, {
       method: "POST",
       body: JSON.stringify(postData),
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", authorization: token },
     });
     if (response.ok) {
       socket.emit("fetchWithdraw", "ok");

@@ -94,6 +94,9 @@ io.on("connection", (socket) => {
     console.log("item is inseted");
     io.emit("insertItems", msg);
   });
+  socket.on("fetchWithdraw", (msg) => {
+    io.emit("fetchWithdraw", msg);
+  });
 });
 
 serv.listen(port, () => {
