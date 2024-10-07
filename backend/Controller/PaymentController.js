@@ -241,6 +241,7 @@ const UpdateDeposit = async (req, res) => {
 //withdraw
 const withdraw = async (req, res) => {
   const postData = req.body;
+  console.log("the post data is ", postData);
   const id = req.User._id;
   const data = await Withdraw.create({
     fullname: postData.fullname,
