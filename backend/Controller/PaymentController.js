@@ -242,10 +242,8 @@ const UpdateDeposit = async (req, res) => {
 const withdraw = async (req, res) => {
   const postData = req.body;
   console.log("the post data is ", postData);
-  const id = req.User._id;
   const data = await Withdraw.create({
     fullname: postData.fullname,
-    userId: id,
     email: postData.email,
     bank: postData.bank,
     amount: postData.amount,
