@@ -41,7 +41,7 @@ const Admin = ({ user3 }) => {
   //let { admin, dispatch } = useUserContextA();
   const [notify, setNotify] = useState(0);
   const [makeVisible, setMakeVisible] = useState(true);
-  const [disp15, setdisplay15] = useState("hidden");
+  const [disp15, setdisplay15] = useState(false);
   const [disabled, setDisabled] = useState(true);
   const [array3, setArray3] = useState([]);
   const [array4, setArray4] = useState([]);
@@ -216,7 +216,7 @@ const Admin = ({ user3 }) => {
   };
   //
   const handleChoiceChange9 = () => {
-    setdisplay15("visible");
+    setdisplay15(!disp15);
     setdisplay12("visible");
     setdisplay11("hidden");
   };
@@ -882,24 +882,27 @@ const Admin = ({ user3 }) => {
             </div>
           ))}
         </div>
-        <div
-          className={
-            "bg-gray-100 w-96 h-[450px] absolute mt-24 ml-[576px] rounded-lg overflow-y-scroll  border-2 " +
-            disp15
-          }
-        >
-          {array4 &&
-            array4.map((r, index) => (
-              <div key={index}>
-                <p>Full Name:{r.fullname}</p>
-                <p>Email:{r.email}</p>
-                <p>Bank:{r.bank}</p>
-                <p>Amount:{r.amount}</p>
-                <p>AccountNumber:{r.accountNumber}</p>
-              </div>
-            ))}
-          <button className="border-2 rounded-md bg-blue-500">Finished</button>
-        </div>
+        {disp15 && (
+          <div
+            className={
+              "bg-gray-100 w-96 h-[450px] absolute mt-24 ml-[576px] rounded-lg overflow-y-scroll  border-2 "
+            }
+          >
+            {array4 &&
+              array4.map((r, index) => (
+                <div key={index} className="mb-3">
+                  <p>Full Name:{r.fullname}</p>
+                  <p>Email:{r.email}</p>
+                  <p>Bank:{r.bank}</p>
+                  <p>Amount:{r.amount}</p>
+                  <p>AccountNumber:{r.accountNumber}</p>
+                </div>
+              ))}
+            <button className="border-2 rounded-md bg-blue-500">
+              Finished
+            </button>
+          </div>
+        )}
         <div className=" w-[300px]">
           <div className=" ">{/* {error && <p>Error: {error}</p>} */}</div>
           <div
