@@ -178,4 +178,5 @@ module.exports = {
   UpdateOneUser,
   GetUserExcept,
   GetOneUserByEmail,
+  DeleteUser,
 };

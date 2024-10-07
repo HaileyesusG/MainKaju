@@ -387,7 +387,7 @@ const Admin = ({ user3 }) => {
   );
   const featcher2 = async (id) => {
     if (isCustomer) {
-      response = await fetch(`${API_BASE_URL}/api/Customer/${id}`, {
+      response = await fetch(`${API_BASE_URL}/api/user/DeleteUser/${id}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
       });

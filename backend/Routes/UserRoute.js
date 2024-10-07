@@ -8,6 +8,7 @@ const {
   GetUserExcept,
   GetOneUserByEmail,
   GetCustomer,
+  deleteUser,
 } = require("../Controller/UserController");
 
 const express = require("express");
@@ -19,5 +20,5 @@ router.route("/LoginUser").post(LoginUser);
 router.route("/GetOneUserById/:id").get(GetOneUserById);
 router.route("/GetUserExcept/:id").get(GetUserExcept);
 router.route("/GetCustomer").get(GetCustomer);
-router.route("/:id").delete(DeleteUser);
+router.route("/DeleteUser/:id").delete(DeleteUser);
 module.exports = router;
