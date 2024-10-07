@@ -7,7 +7,7 @@ const WithdrawalForm = ({ user }) => {
   const todo = useSelector((state) => state.tech.tech);
   user = todo[0];
   let token = user ? "Bearer " + user.token : "";
-  console.log("the token is ", token);
+  console.log("the token is ", todo);
   const [formData, setFormData] = useState({
     fullname: "",
     email: "",
