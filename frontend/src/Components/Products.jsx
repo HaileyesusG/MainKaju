@@ -311,7 +311,7 @@ const Products = ({ user3 }) => {
       const locationMatch = location && location.match(searchRegex);
       const typeMatch = type && type.match(searchRegex);
       const categoryMatch = category && category.match(searchRegex);
-      const priceMatch = price && price.match(searchRegex);
+      //const priceMatch = price && price.match(searchRegex);
 
       // Additional logic to match broader category terms to specific terms
       const categoryToSpecificMap = {
@@ -351,7 +351,7 @@ const Products = ({ user3 }) => {
         (locationMatch || "").length > 0 ||
         (typeMatch || "").length > 0 ||
         (categoryMatch || "").length > 0 ||
-        (priceMatch || "").length > 0 ||
+        // (priceMatch || "").length > 0 ||
         isMatchInSpecificCategories ||
         otherMatch
       );
