@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 import { io } from "socket.io-client";
+import { useSelector } from "react-redux";
 const socket = io("https://mainkaju.onrender.com");
 const WithdrawalForm = ({ user }) => {
+  const todo = useSelector((state) => state.tech.tech);
+  user = todo[0];
   let token = user ? "Bearer " + user.token : "";
   if (token == "Bearer " + undefined) {
     token = user ? "Bearer " + user.token : "";
