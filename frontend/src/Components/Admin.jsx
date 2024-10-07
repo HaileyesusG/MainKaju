@@ -393,7 +393,7 @@ const Admin = ({ user3 }) => {
       });
       setJson(await response.json());
     } else {
-      response = await fetch(`${API_BASE_URL}/api/tech/${id}`, {
+      response = await fetch(`${API_BASE_URL}/user/DeleteUser/${id}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
       });
