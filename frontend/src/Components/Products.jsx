@@ -302,7 +302,16 @@ const Products = ({ user3 }) => {
   let filteredCustomers;
   if (Json) {
     filteredCustomers = Json.filter((customer) => {
-      const { model, brand, location, type, category, price } = customer;
+      const {
+        model,
+        brand,
+        location,
+        type,
+        category,
+        price,
+        description,
+        title,
+      } = customer;
       const searchRegex = new RegExp(searchText, "i");
 
       // Check if model, brand, location, and type are not undefined before accessing them
@@ -311,6 +320,8 @@ const Products = ({ user3 }) => {
       const locationMatch = location && location.match(searchRegex);
       const typeMatch = type && type.match(searchRegex);
       const categoryMatch = category && category.match(searchRegex);
+      const descriptionMatch = description && description.match(searchRegex);
+      const titleMatch = title && title.match(searchRegex);
       //const priceMatch = price && price.match(searchRegex);
 
       // Additional logic to match broader category terms to specific terms
@@ -320,7 +331,7 @@ const Products = ({ user3 }) => {
           "phone",
           "computer",
           "tablet",
-          "pes"||'playstation'||'ps',
+          "pes" || "playstation" || "ps",
           "Refrigerators",
         ],
         car: ["Toyota", "Honda", "Ford", "BMW", "Audi", "Suzuki", "Jeep"],
@@ -351,7 +362,8 @@ const Products = ({ user3 }) => {
         (locationMatch || "").length > 0 ||
         (typeMatch || "").length > 0 ||
         (categoryMatch || "").length > 0 ||
-        // (priceMatch || "").length > 0 ||
+        (descriptionMatch || "").length > 0 ||
+        (titleMatch || "").length > 0 ||
         isMatchInSpecificCategories ||
         otherMatch
       );
