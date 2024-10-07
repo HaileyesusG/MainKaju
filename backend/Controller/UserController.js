@@ -142,7 +142,10 @@ const GetOneUserByEmail = async (req, res) => {
   res.status(200).json(cv);
 };
 //update one
-
+const GetCustomer = async (req, res) => {
+  const cv = await User.find({});
+  res.status(200).json(cv);
+};
 const UpdateOneUser = async (req, res) => {
   const { location } = req.body;
 
@@ -166,6 +169,7 @@ const DeleteUser = async (req, res) => {
 };
 
 module.exports = {
+  GetCustomer,
   UserCreate,
   GetUser,
   GetOneUserById,

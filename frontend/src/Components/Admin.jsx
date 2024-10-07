@@ -348,7 +348,7 @@ const Admin = ({ user3 }) => {
     const user = JSON.parse(localStorage.getItem("admin"));
     const token = "Bearer " + user.token;
 
-    response = await fetch(`${API_BASE_URL}/api/Customer/GetCustomer`, {
+    response = await fetch(`${API_BASE_URL}/api/user/GetCustomer`, {
       headers: { authorization: token },
     });
     setJson(await response.json());
@@ -541,15 +541,7 @@ const Admin = ({ user3 }) => {
                         {r.mobileMoney}
                       </div>
                     </div>
-                    <div className="flex   ml-5  w-40 h-28 border-2 overflow-y-scroll">
-                      {title == "ServiceProviders"
-                        ? r.department.map((p) => (
-                            <div className="ml-[5px]  mt-5 h-20 text-[15px]">
-                              {p + ","}
-                            </div>
-                          ))
-                        : ""}
-                    </div>
+
                     <div className="flex   ml-5  w-40 h-28 text-[15px] overflow-y-scroll">
                       <div className="ml-[5px]  mt-1 h-20">{r.location}</div>
                     </div>
@@ -560,7 +552,7 @@ const Admin = ({ user3 }) => {
                     </div>
                     <div className="bg-yellow-200 ml-5 rounded-lg mt-8 h-7 w-[75px]  ">
                       <h3 className="text-green-600  ml-5  cursor-pointer">
-                        {r.deposit + "ብር"}
+                        {r.deposite + "ብር"}
                       </h3>
                     </div>
                     <div className="bg-red-400 ml-5 rounded-lg mt-7 h-9 w-[60px] hover:bg-yellow-400 ">
@@ -1000,7 +992,7 @@ const Admin = ({ user3 }) => {
                   <FaUser className="text-3xl" />
                   <h1 className="text-[20px] ml-2">User</h1>
                 </div>
-                <div className="flex cursor-pointer" onClick={userClicked}>
+                <div className="flex cursor-pointer mt-4" onClick={featcher}>
                   <FaUser className="text-3xl" />
                   <h1 className="text-[20px] ml-2">ViewUserList</h1>
                 </div>

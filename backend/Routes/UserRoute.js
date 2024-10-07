@@ -17,6 +17,6 @@ router.route("/UserCreate/:id").post(UserCreate);
 router.route("/LoginUser").post(LoginUser);
 router.route("/GetOneUserById/:id").get(GetOneUserById);
 router.route("/GetUserExcept/:id").get(GetUserExcept);
-router.route("/:id").patch(UpdateOneUser);
+router.route("/GetCustomer").get(GetCustomer);
 router.route("/:id").delete(DeleteUser);
 module.exports = router;

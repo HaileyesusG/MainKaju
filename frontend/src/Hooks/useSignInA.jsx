@@ -29,7 +29,7 @@ export const useSignInA = () => {
       //dispatch({ type: "LOGIN", payload: json });
       dispatch2(setAdmin([json]));
       //save the user on local storage
-      //localStorage.setItem("admin", JSON.stringify(json));
+      localStorage.setItem("admin", JSON.stringify(json));
       red("/Admin");
     } else {
       console.log("not log in");
