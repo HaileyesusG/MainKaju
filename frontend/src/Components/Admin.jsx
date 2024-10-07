@@ -154,10 +154,6 @@ const Admin = ({ user3 }) => {
     });
     if (response.ok) {
       alert("You Have Successfully Updated");
-      const json = await response.json();
-      setArray3(json);
-      setNotify(array3.length);
-      console.log("yes in tye", notify);
     }
   };
   useEffect(() => {

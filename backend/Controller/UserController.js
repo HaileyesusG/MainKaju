@@ -75,7 +75,7 @@ const UserCreate = async (req, res) => {
     });
     //const update = await Applicant.findOneAndDelete({ _id: id });
   } catch (err) {
-    console.error("Failed to send Email:", err);
+    console.log("Failed to send Email:", err);
     res.status(400).json({ message: err.message });
   }
 };
