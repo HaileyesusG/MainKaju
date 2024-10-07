@@ -143,7 +143,7 @@ const Admin = ({ user3 }) => {
     });
     const json = await response.json();
     setArray4(json);
-    console.log("yes in tye", notify);
+    console.log("yes in tye", json);
   };
   //updateDeposit
   const updateDeposit = async () => {
