@@ -38,6 +38,7 @@ const WithdrawalForm = () => {
     });
     if (response.ok) {
       socket.emit("fetchWithdraw", "ok");
+      alert("Your Withdrawal Request has been summited Sucessfully");
     }
   };
 
