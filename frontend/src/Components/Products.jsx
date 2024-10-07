@@ -302,7 +302,7 @@ const Products = ({ user3 }) => {
   let filteredCustomers;
   if (Json) {
     filteredCustomers = Json.filter((customer) => {
-      const { model, brand, location, type, category } = customer;
+      const { model, brand, location, type, category, price } = customer;
       const searchRegex = new RegExp(searchText, "i");
 
       // Check if model, brand, location, and type are not undefined before accessing them
@@ -311,6 +311,38 @@ const Products = ({ user3 }) => {
       const locationMatch = location && location.match(searchRegex);
       const typeMatch = type && type.match(searchRegex);
       const categoryMatch = category && category.match(searchRegex);
+      const priceMatch = price && price.match(searchRegex);
+
+      // Additional logic to match broader category terms to specific terms
+      const categoryToSpecificMap = {
+        electronics: [
+          "TV",
+          "phone",
+          "computer",
+          "tablet",
+          "PlayStation",
+          "Refrigerators",
+        ],
+        car: ["Toyota", "Honda", "Ford", "BMW", "Audi", "Suzuki", "Jeep"],
+        // Add more mappings as needed
+      };
+      const isMatchInSpecificCategories = Object.keys(
+        categoryToSpecificMap
+      ).some(
+        (categoryKey) =>
+          categoryKey.match(searchRegex) &&
+          categoryToSpecificMap[categoryKey].some((specificTerm) =>
+            specificTerm.match(searchRegex)
+          )
+      );
+      // Additional logic to match "other" category
+      let otherMatch = false;
+      if (category && category.toLowerCase() === "other") {
+        const itemDetails = [model, brand, location, type, price]
+          .join(" ")
+          .toLowerCase();
+        otherMatch = itemDetails.match(searchRegex);
+      }
 
       return (
         searchText === "" ||
@@ -318,7 +350,10 @@ const Products = ({ user3 }) => {
         (brandMatch || "").length > 0 ||
         (locationMatch || "").length > 0 ||
         (typeMatch || "").length > 0 ||
-        (categoryMatch || "").length > 0
+        (categoryMatch || "").length > 0 ||
+        (priceMatch || "").length > 0 ||
+        isMatchInSpecificCategories ||
+        otherMatch
       );
     });
   }
