@@ -152,15 +152,13 @@ const Admin = ({ user3 }) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ Deposit, custEmail }),
     });
-    if(response.ok)
-    {
-      alert("You Have Successfully Updated")
+    if (response.ok) {
+      alert("You Have Successfully Updated");
       const json = await response.json();
-    setArray3(json);
-    setNotify(array3.length);
-    console.log("yes in tye", notify);
+      setArray3(json);
+      setNotify(array3.length);
+      console.log("yes in tye", notify);
     }
-    
   };
   useEffect(() => {
     socket.on("MyObject", (msg) => {
@@ -546,6 +544,7 @@ const Admin = ({ user3 }) => {
                         <AiFillPhone className="text-2xl mr-2 text-cyan-600" />
                         {r.mobileMoney}
                       </div>
+                      <div className="flex">{r.email}</div>
                     </div>
 
                     <div className="flex   ml-5  w-40 h-28 text-[15px] overflow-y-scroll">

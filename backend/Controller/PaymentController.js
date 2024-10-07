@@ -237,6 +237,7 @@ const UpdateDeposit = async (req, res) => {
     { _id: user._id },
     { deposite: Deposit }
   );
+  res.status(200).json(Users);
 };
 //withdraw
 const withdraw = async (req, res) => {
