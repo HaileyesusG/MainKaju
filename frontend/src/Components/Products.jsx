@@ -6,6 +6,7 @@ import { formatDistanceToNow } from "date-fns";
 import { GiMaterialsScience } from "react-icons/gi";
 import { FaCircle } from "react-icons/fa";
 import { IoMdNotifications } from "react-icons/io";
+import { MdWifiCalling3 } from "react-icons/md";
 import UserProfile from "./Profile";
 import { TiMessages } from "react-icons/ti";
 import { GiSandsOfTime } from "react-icons/gi";
@@ -392,6 +393,7 @@ const Products = ({ user3 }) => {
   const [handleProfile, setHandleProfile] = useState(false);
   const [viewDepositeType, setViewDepositeType] = useState(false);
   const [viewithDrawType, setViewithDrawType] = useState(false);
+  const [viewithDrawType2, setViewithDrawType2] = useState(false);
 
   const openModal = async (product) => {
     setSelectedProduct(product);
@@ -406,6 +408,7 @@ const Products = ({ user3 }) => {
     setViewChat(false);
     setViewChat2(false);
     setViewithDrawType(false);
+    setViewithDrawType2(false);
     setdisplay8("hidden");
   };
   const addCart = async (id, category) => {
@@ -948,16 +951,7 @@ const Products = ({ user3 }) => {
             <div className="absolute ml-[56px]  mt-12">Electronics</div>
             <div className="w-12 h-12 rounded-full bg-orange-400 ml-16"></div>
           </div>
-          <div>
-            <div
-              className="ml-[78px]  mt-3 absolute"
-              onClick={handleSearchChangeA}
-            >
-              <MdOutlineWork className="text-[20px]  " />
-            </div>
-            <div className="absolute ml-[72px]  mt-12">All</div>
-            <div className="w-12 h-12 rounded-full bg-green-400 ml-16"></div>
-          </div>
+
           <div>
             <div
               className="ml-[78px]  mt-3 absolute cursor-pointer"
@@ -967,6 +961,27 @@ const Products = ({ user3 }) => {
             </div>
             <div className="absolute ml-[65px]  mt-12">Others</div>
             <div className="w-12 h-12 rounded-full bg-cyan-400 ml-16"></div>
+          </div>
+          <div>
+            <div
+              className="ml-[78px]  mt-3 absolute"
+              onClick={handleSearchChangeA}
+            >
+              <MdOutlineWork className="text-[20px]  " />
+            </div>
+            <div className="absolute ml-[80px]  mt-12">All</div>
+            <div className="w-12 h-12 rounded-full bg-green-400 ml-16"></div>
+          </div>
+          <div
+            className="ml-36 animate-bounce cursor-pointer"
+            onClick={() => setViewithDrawType2(true)}
+          >
+            <div className="ml-[78px]  mt-3 absolute  flex">
+              <MdWifiCalling3 className="text-[20px] text-white ml-16  " />
+              <div className="absolute ml-14  mt-8">Report</div>
+            </div>
+
+            <div className="w-12 h-12 rounded-full bg-blue-500 ml-32"></div>
           </div>
         </div>
       </div>
@@ -1241,6 +1256,24 @@ const Products = ({ user3 }) => {
                       <div className="">
                         <WithdrawalForm
                           user={user3}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                  )}
+                  {viewithDrawType2 && (
+                    <div className="border-r-indigo-200 w-[900px] h-80 ml-[-120px] relative overflow-hidden overflow-y-auto">
+                      <div className="ml-[1100px] text-white  mt-20  ">
+                        <button
+                          onClick={closeModal}
+                          className="mt-2 text-white "
+                        >
+                          <IoIosClose className="text-4xl" />
+                        </button>
+                      </div>
+                      <div className="">
+                        <ChatTechAd
+                          user={user == undefined ? user3 : user}
                           className="w-full h-full object-cover"
                         />
                       </div>
