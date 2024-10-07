@@ -286,6 +286,9 @@ const Products = ({ user3 }) => {
   const handleSearchChangeH = (event) => {
     setSearchText("house");
   };
+  const handleSearchChangeA = (event) => {
+    setSearchText("");
+  };
   const handleSearchChangeC = (event) => {
     setSearchText("car");
   };
@@ -896,10 +899,13 @@ const Products = ({ user3 }) => {
             <div className="w-12 h-12 rounded-full bg-orange-400 ml-16"></div>
           </div>
           <div>
-            <div className="ml-[78px]  mt-3 absolute">
+            <div
+              className="ml-[78px]  mt-3 absolute"
+              onClick={handleSearchChangeA}
+            >
               <MdOutlineWork className="text-[20px]  " />
             </div>
-            <div className="absolute ml-[72px]  mt-12">Jobs</div>
+            <div className="absolute ml-[72px]  mt-12">All</div>
             <div className="w-12 h-12 rounded-full bg-green-400 ml-16"></div>
           </div>
           <div>
@@ -1058,7 +1064,9 @@ const Products = ({ user3 }) => {
                     <p className="text-slate-600 mr-3 mt-3 ml-5"></p>
                   </div>
                   <div className="ml-64 max-h-40 overflow-y-scroll overflow-x-scroll">
-                    <div className="mt-5 ">{selectedProduct.description}</div>
+                    <div className="mt-5 mr-10">
+                      {selectedProduct.description}
+                    </div>
                   </div>
                 </div>
                 <div className="w-80 ml-12 ">
