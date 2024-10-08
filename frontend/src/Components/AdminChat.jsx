@@ -136,6 +136,7 @@ const AdminChat = ({ user3, counter }) => {
     featcher3(id);
     setBench(null);
     setProfile(profile2);
+    setCounter(0);
   };
   const handleDelete = async (id, _id) => {
     const response = await fetch(`${API_BASE_URL}/api/Chat/${_id}`, {
@@ -159,7 +160,7 @@ const AdminChat = ({ user3, counter }) => {
                   className="w-72 h-24  border-b-2 border-gray-100 flex hover:bg-slate-300"
                 >
                   {r._id.toString() == SenderId && (
-                    <div className="ml-40 absolute">
+                    <div className="ml-72 absolute">
                       {Counter > 0 ? (
                         <div className="">
                           <p className="absolute mt-1 ml-2 font-bold text-white">
