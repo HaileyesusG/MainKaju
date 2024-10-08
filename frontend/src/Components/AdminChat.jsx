@@ -159,7 +159,7 @@ const AdminChat = ({ user3, counter }) => {
                   className="w-72 h-24  border-b-2 border-gray-100 flex hover:bg-slate-300"
                 >
                   {r._id.toString() == SenderId && (
-                    <div className="ml-40">
+                    <div className="ml-40 absolute">
                       {Counter > 0 ? (
                         <div className="">
                           <p className="absolute mt-1 ml-2 font-bold text-white">
@@ -178,7 +178,7 @@ const AdminChat = ({ user3, counter }) => {
                       className="w-[60px] h-[60px] rounded-full"
                     />
                   </div>
-                  <div className=" flex">
+                  <div className=" ">
                     <p className="mt-3 ml-3 font-semibold text-2xl">
                       {r.firstname}
                     </p>
