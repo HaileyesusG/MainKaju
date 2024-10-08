@@ -5,7 +5,7 @@ import { useSendMessage } from "../Hooks/useSendMessage";
 import { IoSend } from "react-icons/io5";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { FaCircle } from "react-icons/fa";
+import { MdCircle } from "react-icons/md";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 import { setChat, removeChat } from "../features/chat/chatSlice";
 const AdminChat = ({ user3, counter }) => {
@@ -163,7 +163,7 @@ const AdminChat = ({ user3, counter }) => {
                       {Counter > 0 ? (
                         <div>
                           <p className="absolute mt-3">{Counter}</p>
-                          <FaCircle className="text-blue-400 text-2xl" />
+                          <MdCircle className="text-blue-400 text-2xl" />
                         </div>
                       ) : (
                         ""

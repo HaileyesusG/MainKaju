@@ -423,6 +423,7 @@ const Admin = ({ user3 }) => {
   };
   const handleCounter = (c) => {
     setCount(c);
+    console.log("the counter c is ", c);
   };
   return (
     <div className={""}>
