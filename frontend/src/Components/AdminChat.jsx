@@ -21,6 +21,7 @@ const AdminChat = ({ user3 }) => {
   const [name, setname] = useState("");
   const [visible, setVisible] = useState(false);
   const [Counter, setCounter] = useState(0);
+  const [SenderId, setSenderId] = useState(0);
   let socket = io("https://mainkaju.onrender.com");
   //let { admin, dispatch } = useUserContextA();
   let chat = todo;
@@ -116,9 +117,9 @@ const AdminChat = ({ user3 }) => {
       if (msg.Receiver_id === user3._id) {
         setBench(msg.Message);
         setBench2(msg.Message);
-
+        setSenderId(msg.Sender_id);
         featcher3(idd);
-        setCounter((prev) => prev + 1);
+        setCounter(1);
       }
     });
     return () => {
@@ -155,6 +156,18 @@ const AdminChat = ({ user3 }) => {
                   onClick={() => clicked(r._id, r.firstname, r.image)}
                   className="w-72 h-24  border-b-2 border-gray-100 flex hover:bg-slate-300"
                 >
+                  {r._id.toString() == SenderId && (
+                    <div className="">
+                      {Counter > 0 ? (
+                        <div>
+                          <FaRegCircle className="text-blue-400" />
+                          {Counter}
+                        </div>
+                      ) : (
+                        ""
+                      )}
+                    </div>
+                  )}
                   <div className="ml-4 mt-4">
                     <img
                       src={r.image}
