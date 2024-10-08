@@ -975,13 +975,12 @@ const Products = ({ user3 }) => {
             <div className="absolute ml-[80px]  mt-12">All</div>
             <div className="w-12 h-12 rounded-full bg-green-400 ml-16"></div>
           </div>
-          <div className="ml-36 animate-bounce cursor-pointer">
+          <div className="ml-36 animate-pulse cursor-pointer">
             <div
               className="ml-[78px]  mt-3 absolute  flex"
               onClick={handleReport}
             >
               <MdWifiCalling3 className="text-[20px] text-white ml-16  " />
-              <div className="absolute ml-14  mt-8">Report</div>
             </div>
 
             <div className="w-12 h-12 rounded-full bg-blue-500 ml-32"></div>
