@@ -916,7 +916,7 @@ const Products = ({ user3 }) => {
       </div>
       {handleProfile && (
         <div className="absolute bg-slate-50 text-4xl ml-[700px]  h-[430px] mt-[-14px] w-[500px]">
-          <UserProfile user4={user == undefined ? user3 : user} />
+          <UserProfile user4={user.tk == undefined ? user3 : user} />
         </div>
       )}
       <div
@@ -1196,7 +1196,7 @@ const Products = ({ user3 }) => {
 
             <div className=" ml-[-900px]">
               <ChatTechAd
-                user={user == undefined ? user3 : user}
+                user={user.tk == undefined ? user3 : user}
                 className="w-full h-full object-cover"
               />
             </div>
@@ -1268,7 +1268,7 @@ const Products = ({ user3 }) => {
                       </div>
                       <div className="hidden">
                         <ChatTechAd
-                          user={user == undefined ? user3 : user}
+                          user={user.tk == undefined ? user3 : user}
                           className="w-full h-full object-cover"
                         />
                       </div>
@@ -1295,7 +1295,7 @@ const Products = ({ user3 }) => {
               </div>
               <div className="mt-[-90px]">
                 <ChatTech
-                  user={user == undefined ? user3 : user}
+                  user={user.tk == undefined ? user3 : user}
                   owner={ownerId}
                   itemId={itemId}
                   className=""
@@ -1315,7 +1315,7 @@ const Products = ({ user3 }) => {
               </div>
               <div className="mt-[-90px]">
                 <ChatTech
-                  user={user == undefined ? user3 : user}
+                  user={user.tk == undefined ? user3 : user}
                   owner={senderId}
                   tPrice={totalPrice}
                   itemId={itemId}
