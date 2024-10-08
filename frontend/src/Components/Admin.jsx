@@ -105,7 +105,7 @@ const Admin = ({ user3 }) => {
   const [disp12, setdisplay12] = useState("visible");
   const [disp13, setdisplay13] = useState("hidden");
   const [disp14, setdisplay14] = useState("hidden");
-  const [suggestions, setSuggestions] = useState([]);
+  const [count, setCount] = useState(0);
   const [Json, setJson] = useState([]);
   const closeModal = () => {
     setMakeVisible(false);
@@ -421,13 +421,15 @@ const Admin = ({ user3 }) => {
   const userClicked = () => {
     setEnterEmail(!enterEmail), setMakeVisible(true);
   };
-
+  const handleCounter = (c) => {
+    setCount(c);
+  };
   return (
     <div className={""}>
       <div className=" overflow-y-auto   m-3 absolute  w-[1010px] h-[470px] mt-[138px] ml-72">
         {/* <h1>{amount2.map((r) => r)}</h1> */}
         <div className={disp7}>
-          <AdminChat user3={user4} />
+          <AdminChat user3={user4} counter={handleCounter} />
         </div>
         {amount2
           ? userList.length > 0
@@ -931,6 +933,18 @@ const Admin = ({ user3 }) => {
               {" "}
               <MdEmojiPeople className={"ml-3 mt-3 " + disp10} />
             </div>
+          </div>
+          <div
+            className={
+              count == 0
+                ? "hidden"
+                : "absolute text-[19px] ml-7 mt-2 text-red-600 flex"
+            }
+          >
+            <FaCircle />
+          </div>
+          <div className="absolute text-white ml-8  text-[14px] font-bold  ">
+            {count == 0 ? null : count}
           </div>
           <div
             className=" w-14 h-14 border-[1px] rounded-xl border-green-400 cursor-pointer"

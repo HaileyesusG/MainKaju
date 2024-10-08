@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { FaCircle } from "react-icons/fa";
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 import { setChat, removeChat } from "../features/chat/chatSlice";
-const AdminChat = ({ user3 }) => {
+const AdminChat = ({ user3, counter }) => {
   user3 = user3[0];
   const todo = useSelector((state) => state.chat.chat);
   const dispatch2 = useDispatch();
@@ -121,6 +121,7 @@ const AdminChat = ({ user3 }) => {
         setSenderId(msg.Sender_id);
         featcher3(idd);
         setCounter(1);
+        counter(1);
       }
     });
     return () => {
@@ -162,7 +163,7 @@ const AdminChat = ({ user3 }) => {
                       {Counter > 0 ? (
                         <div>
                           <p className="absolute mt-3">{Counter}</p>
-                          <FaCircle className="text-blue-400 text" />
+                          <FaCircle className="text-blue-400 text-2xl" />
                         </div>
                       ) : (
                         ""
