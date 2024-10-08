@@ -1187,14 +1187,14 @@ const Products = ({ user3 }) => {
           </div>
         )}
         {viewithDrawType2 && (
-          <div className="border-r-indigo-200 w-[900px] h-96 ml-[990px] absolute ">
-            <div className="ml-[800px] mt-[-20px]">
-              <button onClick={closeModal} className="mt-2  ">
+          <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
+            <div className="ml-[180px] mt-[-260px]">
+              <button onClick={closeModal} className="mt-2 ml-10  ">
                 <IoIosClose className="text-4xl" />
               </button>
             </div>
-            <div className="text-4xl">Abebe beso beloa</div>
-            <div className="overflow-hidden overflow-y-auto">
+
+            <div className=" ml-[-900px]">
               <ChatTechAd
                 user={user == undefined ? user3 : user}
                 className="w-full h-full object-cover"
