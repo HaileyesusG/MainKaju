@@ -2,7 +2,11 @@ const User = require("../Model/User");
 const Admin = require("../Model/Admin");
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
-const Applicant = require("../Model/Applicants");
+const Car = require("../Model/Car");
+const House = require("../Model/House");
+const Other = require("../Model/Other");
+const Electronics = require("../Model/Electronics");
+const Cart = require("../Model/Cart");
 //Token Generator
 const createToken = (_id) => {
   return jwt.sign({ _id }, process.env.SECRET);
@@ -164,6 +168,19 @@ const UpdateOneUser = async (req, res) => {
 const DeleteUser = async (req, res) => {
   const { id } = req.params;
   let result = await User.findOneAndDelete({ _id: id });
+  // Delete all cars with the given userId
+  await Car.deleteMany({ userId: id });
+
+  // Delete all Electronics with the given userId
+  await Electronics.deleteMany({ userId: id });
+
+  await Other.deleteMany({ userId: id });
+
+  // Delete all houses with the given userId
+  await House.deleteMany({ userId: id });
+
+  await Cart.deleteMany({ userId: id });
+
   result = await User.find({});
   res.status(200).json(result);
 };
