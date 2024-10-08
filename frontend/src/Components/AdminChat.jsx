@@ -161,9 +161,11 @@ const AdminChat = ({ user3, counter }) => {
                   {r._id.toString() == SenderId && (
                     <div className="">
                       {Counter > 0 ? (
-                        <div>
-                          <p className="absolute mt-3">{Counter}</p>
-                          <MdCircle className="text-blue-400 text-2xl" />
+                        <div className="ml-32">
+                          <p className="absolute mt-1 ml-2 font-bold">
+                            {Counter}
+                          </p>
+                          <MdCircle className="text-blue-500 text-2xl" />
                         </div>
                       ) : (
                         ""
