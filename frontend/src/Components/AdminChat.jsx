@@ -162,7 +162,7 @@ const AdminChat = ({ user3, counter }) => {
                     <div className="">
                       {Counter > 0 ? (
                         <div className="ml-32">
-                          <p className="absolute mt-1 ml-2 font-bold">
+                          <p className="absolute mt-1 ml-2 font-bold text-white">
                             {Counter}
                           </p>
                           <MdCircle className="text-blue-500 text-2xl" />
