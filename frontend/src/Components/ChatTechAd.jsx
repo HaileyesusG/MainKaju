@@ -24,7 +24,7 @@ const ChatTechAd = ({ user }) => {
   const [visible, setVisible] = useState(false);
   // let { user, dispatch } = useUserContext();
   // let { chat, dispatchChat } = useUserContextChat();
-
+  if (user == "") return;
   let chat = todo;
   let token = user ? "Bearer " + user.token : "";
   if (token == "Bearer " + undefined) {
