@@ -935,22 +935,23 @@ const Admin = ({ user3 }) => {
               <MdEmojiPeople className={"ml-3 mt-3 " + disp10} />
             </div>
           </div>
-          <div
-            className={
-              count == 0
-                ? "hidden"
-                : "absolute text-[19px] ml-7 mt-2 text-red-600 flex"
-            }
-          >
-            <FaCircle />
-          </div>
-          <div className="absolute text-white ml-8  text-[14px] font-bold  ">
-            {count == 0 ? null : count}
-          </div>
+
           <div
             className=" w-14 h-14 border-[1px] rounded-xl border-green-400 cursor-pointer"
             onClick={handleP}
           >
+            <div
+              className={
+                count == 0
+                  ? "hidden"
+                  : "absolute text-[19px] ml-7 mt-2 text-red-600 flex"
+              }
+            >
+              <FaCircle />
+            </div>
+            <div className="absolute text-white ml-8  text-[14px] font-bold  ">
+              {count == 0 ? null : count}
+            </div>
             <BiSolidMessageDetail className="ml-3 mt-3" />
           </div>
 
